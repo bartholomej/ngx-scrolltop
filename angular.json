@@ -40,7 +40,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "root": "projects/example",
@@ -50,7 +50,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "https://bartholomej.github.io/ngx-scrolltop/",
             "outputPath": "dist/example",
             "index": "projects/example/src/index.html",
             "main": "projects/example/src/main.ts",
@@ -61,7 +60,7 @@
               "projects/example/src/favicon.ico",
               "projects/example/src/assets"
             ],
-            "styles": ["projects/example/src/styles.sass"],
+            "styles": ["projects/example/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -124,7 +123,7 @@
               "projects/example/src/favicon.ico",
               "projects/example/src/assets"
             ],
-            "styles": ["projects/example/src/styles.sass"],
+            "styles": ["projects/example/src/styles.scss"],
             "scripts": []
           }
         },
