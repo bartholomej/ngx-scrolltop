@@ -1,0 +1,28 @@
+$background-color: #212121;
+$arrow-color: #fafafa;
+
+button {
+  outline: 0;
+}
+.scrolltop {
+  display: none; // Default hidden in smart mode
+  position: fixed;
+  border-radius: 50%;
+  background-color: $background-color;
+  width: 40px;
+  height: 40px;
+  right: 20px;
+  bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &.show {
+    display: flex;
+  }
+
+  svg {
+    width: 45%;
+    fill: $arrow-color;
+  }
+}
