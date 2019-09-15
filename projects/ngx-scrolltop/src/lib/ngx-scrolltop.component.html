@@ -2,10 +2,14 @@
   type="button"
   class="scrolltop"
   #scrollTopButton
-  [class.show]="show"
-  (click)="scrollToTop()">
+  (click)="scrollToTop()"
+  [style.backgroundColor]="backgroundColor"
+  [style.width.px]="size"
+  [style.height.px]="size"
+  [class.show]="show">
   <svg
     aria-hidden="true"
+    [style.fill]="symbolColor"
     focusable="false"
     role="img"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,5 @@
 $background-color: #212121;
-$arrow-color: #fafafa;
+$symbol-color: #fafafa;
 
 button {
   outline: 0;
@@ -23,6 +23,6 @@ button {
 
   svg {
     width: 45%;
-    fill: $arrow-color;
+    fill: $symbol-color;
   }
 }

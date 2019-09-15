@@ -5,6 +5,7 @@ import {
   HostListener,
   Inject,
   ElementRef,
+  Input,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
@@ -14,6 +15,10 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./ngx-scrolltop.component.scss'],
 })
 export class NgxScrolltopComponent implements OnInit {
+  @Input() backgroundColor: string;
+  @Input() symbolColor: string;
+  @Input() size: number;
+
   public show = false;
   private scrolledFromTop = false;
   private scrollOffset: number;
