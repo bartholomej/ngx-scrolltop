@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-scrolltop": [
+        "dist/ngx-scrolltop"
+      ],
+      "ngx-scrolltop/*": [
+        "dist/ngx-scrolltop/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
