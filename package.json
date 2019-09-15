@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrolltop",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "scripts": {
@@ -10,8 +10,7 @@
     "build": "ng build ngx-scrolltop",
     "build:example": "ng build example --prod",
     "deploy:ghpages": "npm run build:example && ngh --dir=dist/",
-    "prepublish": "npm run syncprojects && npm run build",
-    "publish": "cd dist/ngx-scrolltop && npm publish",
+    "publish": "npm run syncprojects && npm run build && cd dist/ngx-scrolltop && npm publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
