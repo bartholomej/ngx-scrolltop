@@ -1,24 +1,94 @@
-# NgxScrolltop
+[![Join the chat at https://gitter.im/ngx-scrolltop/Lobby](https://badges.gitter.im/ngx-scrolltop/Lobby.svg)](https://gitter.im/ngx-scrolltop/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.5.
+# Angular ScrollTop Button (alpha version)
 
-## Code scaffolding
+Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
 
-Run `ng generate component component-name --project ngx-scrolltop` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-scrolltop`.
-> Note: Don't forget to add `--project ngx-scrolltop` or else it will be added to the default project in your `angular.json` file. 
+**Support for Angular 8 an Ivy!**
 
-## Build
+Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
-Run `ng build ngx-scrolltop` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Lightweight
+- Material Design inspired
+- Smoothly animated
+- Customizable
+- With some useful [options](#settings)...
 
-## Publishing
+![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif)
 
-After building your library with `ng build ngx-scrolltop`, go to the dist folder `cd dist/ngx-scrolltop` and run `npm publish`.
+## Demo (example)
 
-## Running unit tests
+Watch this: [http://bartholomej.github.io/ngx-scrolltop/
+](http://bartholomej.github.io/ngx-scrolltop/)
 
-Run `ng test ngx-scrolltop` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Install
 
-## Further help
+Via **yarn** or **npm**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+yarn add ngx-scrolltop # npm install ngx-scrolltop --save
+```
+
+## Setup
+
+```js
+...
+import { ScrollTopModule } from 'ngx-scrolltop';
+...
+
+@NgModule({
+  imports: [
+    ...
+    NgxScrollTopModule.forRoot()
+  ],
+  ...
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+## Usage
+
+In **app.component.html** you just need to add your new button. Usually at the end of file.
+
+```html
+<ngx-scrolltop></ngx-scrolltop>
+```
+
+## Options
+
+| Option          | Type   | Default | Description                                                                  |
+| --------------- | ------ | ------- | ---------------------------------------------------------------------------- |
+| backgroundColor | string | #212121 | Background color (you can use all values for `backgroud-color` css property) |
+| symbolColor     | string | #fafafa | Symbol color (you can use all values for `fill` svg property)                |
+| size            | number | 40      | Button size(in pixels). Symbol will be resized automatically.                |
+| symbol          | string |         | You can use utf8 chars for customizing symbol. For example: `↑`              |
+
+### Options: Example
+
+**app.component.html**
+
+```html
+<ngx-scrolltop
+  [size]="50"
+  backgroundColor="#33691e"
+  symbolColor="#fff"
+  symbol="↑"
+>
+</ngx-scrolltop>
+```
+
+## Dependencies
+
+No dependencies
+
+## License
+
+Copyright &copy; 2019 [Lukas Bartak](http://bartweb.cz)
+
+Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
+
+All contents are licensed under the [MIT license].
+
+[mit license]: LICENSE
