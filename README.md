@@ -3,7 +3,7 @@
 
 # Angular ScrollTop Button
 
-Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. Pure Angular!
+Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
 
 **Support for Angular 8 an Ivy!**
 
@@ -27,7 +27,7 @@ Watch this: [http://bartholomej.github.io/ngx-scrolltop/
 Via **yarn** or **npm**
 
 ```bash
-yarn ngx-scrolltop # npm install ngx-scrolltop --save
+yarn add ngx-scrolltop # npm install ngx-scrolltop --save
 ```
 
 ## Setup
@@ -40,7 +40,7 @@ import { ScrollTopModule } from 'ngx-scrolltop';
 @NgModule({
   imports: [
     ...
-    ScrollTopModule.forRoot()
+    NgxScrollTopModule.forRoot()
   ],
   ...
   bootstrap: [AppComponent]
