@@ -10,7 +10,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'scrolltop-ngx-scrolltop',
+  selector: 'ngx-scrolltop',
   templateUrl: './ngx-scrolltop.component.html',
   styleUrls: ['./ngx-scrolltop.component.scss'],
 })

@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-scrolltop",
       "sourceRoot": "projects/ngx-scrolltop/src",
-      "prefix": "scrolltop",
+      "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -31,9 +31,7 @@
               "projects/ngx-scrolltop/tsconfig.lib.json",
               "projects/ngx-scrolltop/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -62,9 +60,7 @@
               "projects/example/src/favicon.ico",
               "projects/example/src/assets"
             ],
-            "styles": [
-              "projects/example/src/styles.sass"
-            ],
+            "styles": ["projects/example/src/styles.sass"],
             "scripts": []
           },
           "configurations": {
@@ -127,9 +123,7 @@
               "projects/example/src/favicon.ico",
               "projects/example/src/assets"
             ],
-            "styles": [
-              "projects/example/src/styles.sass"
-            ],
+            "styles": ["projects/example/src/styles.sass"],
             "scripts": []
           }
         },
@@ -141,9 +135,7 @@
               "projects/example/tsconfig.spec.json",
               "projects/example/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -159,6 +151,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ngx-scrolltop"
 }
