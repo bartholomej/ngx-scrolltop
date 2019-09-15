@@ -4,8 +4,8 @@ $symbol-color: #fafafa;
 button {
   outline: 0;
 }
-.scrolltop {
-  display: none; // Default hidden in smart mode
+.scrolltop-button {
+  display: flex;
   position: fixed;
   border-radius: 50%;
   background-color: $background-color;
@@ -17,12 +17,15 @@ button {
   align-items: center;
   cursor: pointer;
 
-  &.show {
-    display: flex;
-  }
+  .symbol-container {
+    span {
+      font-size: 15px;
+      color: $symbol-color;
+    }
 
-  svg {
-    width: 45%;
-    fill: $symbol-color;
+    svg {
+      fill: $symbol-color;
+      width: 45%;
+    }
   }
 }

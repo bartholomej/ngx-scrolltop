@@ -18,6 +18,7 @@ export class NgxScrolltopComponent implements OnInit {
   @Input() backgroundColor: string;
   @Input() symbolColor: string;
   @Input() size: number;
+  @Input() symbol: string;
 
   public show = false;
   private scrolledFromTop = false;
