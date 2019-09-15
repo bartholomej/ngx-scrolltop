@@ -1,7 +1,7 @@
 [![Join the chat at https://gitter.im/ngx-scrolltop/Lobby](https://badges.gitter.im/ngx-scrolltop/Lobby.svg)](https://gitter.im/ngx-scrolltop/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
-# Angular ScrollTop Button
+# Angular ScrollTop Button (alpha version)
 
 Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
 
