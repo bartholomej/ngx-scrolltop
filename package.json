@@ -15,7 +15,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "syncprojects": "cp README.md projects/ngx-scrolltop/README.md",
+    "syncprojects": "cp README.md projects/ngx-scrolltop/README.md && node sync-version.js",
     "version": "npm run syncprojects && git add ./projects/ngx-scrolltop/package.json",
     "postversion": "git push && git push --tags",
     "release:patch": "git checkout master && npm version patch -m \"chore(update): patch release %s 🐛 \"",
