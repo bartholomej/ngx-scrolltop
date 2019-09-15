@@ -34,7 +34,7 @@ yarn add ngx-scrolltop # npm install ngx-scrolltop --save
 
 ```js
 ...
-import { ScrollTopModule } from 'ngx-scrolltop';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 ...
 
 @NgModule({
