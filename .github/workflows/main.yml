@@ -1,0 +1,26 @@
+name: Build and Publish Package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 11.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11.x
+      - name: NPM install
+        run: |
+          npm install
+      - name: Publish
+        uses: actions/npm@master
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        with:
+          args: run publish
