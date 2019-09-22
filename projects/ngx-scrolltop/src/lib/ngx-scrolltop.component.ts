@@ -18,6 +18,7 @@ export class NgxScrolltopComponent implements OnInit {
   @Input() backgroundColor: string;
   @Input() symbolColor: string;
   @Input() size: number;
+  @Input() position: 'right' | 'left' = 'right';
   @Input() symbol: string;
   @Input() mode: 'classic' | 'smart' = 'classic';
 

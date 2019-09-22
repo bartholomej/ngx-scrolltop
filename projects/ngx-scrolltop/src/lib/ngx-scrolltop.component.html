@@ -4,6 +4,7 @@
   class="scrolltop-button"
   #scrollTopButton
   (click)="scrollToTop()"
+  [style.left]="position === 'left' ? '20px' : ''"
   [style.backgroundColor]="backgroundColor"
   [style.width.px]="size"
   [style.height.px]="size">

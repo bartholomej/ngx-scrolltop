@@ -65,6 +65,7 @@ In **app.component.html** you just need to add your new button. Usually at the e
 | symbolColor     | string             | #fafafa   | Symbol color (you can use all values for `fill` svg property)                                                                                                                                            |
 | size            | number             | 40        | Button size(in pixels). Symbol will be resized automatically.                                                                                                                                            |
 | symbol          | string             |           | You can use utf8 chars for customizing symbol. For example: `↑`                                                                                                                                          |
+| position        | 'left', 'right'    | 'right'   | Left or right, that is the question.                                                                                                                                                                     |
 
 ### Options: Example
 
@@ -76,6 +77,8 @@ In **app.component.html** you just need to add your new button. Usually at the e
   backgroundColor="#33691e"
   symbolColor="#fff"
   symbol="↑"
+  mode="smart"
+  position="left"
 >
 </ngx-scrolltop>
 ```
