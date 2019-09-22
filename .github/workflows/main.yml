@@ -23,10 +23,10 @@ jobs:
       - name: Sync versions # Sync versions
         run: yarn syncprojects
 
-      - name: Build # Build
+      - name: Build ngx-scrolltop # Build
         run: yarn build
 
-      - name: Build # Build
+      - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
 
       - name: Publish to npmjs
