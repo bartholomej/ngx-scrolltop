@@ -4,6 +4,7 @@
   class="scrolltop-button"
   #scrollTopButton
   (click)="scrollToTop()"
+  [ngClass]="theme"
   [style.left]="position === 'left' ? '20px' : ''"
   [style.backgroundColor]="backgroundColor"
   [style.width.px]="size"

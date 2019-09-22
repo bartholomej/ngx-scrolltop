@@ -1,14 +1,13 @@
-$background-color: #212121;
-$symbol-color: #fafafa;
+@import 'variables';
 
 button {
   outline: 0;
 }
+
 .scrolltop-button {
   display: flex;
   position: fixed;
   border-radius: 50%;
-  background-color: $background-color;
   width: 40px;
   height: 40px;
   right: 20px;
@@ -20,12 +19,29 @@ button {
   .symbol-container {
     span {
       font-size: 15px;
-      color: $symbol-color;
     }
 
     svg {
-      fill: $symbol-color;
       width: 45%;
+    }
+  }
+
+  @each $name, $background, $color in $themes {
+    &.#{$name} {
+      background-color: $background !important;
+      color: $color !important;
+
+      .symbol-container {
+        color: $color !important;
+
+        span {
+          color: $color;
+        }
+
+        svg {
+          fill: $color;
+        }
+      }
     }
   }
 }

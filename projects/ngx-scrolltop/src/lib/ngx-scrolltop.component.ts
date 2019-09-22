@@ -8,6 +8,11 @@ import {
   Input,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {
+  NgxScrolltopMode,
+  NgxScrolltopTheme,
+  NgxScrolltopPosition,
+} from './ngx-scrolltop.interfaces';
 
 @Component({
   selector: 'ngx-scrolltop',
@@ -18,9 +23,10 @@ export class NgxScrolltopComponent implements OnInit {
   @Input() backgroundColor: string;
   @Input() symbolColor: string;
   @Input() size: number;
-  @Input() position: 'right' | 'left' = 'right';
   @Input() symbol: string;
-  @Input() mode: 'classic' | 'smart' = 'classic';
+  @Input() position: NgxScrolltopPosition = 'right';
+  @Input() theme: NgxScrolltopTheme = 'gray';
+  @Input() mode: NgxScrolltopMode = 'classic';
 
   public show = false;
   private scrolledFromTop = false;
