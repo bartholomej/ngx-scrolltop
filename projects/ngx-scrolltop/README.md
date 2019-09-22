@@ -32,7 +32,7 @@ ng add ngx-scrolltop
 
 _Module imported and all settings automatically set in your project._
 
-_Now just see some [options](#options)_
+_Now just see some [options](#options)._
 
 ### Manually (alternatively) 🛠
 
