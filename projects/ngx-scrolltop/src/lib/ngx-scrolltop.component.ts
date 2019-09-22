@@ -19,6 +19,7 @@ export class NgxScrolltopComponent implements OnInit {
   @Input() symbolColor: string;
   @Input() size: number;
   @Input() symbol: string;
+  @Input() mode: 'classic' | 'smart' = 'classic';
 
   public show = false;
   private scrolledFromTop = false;
@@ -28,24 +29,38 @@ export class NgxScrolltopComponent implements OnInit {
 
   @HostListener('window:scroll')
   onWindowScroll() {
-    if (this.document.documentElement.scrollTop === 0) {
+    const position: number = this.document.documentElement.scrollTop;
+    switch (this.mode) {
+      case 'classic':
+        this.classicMode(position);
+        break;
+      case 'smart':
+        this.smartMode(position);
+        break;
+    }
+  }
+
+  private classicMode(position: number) {
+    if (position > window.innerHeight) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
+  }
+
+  private smartMode(position: number): void {
+    if (position === 0) {
       this.show = false;
       this.scrolledFromTop = false;
     }
 
-    if (
-      this.scrolledFromTop &&
-      this.scrollOffset > this.document.documentElement.scrollTop
-    ) {
+    if (this.scrolledFromTop && this.scrollOffset > position) {
       this.show = true;
     }
 
-    if (
-      typeof window !== 'undefined' &&
-      this.document.documentElement.scrollTop > window.innerHeight * 2
-    ) {
+    if (typeof window !== 'undefined' && position > window.innerHeight * 2) {
       this.scrolledFromTop = true;
-      this.scrollOffset = this.document.documentElement.scrollTop;
+      this.scrollOffset = position;
     }
   }
 
