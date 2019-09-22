@@ -44,15 +44,15 @@ yarn add ngx-scrolltop # npm install ngx-scrolltop --save
 
 ### Setup
 
-```js
+```diff
 ...
-import { NgxScrollTopModule } from 'ngx-scrolltop';
++ import { NgxScrollTopModule } from 'ngx-scrolltop';
 ...
 
 @NgModule({
   imports: [
     ...
-    NgxScrollTopModule.forRoot()
++   NgxScrollTopModule
   ],
   ...
   bootstrap: [AppComponent]
