@@ -13,7 +13,7 @@
     "copy:schematics": "cp -a projects/schematics/src/. dist/ngx-scrolltop/schematics",
     "clean:schematics": "rm -rf dist/ngx-scrolltop/schematics/",
     "deploy:ghpages": "npm run build:example && ngh --dir=dist/",
-    "publish": "npm run syncprojects && npm run build && cd dist/ngx-scrolltop && npm publish",
+    "publish:npmjs": "npm run syncprojects && npm run build && npm publish --folder dist/ngx-scrolltop",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

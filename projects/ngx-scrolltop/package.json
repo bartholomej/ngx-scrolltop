@@ -16,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/bartholomej/ngx-scrolltop/issues"
   },
+  "schematics": "./schematics/collection.json",
   "keywords": [
     "material",
     "angular",
