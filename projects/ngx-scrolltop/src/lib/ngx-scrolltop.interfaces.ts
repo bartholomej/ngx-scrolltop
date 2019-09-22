@@ -1,5 +1,5 @@
 // Material colors https://material.io/design/color
-export type NgxScrolltopTheme =
+export type NgxScrollTopTheme =
   | 'black'
   | 'white'
   | 'gray'
@@ -14,6 +14,6 @@ export type NgxScrolltopTheme =
   | 'pink'
   | 'red';
 
-export type NgxScrolltopMode = 'classic' | 'smart';
+export type NgxScrollTopMode = 'classic' | 'smart';
 
-export type NgxScrolltopPosition = 'right' | 'left';
+export type NgxScrollTopPosition = 'right' | 'left';

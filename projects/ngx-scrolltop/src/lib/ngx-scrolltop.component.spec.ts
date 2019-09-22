@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxScrolltopComponent } from './ngx-scrolltop.component';
+import { NgxScrollTopComponent } from './ngx-scrolltop.component';
 
-describe('NgxScrolltopComponent', () => {
-  let component: NgxScrolltopComponent;
-  let fixture: ComponentFixture<NgxScrolltopComponent>;
+describe('NgxScrollTopComponent', () => {
+  let component: NgxScrollTopComponent;
+  let fixture: ComponentFixture<NgxScrollTopComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxScrolltopComponent ]
+      declarations: [ NgxScrollTopComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxScrolltopComponent);
+    fixture = TestBed.createComponent(NgxScrollTopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

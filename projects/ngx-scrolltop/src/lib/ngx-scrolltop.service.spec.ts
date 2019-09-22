@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgxScrolltopService } from './ngx-scrolltop.service';
+import { NgxScrollTopService } from './ngx-scrolltop.service';
 
-describe('NgxScrolltopService', () => {
+describe('NgxScrollTopService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NgxScrolltopService = TestBed.get(NgxScrolltopService);
+    const service: NgxScrollTopService = TestBed.get(NgxScrollTopService);
     expect(service).toBeTruthy();
   });
 });

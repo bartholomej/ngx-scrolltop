@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsNgxScrolltopAdd",
+  "id": "SchematicsNgxScrollTopAdd",
   "title": "ngx-scrolltop Add Options Schema",
   "type": "object",
   "properties": {

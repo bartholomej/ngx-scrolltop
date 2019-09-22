@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { NgxScrolltopComponent } from './ngx-scrolltop.component';
+import { NgxScrollTopComponent } from './ngx-scrolltop.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [NgxScrolltopComponent],
+  declarations: [NgxScrollTopComponent],
   imports: [CommonModule],
-  exports: [NgxScrolltopComponent],
+  exports: [NgxScrollTopComponent],
 })
-export class NgxScrolltopModule {}
+export class NgxScrollTopModule {}

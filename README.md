@@ -32,7 +32,7 @@ ng add ngx-scrolltop
 
 _Module imported and all settings automatically set in your project._
 
-_Now just see some [options](#options)_
+_Now just see some [options](#options)._
 
 ### Manually (alternatively) 🛠
 
@@ -78,7 +78,7 @@ In **app.component.html** you just need to add your new button. Usually at the e
 | **size**            | number                                                                          | 40        | Button size [in pixels]. _(Symbol will be resized automatically_)                                                                                                                                        |
 | **symbol**          | string                                                                          |           | You can use utf8 chars for customizing symbol. For example: `↑`                                                                                                                                          |
 | **position**        | 'left' \| 'right'                                                               | 'right'   | Left or right, that is the question...                                                                                                                                                                   |
-| **theme**           | [NgxScrolltopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interfaces.ts) | 'gray'    | Material color themes                                                                                                                                                                                    |
+| **theme**           | [NgxScrollTopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interfaces.ts) | 'gray'    | Material color themes                                                                                                                                                                                    |
 
 ### Options: Example
 

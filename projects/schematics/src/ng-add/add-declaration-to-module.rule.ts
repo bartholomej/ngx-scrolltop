@@ -30,7 +30,7 @@ export function addDeclarationToAppModule(appModule: string): Rule {
       source,
       modulePath,
       'imports',
-      'NgxScrolltopModule',
+      'NgxScrollTopModule',
       'ngx-scrolltop'
     );
 
