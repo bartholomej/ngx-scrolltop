@@ -1,0 +1,23 @@
+{
+  "name": "@ngx-scrolltop/schematics",
+  "version": "0.0.1",
+  "description": "Schematics for ngx-scrolltop",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.3.5",
+    "@angular-devkit/schematics": "^8.3.5",
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.3.1",
+    "typescript": "~3.5.3"
+  }
+}

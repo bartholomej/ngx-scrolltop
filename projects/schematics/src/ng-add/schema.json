@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsNgxScrolltopAdd",
+  "title": "ngx-scrolltop Add Options Schema",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project to add ngx-scrolltop to."
+    },
+    "module": {
+      "type": "string",
+      "description": "The module file to add ngx-scrolltop to, should be relative to project source directory.",
+      "alias": "m",
+      "default": "app/app.module.ts"
+    }
+  }
+}
