@@ -1,6 +1,9 @@
 name: Build and Publish Package
 
-on: [push]
+on:
+  push:
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -27,7 +30,7 @@ jobs:
         run: yarn build:schematics
 
       - name: Publish to npmjs
-        run: npm publish --folder dist/ngx-scrolltop --dry-run
+        run: npm publish --folder dist/ngx-scrolltop
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       # - name: Publish to GPR
