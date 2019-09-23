@@ -13,4 +13,9 @@ $themes: (
   ('deeppurple', #311b92, #ede7f6),
   ('pink', #880e4f, #fce4ec),
   ('red', #b71c1c, #ffebee)
-);
+) !default;
+
+$size: 40px !default;
+$padding: 20px !default;
+$font-size: 15px !default;
+$svg-size: 50% !default;
