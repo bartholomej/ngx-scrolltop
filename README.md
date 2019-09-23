@@ -9,7 +9,7 @@ Lightweight, **Material Design inspired button for scroll-to-top** of the page. 
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
-- Lightweight
+- Lightweight _(~10 kB)_
 - Material Design inspired
 - Smoothly animated
 - Highly customizable
@@ -73,8 +73,8 @@ In **app.component.html** you just need to add your new button. Usually at the e
 | Option              | Type                                                                            | Default   | Description                                                                                                                                                                                              |
 | ------------------- | ------------------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **mode**            | 'smart' \| 'classic'                                                            | 'classic' | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top. **Classic** mode shows button immediately when you scroll at least one screen down. |
-| **backgroundColor** | string                                                                          | #212121   | Background color (you can use all values for `backgroud-color` css property)                                                                                                                             |
-| **symbolColor**     | string                                                                          | #fafafa   | Symbol color (you can use all values for `fill` svg property)                                                                                                                                            |
+| **backgroundColor** | string                                                                          | #212121   | Background color (you can use all values for `backgroud-color` css property). _You can override `theme` color_                                                                                           |
+| **symbolColor**     | string                                                                          | #fafafa   | Symbol color (you can use all values for `fill` svg property). _You can override `theme` color_                                                                                                          |
 | **size**            | number                                                                          | 40        | Button size [in pixels]. _(Symbol will be resized automatically_)                                                                                                                                        |
 | **symbol**          | string                                                                          |           | You can use utf8 chars for customizing symbol. For example: `↑`                                                                                                                                          |
 | **position**        | 'left' \| 'right'                                                               | 'right'   | Left or right, that is the question...                                                                                                                                                                   |
