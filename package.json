@@ -12,7 +12,7 @@
     "build:schematics": "yarn clean:schematics && tsc -p projects/schematics/tsconfig.json && yarn copy:schematics",
     "copy:schematics": "cp -a projects/schematics/src/. dist/ngx-scrolltop/schematics",
     "clean:schematics": "rm -rf dist/ngx-scrolltop/schematics/",
-    "deploy:ghpages": "npm run build:example && ngh --dir=dist/",
+    "deploy:ghpages": "npm run build:example && ngh --dir=dist/example",
     "publish:npmjs": "npm run syncprojects && npm run build && npm publish --folder dist/ngx-scrolltop",
     "test": "ng test",
     "lint": "ng lint",
