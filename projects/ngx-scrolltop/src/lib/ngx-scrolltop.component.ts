@@ -13,6 +13,7 @@ import {
   NgxScrollTopTheme,
   NgxScrollTopPosition,
 } from './ngx-scrolltop.interfaces';
+import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
 @Component({
   selector: 'ngx-scrolltop',
@@ -29,55 +30,19 @@ export class NgxScrollTopComponent implements OnInit {
   @Input() mode: NgxScrollTopMode = 'classic';
 
   public show = false;
-  private scrolledFromTop = false;
-  private scrollOffset: number;
 
   @ViewChild('scrollTopButton', { static: false }) scrollTopButton: ElementRef;
 
   @HostListener('window:scroll')
   onWindowScroll() {
-    const position: number = this.document.documentElement.scrollTop;
-    switch (this.mode) {
-      case 'classic':
-        this.classicMode(position);
-        break;
-      case 'smart':
-        this.smartMode(position);
-        break;
-    }
+    this.show = this.core.onWindowScroll(this.mode);
   }
 
-  private classicMode(position: number) {
-    if (position > window.innerHeight) {
-      this.show = true;
-    } else {
-      this.show = false;
-    }
-  }
-
-  private smartMode(position: number): void {
-    if (position === 0) {
-      this.show = false;
-      this.scrolledFromTop = false;
-    }
-
-    if (this.scrolledFromTop && this.scrollOffset > position) {
-      this.show = true;
-    }
-
-    if (typeof window !== 'undefined' && position > window.innerHeight * 2) {
-      this.scrolledFromTop = true;
-      this.scrollOffset = position;
-    }
-  }
-
-  constructor(@Inject(DOCUMENT) private document: any) {}
+  constructor(private core: NgxScrollTopCoreService) {}
 
   ngOnInit() {}
 
-  scrollToTop() {
-    if (typeof window !== 'undefined') {
-      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-    }
+  public scrollToTop(): void {
+    this.core.scrollToTop();
   }
 }
