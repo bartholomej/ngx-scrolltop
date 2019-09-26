@@ -1,12 +1,12 @@
 import { Directive, HostListener, Input, ElementRef } from '@angular/core';
-import { NgxScrollTopMode } from './ngx-scrolltop.interfaces';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
+import { NgxScrollTopMode } from 'ngx-scrolltop/lib/ngx-scrolltop.interfaces';
 
 @Directive({
   selector: '[ngxScrollTop]',
 })
 export class NgxScrollTopDirective {
-  private mode: NgxScrollTopMode = 'smart';
+  @Input('ngxScrollTopMode') mode: NgxScrollTopMode = 'classic';
 
   constructor(private el: ElementRef, private core: NgxScrollTopCoreService) {
     this.hideElement();

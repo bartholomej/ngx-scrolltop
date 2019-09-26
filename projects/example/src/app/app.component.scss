@@ -238,3 +238,13 @@ p {
     visibility: hidden;
   }
 }
+
+.my-custom-scrolltop-element {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  background: black;
+  color: #fff;
+  cursor: pointer;
+}
