@@ -10,10 +10,12 @@ Lightweight, **Material Design inspired button for scroll-to-top** of the page. 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - Lightweight _(~10 kB)_
+- No dependencies
 - Material Design inspired
+- `@angular/material` compatible ([example](#angular-material-example-directive))
+- Component or directive way
 - Smoothly animated
-- Highly customizable
-- With some useful [options](#settings)...
+- Highly customizable [options](#options)...
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif)
 
@@ -30,11 +32,13 @@ Watch this: [http://bartholomej.github.io/ngx-scrolltop/
 ng add ngx-scrolltop
 ```
 
-_Module imported and all settings automatically set in your project._
+**Everything done!**
 
 _Now just see some [options](#options)._
 
-### Manually (alternatively) 🛠
+_(Module imported and all settings automatically set in your project.)_
+
+### Manually (old-school) 🛠
 
 Via **yarn** or **npm**
 
@@ -42,7 +46,7 @@ Via **yarn** or **npm**
 yarn add ngx-scrolltop # npm install ngx-scrolltop --save
 ```
 
-### Setup
+### Setup (manually)
 
 ```diff
 ...
@@ -60,7 +64,9 @@ yarn add ngx-scrolltop # npm install ngx-scrolltop --save
 export class AppModule { }
 ```
 
-### Usage
+## Usage
+
+### Component way (default)
 
 In **app.component.html** you just need to add your new button. Usually at the end of file.
 
@@ -68,7 +74,24 @@ In **app.component.html** you just need to add your new button. Usually at the e
 <ngx-scrolltop></ngx-scrolltop>
 ```
 
+### Directive way
+
+**Your custom element somewhere in you application...**
+
+**Important**: _(no style applied, everything is up to you. Of course I recommend `position: fixed`, ...)_
+
+```html
+<span
+  ngxScrollTop
+  class="my-custom-element-with-my-style__no-lib-style-applied-here"
+>
+  ↑ My Custom Element. ↑
+</span>
+```
+
 ## Options
+
+### Component
 
 | Option              | Type                                                                            | Default   | Description                                                                                                                                                                                              |
 | ------------------- | ------------------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -80,7 +103,15 @@ In **app.component.html** you just need to add your new button. Usually at the e
 | **position**        | 'left' \| 'right'                                                               | 'right'   | Left or right, that is the question...                                                                                                                                                                   |
 | **theme**           | [NgxScrollTopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interfaces.ts) | 'gray'    | Material color themes                                                                                                                                                                                    |
 
-### Options: Example
+### Directive
+
+| Option                 | Type                 | Default   | Description                                                                                                                                                                                              |
+| ---------------------- | -------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[ngxScrollTopMode]** | 'smart' \| 'classic' | 'classic' | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top. **Classic** mode shows button immediately when you scroll at least one screen down. |
+
+## Examples
+
+### Advanced example (component)
 
 **app.component.html**
 
@@ -95,6 +126,34 @@ In **app.component.html** you just need to add your new button. Usually at the e
   theme="pink"
 >
 </ngx-scrolltop>
+```
+
+### Angular Material example (directive)
+
+_[@angular/material](https://material.angular.io/components/button/overview) required_
+
+**app.component.html**
+
+```html
+<button
+  ngxScrollTop
+  [ngxScrollTopMode]="'smart'"
+  class="my-custom-style"
+  color="primary"
+  mat-mini-fab
+>
+  top
+</button>
+```
+
+**app.component.scss**
+
+```css
+.my-custom-style {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
 ```
 
 ## Dependencies
