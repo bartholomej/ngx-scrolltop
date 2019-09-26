@@ -8,6 +8,9 @@ import { NgxScrollTopMode } from './ngx-scrolltop.interfaces';
 export class NgxScrollTopCoreService {
   private scrolledFromTop = false;
   private scrollOffset: number;
+  private get isBrowser(): boolean {
+    return typeof window !== 'undefined';
+  }
 
   constructor(@Inject(DOCUMENT) private document: any) {}
 
@@ -27,7 +30,7 @@ export class NgxScrollTopCoreService {
 
   private classicMode(position: number): boolean {
     let show = false;
-    if (position > window.innerHeight) {
+    if (this.isBrowser && position > window.innerHeight) {
       show = true;
     } else {
       show = false;
@@ -47,7 +50,7 @@ export class NgxScrollTopCoreService {
       show = true;
     }
 
-    if (typeof window !== 'undefined' && position > window.innerHeight * 2) {
+    if (this.isBrowser && position > window.innerHeight * 2) {
       this.scrolledFromTop = true;
       this.scrollOffset = position;
     }
@@ -56,7 +59,7 @@ export class NgxScrollTopCoreService {
   }
 
   public scrollToTop(): void {
-    if (typeof window !== 'undefined') {
+    if (this.isBrowser) {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
   }
