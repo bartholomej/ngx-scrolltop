@@ -3,11 +3,9 @@ import {
   OnInit,
   ViewChild,
   HostListener,
-  Inject,
   ElementRef,
   Input,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import {
   NgxScrollTopMode,
   NgxScrollTopTheme,
@@ -30,8 +28,6 @@ export class NgxScrollTopComponent implements OnInit {
   @Input() mode: NgxScrollTopMode = 'classic';
 
   public show = false;
-
-  @ViewChild('scrollTopButton', { static: false }) scrollTopButton: ElementRef;
 
   @HostListener('window:scroll')
   onWindowScroll() {

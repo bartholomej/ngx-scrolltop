@@ -40,7 +40,6 @@ export class NgxScrollTopCoreService {
 
   private smartMode(position: number): boolean {
     let show = false;
-
     if (position === 0) {
       show = false;
       this.scrolledFromTop = false;
