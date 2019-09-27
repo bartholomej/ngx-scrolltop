@@ -32,7 +32,7 @@ Watch this: [http://bartholomej.github.io/ngx-scrolltop/
 ng add ngx-scrolltop
 ```
 
-**Everything's done!**
+**Everything done!**
 
 _Now just see some [options](#options)._
 
