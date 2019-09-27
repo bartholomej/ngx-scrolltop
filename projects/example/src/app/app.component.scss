@@ -246,5 +246,8 @@ p {
   padding: 10px;
   background: black;
   color: #fff;
-  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
