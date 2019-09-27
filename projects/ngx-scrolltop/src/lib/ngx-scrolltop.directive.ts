@@ -21,7 +21,7 @@ export class NgxScrollTopDirective {
     }
   }
 
-  @HostListener('click', ['$event.target'])
+  @HostListener('click')
   onClick() {
     this.scrollToTop();
   }
