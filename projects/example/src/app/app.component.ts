@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'example ngx-scrolltop';
+  title = 'NgxScrollTop demo | Angular go to top button';
 }

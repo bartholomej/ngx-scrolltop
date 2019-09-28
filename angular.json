@@ -22,6 +22,13 @@
             "main": "projects/ngx-scrolltop/src/test.ts",
             "tsConfig": "projects/ngx-scrolltop/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-scrolltop/karma.conf.js"
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadlessCI"
+            }
           }
         },
         "lint": {
@@ -31,7 +38,9 @@
               "projects/ngx-scrolltop/tsconfig.lib.json",
               "projects/ngx-scrolltop/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -60,7 +69,9 @@
               "projects/example/src/favicon.ico",
               "projects/example/src/assets"
             ],
-            "styles": ["projects/example/src/styles.scss"],
+            "styles": [
+              "projects/example/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -124,8 +135,17 @@
               "projects/example/src/favicon.ico",
               "projects/example/src/assets"
             ],
-            "styles": ["projects/example/src/styles.scss"],
+            "styles": [
+              "projects/example/src/styles.scss"
+            ],
             "scripts": []
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadlessCI"
+            }
           }
         },
         "lint": {
@@ -136,7 +156,9 @@
               "projects/example/tsconfig.spec.json",
               "projects/example/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -148,6 +170,10 @@
           "configurations": {
             "production": {
               "devServerTarget": "example:serve:production"
+            },
+            "ci": {
+              "devServerTarget": "ng-github-actions:serve:production",
+              "protractorConfig": "e2e/protractor-ci.conf.js"
             }
           }
         }

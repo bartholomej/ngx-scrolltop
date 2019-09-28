@@ -1,12 +1,9 @@
-name: Build & Tests & Publish
+name: Build & run all tests
 
-on:
-  push:
-    tags:
-      - "v*"
+on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,11 +26,7 @@ jobs:
         run: yarn build:schematics
 
       - name: Build Schematics # Build Schematics and move
-        run: yarn test --configuration=ci
+        run: yarn build:example
 
-      - name: Publish
-        uses: actions/npm@master
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        with:
-          args: publish --folder dist/ngx-scrolltop
+      - name: Run tests # Build Schematics and move
+        run: yarn test --configuration=ci
