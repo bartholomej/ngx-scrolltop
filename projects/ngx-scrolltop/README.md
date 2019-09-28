@@ -1,11 +1,13 @@
+[![npm version](https://badge.fury.io/js/ngx-scrolltop.svg)](https://badge.fury.io/js/ngx-scrolltop)
 [![Join the chat at https://gitter.im/ngx-scrolltop/Lobby](https://badges.gitter.im/ngx-scrolltop/Lobby.svg)](https://gitter.im/ngx-scrolltop/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+![](https://github.com/bartholomej/ngx-scrolltop/workflows/Build%20&%20Tests%20&%20Publish/badge.svg)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
 # Angular ScrollTop Button
 
 Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
 
-**Support for Angular 8 an Ivy!**
+**Angular 8, Ivy and SSR compatible!**
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
