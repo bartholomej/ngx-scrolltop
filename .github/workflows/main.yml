@@ -28,7 +28,7 @@ jobs:
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
 
-      - name: Build Schematics # Build Schematics and move
+      - name: Run tests # Build Schematics and move
         run: yarn test --configuration=ci
 
       - name: Publish
