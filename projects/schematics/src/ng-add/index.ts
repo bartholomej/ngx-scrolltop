@@ -1,12 +1,12 @@
 import {
+  branchAndMerge,
+  chain,
   Rule,
   SchematicContext,
   Tree,
-  chain,
-  branchAndMerge,
 } from '@angular-devkit/schematics';
-import { addDeclarationToAppModule } from './add-declaration-to-module.rule';
 import * as fs from 'fs';
+import { addDeclarationToAppModule } from './add-declaration-to-module.rule';
 
 // TODO hardcoded. Read from config.
 const DEFAULT_NAME = 'app';

@@ -1,5 +1,5 @@
-import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Injectable({

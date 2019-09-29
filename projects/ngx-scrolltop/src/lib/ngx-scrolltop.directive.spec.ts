@@ -1,6 +1,6 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 
 @Component({
   template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',

@@ -1,4 +1,4 @@
-import { Directive, HostListener, Input, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 

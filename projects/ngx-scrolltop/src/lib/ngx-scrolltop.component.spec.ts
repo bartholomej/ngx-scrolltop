@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NgxScrollTopComponent } from './ngx-scrolltop.component';
-import { ElementRef } from '@angular/core';
 
 describe('NgxScrollTopComponent', () => {
   let component: NgxScrollTopComponent;

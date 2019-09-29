@@ -1,7 +1,6 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
-
-import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { DOCUMENT } from '@angular/common';
+import { getTestBed, TestBed } from '@angular/core/testing';
+import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
 describe('NgxScrollTopService', () => {
   let injector: TestBed;

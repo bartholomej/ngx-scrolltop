@@ -1,10 +1,10 @@
-import { Component, OnInit, HostListener, Input } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
-  NgxScrollTopTheme,
   NgxScrollTopPosition,
+  NgxScrollTopTheme,
 } from './ngx-scrolltop.interface';
-import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
 @Component({
   selector: 'ngx-scrolltop',

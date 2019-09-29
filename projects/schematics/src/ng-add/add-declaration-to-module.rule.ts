@@ -1,5 +1,5 @@
-import { Rule, Tree, SchematicsException } from '@angular-devkit/schematics';
 import { normalize } from '@angular-devkit/core';
+import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import * as ts from 'typescript';
 import { addSymbolToNgModuleMetadata } from '../utility/ast-utils';
 import { InsertChange } from '../utility/change';

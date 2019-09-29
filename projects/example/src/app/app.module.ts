@@ -1,9 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgxScrollTopModule } from 'ngx-scrolltop';
 
 @NgModule({
   declarations: [AppComponent],
