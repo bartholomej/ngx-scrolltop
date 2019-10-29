@@ -25,7 +25,7 @@ jobs:
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
 
-      - name: Build Schematics # Build Schematics and move
+      - name: Build Example # Build Example page
         run: yarn build:example
 
       - name: Run tests # Build Schematics and move
