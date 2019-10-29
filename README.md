@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="_assets/ngx-scrolltop_logo.svg" width="120">
+  <img src="/_assets/ngx-scrolltop_logo.svg?sanitize=true" width="120">
   <h1 align="center">Angular ScrollTop Button</h1>
 </p>
 
@@ -26,8 +26,7 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 
 ## Demo (example)
 
-Watch this: [http://bartholomej.github.io/ngx-scrolltop/
-](http://bartholomej.github.io/ngx-scrolltop/)
+Watch this: [http://bartholomej.github.io/ngx-scrolltop/](http://bartholomej.github.io/ngx-scrolltop/)
 
 ## Install
 
