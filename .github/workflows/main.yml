@@ -28,12 +28,40 @@ jobs:
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
 
+      - name: Build example app # Build Schematics and move
+        run: yarn build:example --base-href https://bartholomej.github.io/ngx-scrolltop/
+
       - name: Run tests # Build Schematics and move
         run: yarn test --configuration=ci
 
-      - name: Publish
-        uses: actions/npm@master
+      - name: Publish NPM
+        uses: actions/setup-node@master
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         with:
           args: publish --folder dist/ngx-scrolltop
+
+      - name: Set up package for GPR
+        run: yarn gpr:setup
+
+      # Publish to GitHub Package Registry
+      - name: Use GPR
+        uses: actions/setup-node@master
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: "@bartholomej"
+
+      - name: Publish to GitHub Package Registry
+        run: |
+          cd dist/ngx-scrolltop
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{github.token}}
+
+      - name: Deploy Github Pages
+        uses: peaceiris/actions-gh-pages@v2.5.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist/example
