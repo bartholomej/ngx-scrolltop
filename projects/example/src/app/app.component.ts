@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { VERSION } from '../environments/version';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'NgxScrollTop demo | Angular go to top button';
+  public title = 'NgxScrollTop demo | Angular go to top button';
+  public version = VERSION;
 }
