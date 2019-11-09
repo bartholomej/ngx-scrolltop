@@ -35,16 +35,16 @@ jobs:
         run: yarn test --configuration=ci
 
       - name: Publish NPM
-        uses: actions/setup-node@master
+        uses: actions/npm@master
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         with:
           args: publish --folder dist/ngx-scrolltop
 
+      # Publish to GitHub Package Registry
       - name: Set up package for GPR
         run: yarn gpr:setup
 
-      # Publish to GitHub Package Registry
       - name: Use GPR
         uses: actions/setup-node@master
         with:
