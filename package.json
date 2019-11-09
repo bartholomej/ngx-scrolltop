@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrolltop",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "scripts": {
@@ -14,11 +14,12 @@
     "clean:schematics": "rm -rf dist/ngx-scrolltop/schematics/",
     "deploy:ghpages": "yarn build && yarn build:example && ngh --dir=dist/example",
     "publish:npmjs": "npm run syncprojects && npm run build && npm publish --folder dist/ngx-scrolltop",
+    "gpr:setup": "node scripts/gpr",
     "test": "ng test",
     "lint": "ng lint",
     "tslint-fix": "tslint --fix -p tsconfig.json",
     "e2e": "ng e2e",
-    "syncprojects": "cp README.md projects/ngx-scrolltop/README.md && node sync-version.js",
+    "syncprojects": "cp README.md projects/ngx-scrolltop/README.md && node scripts/sync-version.js",
     "version": "npm run syncprojects && git add ./projects/ngx-scrolltop/",
     "postversion": "git push && git push --follow-tags",
     "release:patch": "git checkout master && npm version patch -m \"chore(update): patch release %s 🐛 \"",
@@ -84,6 +85,9 @@
     "scrollTop",
     "scroll to top",
     "sass"
+  ],
+  "files": [
+    "dist"
   ],
   "engines": {
     "node": ">=10"
