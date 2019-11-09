@@ -1,6 +1,6 @@
 {
   "name": "ngx-scrolltop",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "scripts": {
