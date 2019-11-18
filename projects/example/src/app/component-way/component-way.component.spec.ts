@@ -1,25 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, TestBed } from '@angular/core/testing';
+// import { RouterTestingModule } from '@angular/router/testing';
+// import { NgxScrollTopModule } from 'projects/ngx-scrolltop/src/public-api';
+// import { ComponentWayComponent } from './component-way.component';
 
-import { ComponentWayComponent } from './component-way.component';
+// describe('ComponentWay', () => {
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       imports: [RouterTestingModule, NgxScrollTopModule],
+//       declarations: [ComponentWayComponent],
+//     }).compileComponents();
+//   }));
 
-describe('ComponentWayComponent', () => {
-  let component: ComponentWayComponent;
-  let fixture: ComponentFixture<ComponentWayComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ComponentWayComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ComponentWayComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create the app', () => {
+//     const fixture = TestBed.createComponent(ComponentWayComponent);
+//     const app = fixture.debugElement.componentInstance;
+//     expect(app).toBeTruthy();
+//   });
+// });
