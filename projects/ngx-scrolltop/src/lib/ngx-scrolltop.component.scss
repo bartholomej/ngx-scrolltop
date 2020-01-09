@@ -34,6 +34,7 @@ button {
     svg {
       transform: translateY(10%); // Centering no-rectangle symbols
       width: $svg-size;
+      vertical-align: baseline;
     }
   }
 
