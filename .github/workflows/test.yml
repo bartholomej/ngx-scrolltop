@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js 11.x
+      - name: Use Node.js 12.x
         uses: actions/setup-node@master
         with:
-          node-version: 11.x
+          node-version: 12.x
 
       - name: Install dependencies # Install all deps
         run: yarn
