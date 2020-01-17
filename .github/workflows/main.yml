@@ -15,6 +15,7 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12.x
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies # Install all deps
         run: yarn
@@ -35,11 +36,9 @@ jobs:
         run: yarn test --configuration=ci
 
       - name: Publish NPM
-        uses: actions/npm@master
+        run: npm publish --folder dist/ngx-scrolltop
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        with:
-          args: publish --folder dist/ngx-scrolltop
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       # Publish to GitHub Package Registry
       - name: Set up package for GPR
