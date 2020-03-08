@@ -87,6 +87,7 @@
                   "with": "projects/example/src/environments/environment.prod.ts"
                 }
               ],
+              "tsConfig": "projects/example/tsconfig.app.prod.json",
               "baseHref": "https://bartholomej.github.io/ngx-scrolltop/",
               "optimization": true,
               "outputHashing": "all",
