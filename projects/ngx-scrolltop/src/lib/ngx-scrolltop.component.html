@@ -1,6 +1,9 @@
 <button
   *ngIf="show"
   type="button"
+  role="button"
+  aria-label="Scroll to top of the page"
+  tabindex="0"
   class="scrolltop-button"
   #scrollTopButton
   (click)="scrollToTop()"
