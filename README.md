@@ -27,7 +27,9 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 
 ## Demo (example)
 
-Watch this: [http://bartholomej.github.io/ngx-scrolltop/](http://bartholomej.github.io/ngx-scrolltop/)
+Watch this [demo page](http://bartholomej.github.io/ngx-scrolltop/)
+
+Or play with it live on [stackblitz.com/edit/ngx-scrolltop](https://stackblitz.com/edit/ngx-scrolltop?file=src/app/app.component.html)
 
 ## Install
 
