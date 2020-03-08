@@ -3,7 +3,7 @@ name: Build & Tests & Publish
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 12.x
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies # Install all deps
         run: yarn
@@ -24,7 +24,7 @@ jobs:
         run: yarn syncprojects
 
       - name: Build ngx-scrolltop # Build
-        run: yarn build --prod
+        run: yarn build
 
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: "@bartholomej"
+          scope: '@bartholomej'
 
       - name: Publish to GitHub Package Registry
         run: |

@@ -21,5 +21,8 @@
     "types": ["jasmine", "node"]
   },
   "include": ["src/**/*"],
-  "exclude": ["src/*/files/**/*", "src/utility/**"]
+  "exclude": ["src/*/files/**/*", "src/utility/**"],
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
 }
