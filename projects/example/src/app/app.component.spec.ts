@@ -1,4 +1,4 @@
-import { async, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxScrollTopModule } from 'projects/ngx-scrolltop/src/public-api';
@@ -83,7 +83,7 @@ describe('AppComponent', () => {
   // });
 });
 
-function initScroll(fixture): void {
+function initScroll(fixture: ComponentFixture<AppComponent>): void {
   const scrollEvent = document.createEvent('CustomEvent');
   scrollEvent.initCustomEvent('scroll', false, false, null);
 
@@ -94,7 +94,7 @@ function initScroll(fixture): void {
   fixture.detectChanges();
 }
 
-function scrollTo(offset, callback): void {
+function scrollTo(offset: number, callback: () => void): void {
   offset = Math.round(offset);
   const onScroll = () => {
     const scrollTop = window.scrollY;
