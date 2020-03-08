@@ -1,0 +1,12 @@
+package.json
+package-lock.json
+yarn.lock
+dist
+.angulardoc.json
+.vscode/*
+**/interfaces/*.ts
+**/*.spec.ts
+**/*.d.ts
+**/*.html
+**/functions/dist/*
+**/angular.json

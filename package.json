@@ -54,6 +54,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "fs-extra": "^8.1.0",
+    "husky": "^4.2.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.3.0",
@@ -62,9 +63,12 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "ng-packagr": "^9.0.2",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "protractor": "~5.4.3",
     "ts-node": "~8.5.2",
     "tslint": "~5.18.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.7.5"
   },
   "homepage": "https://github.com/bartholomej/ngx-scrolltop",
@@ -92,6 +96,11 @@
   ],
   "engines": {
     "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
