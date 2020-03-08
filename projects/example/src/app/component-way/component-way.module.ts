@@ -6,6 +6,6 @@ import { ComponentWayComponent } from './component-way.component';
 
 @NgModule({
   declarations: [ComponentWayComponent],
-  imports: [NgxScrollTopModule, CommonModule, ComponentWayRoutingModule],
+  imports: [NgxScrollTopModule, CommonModule, ComponentWayRoutingModule]
 })
 export class ComponentWayModule {}

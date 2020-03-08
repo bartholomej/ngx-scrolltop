@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class NgxScrollTopCoreService {
   private scrolledFromTop = false;

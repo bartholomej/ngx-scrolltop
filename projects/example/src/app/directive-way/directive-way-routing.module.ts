@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { DirectiveWayComponent } from './directive-way.component';
 
 const routes: Routes = [{ path: '', component: DirectiveWayComponent }];
@@ -9,4 +8,4 @@ const routes: Routes = [{ path: '', component: DirectiveWayComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DirectiveWayRoutingModule { }
+export class DirectiveWayRoutingModule {}

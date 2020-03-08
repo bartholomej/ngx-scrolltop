@@ -6,6 +6,6 @@ import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 @NgModule({
   declarations: [NgxScrollTopComponent, NgxScrollTopDirective],
   imports: [CommonModule],
-  exports: [NgxScrollTopComponent, NgxScrollTopDirective],
+  exports: [NgxScrollTopComponent, NgxScrollTopDirective]
 })
 export class NgxScrollTopModule {}

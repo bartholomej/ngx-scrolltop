@@ -1,17 +1,17 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
   NgxScrollTopPosition,
-  NgxScrollTopTheme,
+  NgxScrollTopTheme
 } from './ngx-scrolltop.interface';
 
 @Component({
   selector: 'ngx-scrolltop',
   templateUrl: './ngx-scrolltop.component.html',
-  styleUrls: ['./ngx-scrolltop.component.scss'],
+  styleUrls: ['./ngx-scrolltop.component.scss']
 })
-export class NgxScrollTopComponent implements OnInit {
+export class NgxScrollTopComponent {
   @Input() backgroundColor: string;
   @Input() symbolColor: string;
   @Input() size: number;
@@ -28,8 +28,6 @@ export class NgxScrollTopComponent implements OnInit {
   }
 
   constructor(private core: NgxScrollTopCoreService) {}
-
-  ngOnInit() {}
 
   public scrollToTop(): void {
     this.core.scrollToTop();

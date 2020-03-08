@@ -6,6 +6,6 @@ import { DirectiveWayComponent } from './directive-way.component';
 
 @NgModule({
   declarations: [DirectiveWayComponent],
-  imports: [CommonModule, DirectiveWayRoutingModule, NgxScrollTopModule],
+  imports: [CommonModule, DirectiveWayRoutingModule, NgxScrollTopModule]
 })
 export class DirectiveWayModule {}

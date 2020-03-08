@@ -3,7 +3,7 @@ import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Directive({
-  selector: '[ngxScrollTop]',
+  selector: '[ngxScrollTop]'
 })
 export class NgxScrollTopDirective {
   @Input('ngxScrollTopMode') mode: NgxScrollTopMode = 'classic';
