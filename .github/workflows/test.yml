@@ -20,7 +20,7 @@ jobs:
         run: yarn syncprojects
 
       - name: Build ngx-scrolltop # Build
-        run: yarn build
+        run: yarn build --prod
 
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
