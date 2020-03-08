@@ -8,18 +8,19 @@
 ![](https://github.com/bartholomej/ngx-scrolltop/workflows/Build%20&%20Tests%20&%20Publish/badge.svg)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
-Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
+> Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
 
-**Angular 8, Ivy and SSR compatible!**
+✓ Angular 9, Ivy and SSR compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
-- Lightweight _(~10 kB)_
+- Lightweight _(~2 kB gzipped)_
 - No dependencies
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
 - Component or directive way
 - Smoothly animated
+- a11y ready
 - Highly customizable [options](#options)...
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
@@ -36,11 +37,9 @@ Watch this: [http://bartholomej.github.io/ngx-scrolltop/](http://bartholomej.git
 ng add ngx-scrolltop
 ```
 
-**Everything's done!**
+**Everything's done!** _(module imported and all settings automatically set in your project.)_
 
-_Now just see some [options](#options)._
-
-_(Module imported and all settings automatically set in your project.)_
+_Now just see some [options and examples](#options)._
 
 ### Manually (old-school) 🛠
 
@@ -85,10 +84,7 @@ In **app.component.html** you just need to add your new button. Usually at the e
 **Important**: _(no style applied, everything is up to you. Of course I recommend `position: fixed`, ...)_
 
 ```html
-<span
-  ngxScrollTop
-  class="my-custom-element-with-my-style__no-lib-style-applied-here"
->
+<span ngxScrollTop class="my-custom-element-with-my-style__no-lib-style-applied-here">
   ↑ My Custom Element. ↑
 </span>
 ```
