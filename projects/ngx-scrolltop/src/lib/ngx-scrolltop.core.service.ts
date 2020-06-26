@@ -3,14 +3,12 @@ import { Inject, Injectable } from '@angular/core';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NgxScrollTopCoreService {
   private scrolledFromTop = false;
   private scrollOffset: number;
-  private get isBrowser(): boolean {
-    return typeof window !== 'undefined';
-  }
+  private readonly isBrowser: boolean = typeof window !== 'undefined';
 
   constructor(@Inject(DOCUMENT) private document: any) {}
 
