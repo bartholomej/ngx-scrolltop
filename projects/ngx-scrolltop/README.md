@@ -10,14 +10,15 @@
 
 > Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
 
-> ✓ Angular 9, Ivy and SSR compatible
+> ✓ Angular 10, Ivy and SSR compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - Lightweight _(~2 kB gzipped)_
-- No dependencies
+- No dependencies!
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
+- Angular 5+ compatible
 - Component or directive way
 - Smoothly animated
 - a11y ready
