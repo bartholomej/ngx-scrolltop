@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxScrollTopComponent } from './ngx-scrolltop.component';
+import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
 describe('NgxScrollTopComponent', () => {
   let component: NgxScrollTopComponent;
@@ -9,6 +10,7 @@ describe('NgxScrollTopComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NgxScrollTopComponent],
+      providers: [NgxScrollTopCoreService]
     }).compileComponents();
   }));
 

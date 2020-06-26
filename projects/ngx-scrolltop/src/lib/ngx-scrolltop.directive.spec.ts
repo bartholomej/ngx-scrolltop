@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
+import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
 @Component({
   template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
@@ -16,6 +17,7 @@ describe('NgxScrollTopDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, NgxScrollTopDirective],
+      providers: [NgxScrollTopCoreService]
     });
 
     fixture = TestBed.createComponent(TestComponent);

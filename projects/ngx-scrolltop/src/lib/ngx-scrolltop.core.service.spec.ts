@@ -12,7 +12,7 @@ describe('NgxScrollTopService', () => {
   beforeEach(() => {
     srvc = new NgxScrollTopCoreService('classic');
     TestBed.configureTestingModule({
-      providers: [{ provide: DOCUMENT, useValue: mockDocument }],
+      providers: [{ provide: DOCUMENT, useValue: mockDocument }, NgxScrollTopCoreService],
     });
 
     injector = getTestBed();
