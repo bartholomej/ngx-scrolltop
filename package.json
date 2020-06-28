@@ -81,6 +81,10 @@
   "bugs": {
     "url": "https://github.com/bartholomej/ngx-scrolltop/issues"
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/bartholomej"
+  },
   "keywords": [
     "material",
     "angular",
