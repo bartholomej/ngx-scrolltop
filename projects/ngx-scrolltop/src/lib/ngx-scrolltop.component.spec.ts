@@ -58,15 +58,12 @@ describe('NgxScrollTopComponent', () => {
     expect(element.style.height).toEqual('55px');
   });
 
-  it('should set symbol', () => {
+  it('should set symbol (deprecated warning)', () => {
+    spyOn(console, 'error');
     component.symbol = 'x';
     fixture.detectChanges();
 
-    expect(
-      fixture.nativeElement
-        .querySelector('.scrolltop-button')
-        .textContent.trim()
-    ).toEqual('x');
+    expect(console.error).toHaveBeenCalled();
   });
 
   it('should set position', () => {
