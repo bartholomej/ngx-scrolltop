@@ -3,17 +3,17 @@ import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Directive({
-  selector: '[ngxScrollTop]'
+  selector: '[ngxScrollTop]',
 })
 export class NgxScrollTopDirective {
-  @Input('ngxScrollTopMode') mode: NgxScrollTopMode = 'classic';
+  @Input('ngxScrollTopMode') private mode: NgxScrollTopMode = 'classic';
 
   constructor(private el: ElementRef, private core: NgxScrollTopCoreService) {
     this.hideElement();
   }
 
   @HostListener('window:scroll')
-  onWindowScroll() {
+  public onWindowScroll() {
     if (this.core.onWindowScroll(this.mode)) {
       this.showElement();
     } else {
@@ -22,7 +22,7 @@ export class NgxScrollTopDirective {
   }
 
   @HostListener('click')
-  onClick() {
+  public onClick() {
     this.scrollToTop();
   }
 

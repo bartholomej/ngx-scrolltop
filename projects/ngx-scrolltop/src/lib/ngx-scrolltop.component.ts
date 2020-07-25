@@ -12,22 +12,22 @@ import {
   styleUrls: ['./ngx-scrolltop.component.scss'],
 })
 export class NgxScrollTopComponent {
-  @Input() backgroundColor: string;
-  @Input() symbolColor: string;
-  @Input() size: number;
+  @Input() public backgroundColor: string;
+  @Input() public symbolColor: string;
+  @Input() public size: number;
   @Input() public set symbol(value: string) {
     console.error(
       'NgxScrollTop: Symbol input `[symbol]="\'↑\'"` is deprecated.\n\r Use `Content projection` instead. E.g. <ngx-scrolltop>↑</ngx-scrolltop>.\n\r More info: https://github.com/bartholomej/ngx-scrolltop#symbol'
     );
   }
-  @Input() position: NgxScrollTopPosition = 'right';
-  @Input() theme: NgxScrollTopTheme = 'gray';
-  @Input() mode: NgxScrollTopMode = 'classic';
+  @Input() public position: NgxScrollTopPosition = 'right';
+  @Input() public theme: NgxScrollTopTheme = 'gray';
+  @Input() private mode: NgxScrollTopMode = 'classic';
 
   public show = false;
 
   @HostListener('window:scroll')
-  onWindowScroll() {
+  public onWindowScroll() {
     this.show = this.core.onWindowScroll(this.mode);
   }
 
