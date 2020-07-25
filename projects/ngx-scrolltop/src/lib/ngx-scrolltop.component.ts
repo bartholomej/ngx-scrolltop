@@ -17,7 +17,7 @@ export class NgxScrollTopComponent {
   @Input() size: number;
   @Input() public set symbol(value: string) {
     console.error(
-      'NgxScrollTop: Symbol input `[symbol]="\'↑\'"` is deprecated.\n\r Use `Content projection` instead. E.g. <ngx-scrolltop>↑</ngx-scrolltop>.\n\r More info: https://github.com/bartholomej/ngx-scrolltop#options'
+      'NgxScrollTop: Symbol input `[symbol]="\'↑\'"` is deprecated.\n\r Use `Content projection` instead. E.g. <ngx-scrolltop>↑</ngx-scrolltop>.\n\r More info: https://github.com/bartholomej/ngx-scrolltop#symbol'
     );
   }
   @Input() position: NgxScrollTopPosition = 'right';

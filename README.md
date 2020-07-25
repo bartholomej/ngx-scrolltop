@@ -8,9 +8,11 @@
 ![](https://github.com/bartholomej/ngx-scrolltop/workflows/Build%20&%20Tests%20&%20Publish/badge.svg)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
 
-> Lightweight, **Material Design inspired button for scroll-to-top** of the page. No dependencies. **Pure Angular!**
+> Lightweight, **Material Design inspired button for scroll-to-top** of the page.
+> No dependencies.
+> **Pure Angular!**
 
-> ✓ Angular 10, Ivy and SSR compatible
+> ✓ Angular 10, Ivy and Angular Universal (SSR) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -102,9 +104,27 @@ In **app.component.html** you just need to add your new button. Usually at the e
 | **backgroundColor** | string                                                                         | #212121   | Background color (you can use all values for `backgroud-color` css property). _You can override `theme` color_                                                                                           |
 | **symbolColor**     | string                                                                         | #fafafa   | Symbol color (you can use all values for `fill` svg property). _You can override `theme` color_                                                                                                          |
 | **size**            | number                                                                         | 40        | Button size [in pixels]. _(Symbol will be resized automatically_)                                                                                                                                        |
-| ~~**symbol**~~      | ~~string~~                                                                     |           | ~~You can use utf8 chars for customizing symbol. For example: `↑`~~ Removed in v2.0.0. Use _content projection_ instead: `<ngx-scrolltop>↑</ngx-scrolltop>`                                              |
+| ~~**symbol**~~      | ~~string~~                                                                     |           | ~~You can use utf8 chars for customizing symbol. For example: `↑`~~ Removed in v2.0.0. Use _content projection_. See example [here](#symbol)                                                             |
 | **position**        | 'left' \| 'right'                                                              | 'right'   | Left or right, that is the question...                                                                                                                                                                   |
 | **theme**           | [NgxScrollTopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interface.ts) | 'gray'    | Material color themes                                                                                                                                                                                    |
+
+#### Symbol
+
+Since version v2.0.0 you can use _content projection_ for your own symbol.
+
+```html
+<ngx-scrolltop>
+  ↑
+</ngx-scrolltop>
+```
+
+Or you can even use your own components or fonts (e.g. fontAwesome)
+
+```html
+<ngx-scrolltop>
+  <i class="fa fa-arrow-up"></i>
+</ngx-scrolltop>
+```
 
 ### Directive
 
@@ -123,11 +143,11 @@ In **app.component.html** you just need to add your new button. Usually at the e
   [size]="50"
   backgroundColor="#33691e"
   symbolColor="#fff"
-  symbol="↑"
   mode="smart"
   position="left"
   theme="pink"
 >
+  ↑
 </ngx-scrolltop>
 ```
 
