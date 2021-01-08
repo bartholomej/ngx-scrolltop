@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NgxScrollTopComponent } from './ngx-scrolltop.component';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
@@ -7,7 +7,7 @@ describe('NgxScrollTopComponent', () => {
   let fixture: ComponentFixture<NgxScrollTopComponent>;
   let element: HTMLButtonElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [NgxScrollTopComponent],
       providers: [NgxScrollTopCoreService]

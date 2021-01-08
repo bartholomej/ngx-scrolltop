@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxScrollTopModule } from 'projects/ngx-scrolltop/src/public-api';
@@ -9,7 +9,7 @@ import { DirectiveWayModule } from './directive-way/directive-way.module';
 
 describe('AppComponent', () => {
   let router: Router;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes(routes),
