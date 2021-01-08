@@ -3,6 +3,7 @@ $themes: (
   ('black', #000000, #ffffff),
   ('white', #ffffff, #000000),
   ('gray', #212121, #fafafa),
+  ('grey', #212121, #fafafa),
   ('brown', #3e2723, #efebe9),
   ('deeporange', #bf360c, #fbe9e7),
   ('orange', #ff6d00, #fff3e0),
@@ -12,7 +13,15 @@ $themes: (
   ('purple', #4a148c, #f3e5f5),
   ('deeppurple', #311b92, #ede7f6),
   ('pink', #880e4f, #fce4ec),
-  ('red', #b71c1c, #ffebee)
+  ('red', #b71c1c, #ffebee),
+  ('indigo', #1a237e, #e8eaf6),
+  ('lightblue', #01579b, #e1f5fe),
+  ('cyan', #006064, #e0f7fa),
+  ('teal', #004d40, #e0f2f1),
+  ('lightgreen', #33691e, #f1f8e9),
+  ('lime', #827717, #f9fbe7),
+  ('amber', #ff6f00, #fff8e1),
+  ('bluegrey', #263238, #eceff1)
 ) !default;
 
 $size: 40px !default;

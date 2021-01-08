@@ -3,6 +3,7 @@ export type NgxScrollTopTheme =
   | 'black'
   | 'white'
   | 'gray'
+  | 'grey'
   | 'brown'
   | 'deeporange'
   | 'orange'
@@ -12,7 +13,16 @@ export type NgxScrollTopTheme =
   | 'purple'
   | 'deeppurple'
   | 'pink'
-  | 'red';
+  | 'red'
+  | 'indigo'
+  | 'lightblue'
+  | 'cyan'
+  | 'teal'
+  | 'lightgreen'
+  | 'lime'
+  | 'amber'
+  | 'grey'
+  | 'bluegrey';
 
 export type NgxScrollTopMode = 'classic' | 'smart';
 
