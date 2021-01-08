@@ -181,6 +181,21 @@ _[@angular/material](https://material.angular.io/components/button/overview) req
 
 No dependencies! Pure Angular.
 
+## Development (notes for me)
+
+### Publish Stable
+
+```shell
+yarn release:patch
+# yarn release:minor
+# yarn release:major
+```
+
+### Publish next channel
+
+1. Bump version `-beta.0` in `package.json`
+2. `yarn publish:next`
+
 ## Donation
 
 If this project have helped you save time please consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
