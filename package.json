@@ -14,7 +14,7 @@
     "clean:schematics": "rm -rf dist/ngx-scrolltop/schematics/",
     "deploy:ghpages": "yarn build && yarn build:example && ngh --dir=dist/example",
     "publish:npmjs": "npm run syncprojects && npm run build && npm publish --folder dist/ngx-scrolltop",
-    "publish:next": "yarn && yarn syncprojects && yarn build && yarn build:schematics && yarn test --configuration=ci && npm publish --folder dist/ngx-scrolltop --tag next",
+    "publish:next": "yarn && yarn syncprojects && yarn build && yarn build:schematics && yarn test --configuration=ci && cd dist/ngx-scrolltop && npm publish --folder next",
     "gpr:setup": "yarn ts-node --project scripts/tsconfig.ts-node.json scripts/gpr-setup",
     "test": "ng test",
     "lint": "ng lint",
