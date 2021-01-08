@@ -12,7 +12,7 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ Angular 10, Ivy and Angular Universal (SSR) compatible
+> ✓ Angular 11, Ivy and Angular Universal (SSR) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -113,9 +113,7 @@ In **app.component.html** you just need to add your new button. Usually at the e
 Since version v2.0.0 you can use _content projection_ for your own symbol.
 
 ```html
-<ngx-scrolltop>
-  ↑
-</ngx-scrolltop>
+<ngx-scrolltop> ↑ </ngx-scrolltop>
 ```
 
 Or you can even use your own components or fonts (e.g. fontAwesome)
@@ -189,7 +187,7 @@ If this project have helped you save time please consider [making a donation](ht
 
 ## License
 
-Copyright &copy; 2020 [Lukas Bartak](http://bartweb.cz)
+Copyright &copy; 2021 [Lukas Bartak](http://bartweb.cz)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
