@@ -4,6 +4,7 @@
 </p>
 
 [![npm version](https://badge.fury.io/js/ngx-scrolltop.svg)](https://badge.fury.io/js/ngx-scrolltop)
+[![NPM Downloads](https://img.shields.io/npm/dm/ngx-scrolltop.svg)](https://www.npmjs.com/ngx-scrolltop)
 [![Join the chat at https://gitter.im/ngx-scrolltop/Lobby](https://badges.gitter.im/ngx-scrolltop/Lobby.svg)](https://gitter.im/ngx-scrolltop/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![](https://github.com/bartholomej/ngx-scrolltop/workflows/Build%20&%20Tests%20&%20Publish/badge.svg)
 [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
