@@ -51,7 +51,26 @@ export class NgxScrollTopCoreService {
 
   public scrollToTop(): void {
     if (this.isBrowser) {
-      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+      if (
+        'scrollBehavior' in document.documentElement.style || // If scrollBehaviour working
+        typeof document.body.getBoundingClientRect !== 'function' // getBoundingClientRect is not defined
+      ) {
+        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+      } else {
+        this.scrollPolyfill(document.body, 2000);
+      }
+    }
+  }
+
+  /**
+   * Scroll polyfill for browsers which not supporting `behavior: 'smooth'`. E.g. iOS.
+   */
+  private scrollPolyfill(el: Element, time: number) {
+    const top = el.getBoundingClientRect().top / 100;
+    let currentTime = 0;
+    while (currentTime <= time) {
+      window.setTimeout(() => window.scrollBy(0, top), currentTime, top);
+      currentTime += time / 100;
     }
   }
 }
