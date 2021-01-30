@@ -8,6 +8,7 @@
     "start": "ng build ngx-scrolltop --watch",
     "start:example": "ng serve",
     "start:demo": "yarn start:example",
+    "start:browserstack": "ng serve --disable-host-check",
     "build": "ng build ngx-scrolltop --prod",
     "build:example": "ng build example --prod",
     "build:schematics": "yarn clean:schematics && tsc -p projects/schematics/tsconfig.json && yarn copy:schematics",
