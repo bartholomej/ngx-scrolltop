@@ -6,7 +6,7 @@ import { NgxScrollTopMode } from './ngx-scrolltop.interface';
   selector: '[ngxScrollTop]',
 })
 export class NgxScrollTopDirective {
-  @Input('ngxScrollTopMode') private mode: NgxScrollTopMode = 'classic';
+  @Input('ngxScrollTopMode') public mode: NgxScrollTopMode = 'classic';
 
   constructor(private el: ElementRef, private core: NgxScrollTopCoreService) {
     this.hideElement();

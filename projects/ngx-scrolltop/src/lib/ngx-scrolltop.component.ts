@@ -25,7 +25,7 @@ export class NgxScrollTopComponent {
   }
   @Input() public position: NgxScrollTopPosition = 'right';
   @Input() public theme: NgxScrollTopTheme = 'gray';
-  @Input() private mode: NgxScrollTopMode = 'classic';
+  @Input() public mode: NgxScrollTopMode = 'classic';
 
   public show = false;
 
