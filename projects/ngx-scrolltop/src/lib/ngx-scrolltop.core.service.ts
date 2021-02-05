@@ -12,7 +12,8 @@ export class NgxScrollTopCoreService {
 
   public onWindowScroll(mode: NgxScrollTopMode): boolean {
     let show = false;
-    const position: number = this.document.documentElement.scrollTop;
+    const position: number =
+      this.document.documentElement?.scrollTop || this.document.scrollingElement?.scrollTop;
     switch (mode) {
       case 'classic':
         show = this.classicMode(position);
