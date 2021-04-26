@@ -58,14 +58,6 @@ describe('NgxScrollTopComponent', () => {
     expect(element.style.height).toEqual('55px');
   });
 
-  it('should set symbol (deprecated warning)', () => {
-    spyOn(console, 'error');
-    component.symbol = 'x';
-    fixture.detectChanges();
-
-    expect(console.error).toHaveBeenCalled();
-  });
-
   it('should set position', () => {
     component.position = 'left';
     fixture.detectChanges();
