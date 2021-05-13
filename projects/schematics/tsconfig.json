@@ -23,6 +23,6 @@
   "include": ["src/**/*"],
   "exclude": ["src/*/files/**/*", "src/utility/**"],
   "angularCompilerOptions": {
-    "enableIvy": false
+    "enableIvy": true
   }
 }

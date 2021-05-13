@@ -16,7 +16,7 @@
     "deploy:ghpages": "yarn build && yarn build:example && ngh --dir=dist/example",
     "publish:npmjs": "npm run syncprojects && npm run build && npm publish --folder dist/ngx-scrolltop",
     "publish:next": "yarn && yarn syncprojects && yarn build && yarn build:schematics && yarn test --configuration=ci && cd dist/ngx-scrolltop && npm publish --tag next",
-    "publish:ng12": "yarn && yarn syncprojects && yarn build && yarn build:schematics && yarn test --configuration=ci && cd dist/ngx-scrolltop && sed -i '' '/prepublishOnly/d' package.json && npm publish --ignore-scripts --tag ng12",
+    "publish:ng12": "yarn && yarn syncprojects && yarn build && yarn build:schematics && yarn test --configuration=ci && cd dist/ngx-scrolltop && npm publish --tag ng12",
     "gpr:setup": "yarn ts-node --project scripts/tsconfig.ts-node.json scripts/gpr-setup",
     "test": "ng test",
     "lint": "ng lint",
