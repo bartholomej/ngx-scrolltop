@@ -4,8 +4,8 @@
   "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "peerDependencies": {
-    "@angular/common": ">=5 <12",
-    "@angular/core": ">=5 <12"
+    "@angular/common": ">=12 <14",
+    "@angular/core": ">=12 <14"
   },
   "homepage": "https://github.com/bartholomej/ngx-scrolltop",
   "license": "MIT",
