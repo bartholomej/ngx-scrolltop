@@ -13,7 +13,7 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ Angular 11, Ivy and Angular Universal (SSR) compatible
+> ✓ Angular 12, Ivy and Angular Universal (SSR) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -21,11 +21,12 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 - No dependencies!
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
-- Angular 5+ compatible
 - Component or directive way
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#options)...
+- Angular 5+ compatible
+- [Angular 12: Pure IVY support](#angular-12--ivy-goodbye-ngcc)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
 
@@ -186,11 +187,15 @@ No dependencies! Pure Angular.
 
 ### Angular 12 + IVY (Goodbye ngcc)
 
-If you're brave enough, you can play with the experimental version, which is only compiled with IVY and fully supports Angular 12 (actually Angular 11.1.x+)
+If you're brave enough, you can play with the experimental version, which is only compiled with IVY and fully supports Angular12+ (you can't use this with older Angular version anymore)
 
 ```bash
-yarn add ngx-scrolltop@ng12
+ng add ngx-scrolltop@ng12
+# yarn add ngx-scrolltop@ng12
+# npm install ngx-scrolltop@ng12
 ```
+
+Branch: [ng12](https://github.com/bartholomej/ngx-scrolltop/tree/ng12)
 
 ## Development (notes for me)
 
