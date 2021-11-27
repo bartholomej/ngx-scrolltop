@@ -37,8 +37,8 @@ jobs:
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
 
-      - name: Build Example # Build Example page
-        run: yarn build:example
+      - name: Build demo # Build demo page
+        run: yarn build:demo
 
       - name: Run tests # Build Schematics and move
         run: yarn test --configuration=ci

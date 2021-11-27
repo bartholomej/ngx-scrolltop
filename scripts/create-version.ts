@@ -10,7 +10,7 @@ const VERSION = {
   COMMIT_HASH,
 };
 
-const file = resolve(__dirname, '..', 'projects', 'example', 'src', 'environments', 'version.ts');
+const file = resolve(__dirname, '..', 'projects', 'demo', 'src', 'environments', 'version.ts');
 writeFileSync(
   file,
   `// IMPORTANT: THIS FILE IS AUTO GENERATED! DO NOT MANUALLY EDIT OR CHECKIN!

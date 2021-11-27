@@ -41,8 +41,8 @@ jobs:
       - name: Build Schematics # Build Schematics and move
         run: yarn build:schematics
 
-      - name: Build example app # Build Schematics and move
-        run: yarn build:example --base-href https://bartholomej.github.io/ngx-scrolltop/
+      - name: Build demo app # Build Schematics and move
+        run: yarn build:demo --base-href https://bartholomej.github.io/ngx-scrolltop/
 
       - name: Run tests # Build Schematics and move
         run: yarn test --configuration=ci
@@ -75,4 +75,4 @@ jobs:
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./dist/example
+          PUBLISH_DIR: ./dist/demo

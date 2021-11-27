@@ -20,7 +20,7 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 - Lightweight _(~2 kB gzipped)_
 - No dependencies!
 - Material Design inspired
-- `@angular/material` compatible ([example](#angular-material-example-directive))
+- `@angular/material` compatible ([demo](#angular-material-example-directive))
 - Component or directive way
 - Smoothly animated
 - a11y ready
