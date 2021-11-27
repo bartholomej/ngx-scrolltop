@@ -35,6 +35,15 @@
               "browsers": "ChromeHeadlessCI"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-scrolltop/**/*.ts",
+              "projects/ngx-scrolltop/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -162,12 +171,22 @@
               "protractorConfig": "e2e/protractor-ci.conf.js"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/example/**/*.ts",
+              "projects/example/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "ngx-scrolltop",
   "cli": {
-    "analytics": "c81d555a-f337-456b-bf81-8922a4e7c495"
+    "analytics": "c81d555a-f337-456b-bf81-8922a4e7c495",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
