@@ -13,7 +13,7 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ Angular 12, Ivy and Angular Universal (SSR) compatible
+> ✓ Angular 13, Ivy and Angular Universal (SSR) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -25,7 +25,7 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#options)...
-- Angular 12: Pure IVY support
+- Angular 13: Pure IVY support
 - [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
@@ -40,14 +40,19 @@ Or play with it live on [stackblitz.com/edit/ngx-scrolltop](https://stackblitz.c
 
 ### Automatically (recommended) 🚀
 
-> Not using latest version of Angular (12.x.x)?
+> Not using latest version of Angular 12+?
 > [See our Angular compatibility instructions…](#compatibility)
 
 ```bash
-ng add ngx-scrolltop # for Angular 12+ only!
-
-# ng add ngx-scrolltop@compat # for Angular 5 - 11
+ng add ngx-scrolltop # for Angular 12+ only! See our compatibility table
 ```
+
+<!--
+```bash
+npm install ngx-translate-cut # For Angular 13. See compatibility table.
+```
+
+Choose the version corresponding to your Angular version: -->
 
 **Everything's done!** _(module imported and all settings automatically set in your project.)_
 
@@ -58,9 +63,9 @@ _Now just see some [options and examples](#options)._
 Via **yarn** or **npm**
 
 ```bash
-npm install ngx-scrolltop --save # for Angular 12+ only!
+npm install ngx-scrolltop --save # for Angular 12+ only! See our compatibility table
 
-# npm install ngx-scrolltop@compat --save # for Angular 5 – 11
+# npm install ngx-scrolltop@2 --save # for Angular 5 – 11
 ```
 
 ### Setup (manually)
@@ -83,14 +88,14 @@ export class AppModule { }
 
 ### Compatibility
 
-From v12 `ngx-scrolltop` is only compiled with IVY and fully supports Angular12+ (you can't use this with older Angular version anymore!)
+Since `ngx-scrolltop` `v3`, the library is compiled with IVY and fully supports Angular12+ (you can't use this with older Angular version anymore!)
 
-If you still need to use it with an older version of Angular, then use `ng add ngx-scrolltop@compat` instead
+If you still need to use it with an older version of Angular, then use version 2, which is still available: `ng add ngx-scrolltop@2`
 
-| Angular version | ngx-scrolltop | Installation                  |
-| --------------- | ------------- | ----------------------------- |
-| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@compat` |
-| ng12+           | v12.x.x       | `ng add ngx-scrolltop`        |
+| Angular version | ngx-scrolltop | Install                  |
+| --------------- | ------------- | ------------------------ |
+| ng12+           | v3.x.x        | `ng add ngx-scrolltop`   |
+| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2` |
 
 ## Usage
 
@@ -222,11 +227,17 @@ yarn release:patch
 
 ### Old version of Angular
 
-**Error**: If you are using older Angular (5 – 11) you will see this error on build or start:
+#### Error
 
-`ERROR in node_modules/ngx-scrolltop/lib/ngx-scrolltop.core.service.d.ts:13:21 - error TS2694: Namespace '"/Users/user/projects/my-project/node_modules/@angular/core/core"' has no exported member 'ɵɵFactoryDeclaration'.`
+If you are using older Angular (5 – 11) you will see this error on build or start:
 
-**Solution**: Easy! Use compatibility version of this library `npm install ngx-scrolltop@compat --save`
+> ERROR in node_modules/ngx-scrolltop/lib/ngx-scrolltop.core.service.d.ts:13:21 - error TS2694: Namespace '"/Users/user/projects/my-project/node_modules/@angular/core/core"' has no exported member 'ɵɵFactoryDeclaration'.
+
+#### Solution
+
+Easy! Use compatibility version of this library `npm install ngx-scrolltop@2 --save`
+
+[See our Angular compatibility instructions…](#compatibility)
 
 ## Donation
 
