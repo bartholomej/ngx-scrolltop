@@ -11,32 +11,27 @@ export class NgxScrollTopCoreService {
   constructor(@Inject(DOCUMENT) private document: any) {}
 
   public onWindowScroll(mode: NgxScrollTopMode): boolean {
-    let show = false;
     const position: number =
       this.document.documentElement?.scrollTop || this.document.scrollingElement?.scrollTop;
     switch (mode) {
       case 'classic':
-        show = this.classicMode(position);
-        break;
+        return this.classicMode(position);
       case 'smart':
-        show = this.smartMode(position);
-        break;
+        return this.smartMode(position);
     }
-    return show;
   }
 
   private classicMode(position: number): boolean {
-    let show = false;
     if (this.isBrowser && position > window.innerHeight) {
-      show = true;
+      return true;
     } else {
-      show = false;
+      return false;
     }
-    return show;
   }
 
   private smartMode(position: number): boolean {
     let show = false;
+
     if (position === 0) {
       show = false;
       this.scrolledFromTop = false;

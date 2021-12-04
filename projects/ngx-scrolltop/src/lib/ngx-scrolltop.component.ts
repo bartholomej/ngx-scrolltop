@@ -1,15 +1,24 @@
-import { Component, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
   NgxScrollTopPosition,
-  NgxScrollTopTheme,
+  NgxScrollTopTheme
 } from './ngx-scrolltop.interface';
 
 @Component({
   selector: 'ngx-scrolltop',
   templateUrl: './ngx-scrolltop.component.html',
   styleUrls: ['./ngx-scrolltop.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxScrollTopComponent implements OnChanges {
   @Input() public backgroundColor: string;
@@ -23,11 +32,17 @@ export class NgxScrollTopComponent implements OnChanges {
   public show = false;
 
   @HostListener('window:scroll')
-  public onWindowScroll() {
-    this.show = this.core.onWindowScroll(this.mode);
+  public onWindowScroll(): void {
+    const show = this.core.onWindowScroll(this.mode);
+
+    // Performance boost. Only update the state if it has changed.
+    if (this.show !== show) {
+      this.show = show;
+      this.cdr.markForCheck();
+    }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(changes: SimpleChanges): void {
     // Deprecation warning. It will be removed soon.
     if (changes.symbol) {
       console.error(
@@ -39,7 +54,7 @@ export class NgxScrollTopComponent implements OnChanges {
     }
   }
 
-  constructor(private core: NgxScrollTopCoreService) {}
+  constructor(private core: NgxScrollTopCoreService, private cdr: ChangeDetectorRef) { }
 
   public scrollToTop(): void {
     this.core.scrollToTop();

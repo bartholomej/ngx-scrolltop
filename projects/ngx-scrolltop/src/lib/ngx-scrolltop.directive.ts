@@ -8,21 +8,25 @@ import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 export class NgxScrollTopDirective {
   @Input('ngxScrollTopMode') public mode: NgxScrollTopMode = 'classic';
 
+  private show = false;
+
   constructor(private el: ElementRef, private core: NgxScrollTopCoreService) {
     this.hideElement();
   }
 
   @HostListener('window:scroll')
-  public onWindowScroll() {
-    if (this.core.onWindowScroll(this.mode)) {
-      this.showElement();
-    } else {
-      this.hideElement();
+  public onWindowScroll(): void {
+    const show = this.core.onWindowScroll(this.mode);
+
+    // Performance boost. Only update the DOM when the state changes.
+    if (this.show !== show) {
+      show ? this.showElement() : this.hideElement();
+      this.show = show;
     }
   }
 
   @HostListener('click')
-  public onClick() {
+  public onClick(): void {
     this.scrollToTop();
   }
 
