@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
+import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 
 @Component({
   template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
 })
 class TestComponent {
-  constructor() {}
+  constructor() { }
 }
 
 describe('NgxScrollTopDirective', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
+  let cdRef: ChangeDetectorRef;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -22,6 +23,7 @@ describe('NgxScrollTopDirective', () => {
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
+    cdRef = fixture.componentRef.injector.get(ChangeDetectorRef);
   });
 
   it('should create component', () => {
@@ -33,17 +35,19 @@ describe('NgxScrollTopDirective', () => {
     const p: HTMLElement = debugEl.querySelector('.my-scroll-top-button');
 
     // Make window scrollable
-    document.body.style.minHeight = '1000px';
-    window.scrollTo(0, 100);
+    document.body.style.minHeight = '1500px';
+    window.scrollTo(0, 50);
     fixture.detectChanges();
+    cdRef.detectChanges();
 
     p.click();
     fixture.detectChanges();
+    cdRef.detectChanges();
 
     setTimeout(() => {
       // Wait some time for smooth scroll
       expect(document.documentElement.scrollTop).toBe(0);
       done();
-    }, 2000);
+    }, 3000);
   });
 });
