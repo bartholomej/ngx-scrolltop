@@ -18,7 +18,7 @@
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - Lightweight _(~2 kB gzipped)_
-- No dependencies!
+- No dependencies! _(only smooth scroll-behavior polyfill for iOS)_
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
 - Component or directive way
@@ -204,7 +204,7 @@ _[@angular/material](https://material.angular.io/components/button/overview) req
 
 ## Dependencies
 
-No dependencies! Pure Angular.
+Pure Angular! _(with smooth scroll-behaviour polyfill fo iOS)_
 
 <!-- ## 🧪 Experiments -->
 
