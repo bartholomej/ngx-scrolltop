@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
+import { polyfill as smoothscrollPolyfill } from 'smoothscroll-polyfill';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Injectable()
@@ -7,6 +8,7 @@ export class NgxScrollTopCoreService {
   private scrolledFromTop = false;
   private scrollOffset: number;
   private readonly isBrowser: boolean = typeof window !== 'undefined';
+  private alreadyActivated: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: any) {}
 
@@ -51,6 +53,12 @@ export class NgxScrollTopCoreService {
 
   public scrollToTop(): void {
     if (this.isBrowser) {
+      // Kick off the polyfill for iOS Safari
+      if (!this.alreadyActivated) {
+        smoothscrollPolyfill();
+        this.alreadyActivated = true;
+      }
+      // Scroll to the top
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
   }

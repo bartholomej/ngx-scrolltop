@@ -7,6 +7,9 @@
     "@angular/common": ">=12 <14",
     "@angular/core": ">=12 <14"
   },
+  "dependencies": {
+    "smoothscroll-polyfill": "^0.4.4"
+  },
   "homepage": "https://github.com/bartholomej/ngx-scrolltop",
   "license": "MIT",
   "repository": {

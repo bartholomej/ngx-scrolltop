@@ -3,5 +3,6 @@
   "dest": "../../dist/ngx-scrolltop",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["smoothscroll-polyfill"]
 }
