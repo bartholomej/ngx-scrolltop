@@ -40,7 +40,7 @@ Or play with it live on [stackblitz.com/edit/ngx-scrolltop](https://stackblitz.c
 
 ### Automatically (recommended) 🚀
 
-> Not using latest version of Angular 12+?
+> Not using latest version of Angular?
 > [See our Angular compatibility instructions…](#compatibility)
 
 ```bash
@@ -94,7 +94,8 @@ If you still need to use it with an older version of Angular, then use version 2
 
 | Angular version | ngx-scrolltop | Install                  |
 | --------------- | ------------- | ------------------------ |
-| ng12+           | v3.x.x        | `ng add ngx-scrolltop`   |
+| ng13            | v4.x.x        | `ng add ngx-scrolltop`   |
+| ng12            | v4.x.x        | `ng add ngx-scrolltop`   |
 | ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2` |
 
 ## Usage
@@ -204,7 +205,7 @@ _[@angular/material](https://material.angular.io/components/button/overview) req
 
 ## Dependencies
 
-Pure Angular! _(with smooth scroll-behaviour polyfill fo iOS)_
+Pure Angular! _(with smooth scroll-behaviour polyfill for iOS)_
 
 <!-- ## 🧪 Experiments -->
 
