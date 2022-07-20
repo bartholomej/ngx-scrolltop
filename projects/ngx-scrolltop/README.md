@@ -13,7 +13,7 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ Angular 13, Ivy and Angular Universal (SSR) compatible
+> ✓ Angular 14, Ivy and Angular Universal (SSR) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -25,7 +25,7 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#options)...
-- Angular 13: Pure IVY support
+- Angular 14: Pure IVY support
 - [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
@@ -49,7 +49,7 @@ ng add ngx-scrolltop # for Angular 12+ only! See our compatibility table
 
 <!--
 ```bash
-npm install ngx-translate-cut # For Angular 13. See compatibility table.
+npm install ngx-translate-cut # For Angular 13+. See compatibility table.
 ```
 
 Choose the version corresponding to your Angular version: -->
@@ -92,11 +92,12 @@ Since `ngx-scrolltop` `v3`, the library is compiled with IVY and fully supports 
 
 If you still need to use it with an older version of Angular, then use version 2, which is still available: `ng add ngx-scrolltop@2`
 
-| Angular version | ngx-scrolltop | Install                  |
-| --------------- | ------------- | ------------------------ |
-| ng13            | v4.x.x        | `ng add ngx-scrolltop`   |
-| ng12            | v4.x.x        | `ng add ngx-scrolltop`   |
-| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2` |
+| Angular version | ngx-scrolltop | Install                       |
+| --------------- | ------------- | ----------------------------- |
+| ng14            | v4.x.x        | `ng add ngx-scrolltop@latest` |
+| ng13            | v4.x.x        | `ng add ngx-scrolltop@latest` |
+| ng12            | v4.x.x        | `ng add ngx-scrolltop@latest` |
+| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`      |
 
 ## Usage
 
@@ -124,15 +125,15 @@ In **app.component.html** you just need to add your new button. Usually at the e
 
 ### Component
 
-| Option              | Type                                                                           | Default   | Description                                                                                                                                                                                              |
-| ------------------- | ------------------------------------------------------------------------------ | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **mode**            | 'smart' \| 'classic'                                                           | 'classic' | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top. **Classic** mode shows button immediately when you scroll at least one screen down. |
-| **backgroundColor** | string                                                                         | #212121   | Background color (you can use all values for `backgroud-color` css property). _You can override `theme` color_                                                                                           |
-| **symbolColor**     | string                                                                         | #fafafa   | Symbol color (you can use all values for `fill` svg property). _You can override `theme` color_                                                                                                          |
-| **size**            | number                                                                         | 40        | Button size [in pixels]. _(Symbol will be resized automatically_)                                                                                                                                        |
-| ~~**symbol**~~      | ~~string~~                                                                     |           | ~~You can use utf8 chars for customizing symbol. For example: `↑`~~ Removed in v2.0.0. Use _content projection_. See example [here](#symbol)                                                             |
-| **position**        | 'left' \| 'right'                                                              | 'right'   | Left or right, that is the question...                                                                                                                                                                   |
-| **theme**           | [NgxScrollTopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interface.ts) | 'gray'    | Material color themes                                                                                                                                                                                    |
+| Option              | Type                                                                           | Default     | Description                                                                                                                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **mode**            | `'smart'` \| `'classic'`                                                       | `'classic'` | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top. **Classic** mode shows button immediately when you scroll at least one screen down. |
+| **backgroundColor** | string                                                                         | #212121     | Background color (you can use all values for `backgroud-color` css property). _You can override `theme` color_                                                                                           |
+| **symbolColor**     | string                                                                         | #fafafa     | Symbol color (you can use all values for `fill` svg property). _You can override `theme` color_                                                                                                          |
+| **size**            | number                                                                         | 40          | Button size [in pixels]. _(Symbol will be resized automatically_)                                                                                                                                        |
+| ~~**symbol**~~      | ~~string~~                                                                     |             | ~~You can use utf8 chars for customizing symbol. For example: `↑`~~ Removed in v2.0.0. Use _content projection_. See example [here](#symbol)                                                             |
+| **position**        | `'left'` \| `'right'`                                                          | `'right'`   | Left or right, that is the question...                                                                                                                                                                   |
+| **theme**           | [NgxScrollTopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interface.ts) | `'gray'`    | Choose from [official Material color themes](https://material.io/resources/color)                                                                                                                        |
 
 #### Symbol
 
@@ -152,9 +153,9 @@ Or you can even use your own components or fonts (e.g. fontAwesome)
 
 ### Directive
 
-| Option                 | Type                 | Default   | Description                                                                                                                                                                                              |
-| ---------------------- | -------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[ngxScrollTopMode]** | 'smart' \| 'classic' | 'classic' | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top. **Classic** mode shows button immediately when you scroll at least one screen down. |
+| Option                 | Type                     | Default     | Description                                                                                                                                                                                             |
+| ---------------------- | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[ngxScrollTopMode]** | `'smart'` \| `'classic'` | `'classic'` | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top.**Classic** mode shows button immediately when you scroll at least one screen down. |
 
 ## Examples
 
@@ -246,7 +247,7 @@ If this project have helped you save time please consider [making a donation](ht
 
 ## License
 
-Copyright &copy; 2021 [Lukas Bartak](http://bartweb.cz)
+Copyright &copy; 2022 [Lukas Bartak](http://bartweb.cz)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
