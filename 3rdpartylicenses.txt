@@ -219,7 +219,7 @@ Apache-2.0
  
 
 
-smoothscroll-polyfill
+seamless-scroll-polyfill
 MIT
 The MIT License (MIT)
 
