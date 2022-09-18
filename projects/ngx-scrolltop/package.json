@@ -8,7 +8,7 @@
     "@angular/core": ">=12 <15"
   },
   "dependencies": {
-    "smoothscroll-polyfill": "^0.4.4"
+    "seamless-scroll-polyfill": "2.2.0"
   },
   "homepage": "https://github.com/bartholomej/ngx-scrolltop",
   "license": "MIT",
@@ -29,6 +29,11 @@
     "animate",
     "scrollTop",
     "scroll to top",
+    "goToTop",
+    "go-to-top",
+    "angular14",
+    "smooth",
+    "esm",
     "sass"
   ],
   "publishConfig": {

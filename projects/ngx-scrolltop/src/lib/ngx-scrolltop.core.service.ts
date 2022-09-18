@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { polyfill as smoothscrollPolyfill } from 'smoothscroll-polyfill';
+import { polyfill as smoothscrollPolyfill } from 'seamless-scroll-polyfill';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Injectable()
