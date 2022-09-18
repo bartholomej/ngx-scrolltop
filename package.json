@@ -40,7 +40,7 @@
     "@angular/platform-browser-dynamic": "~13.2.3",
     "@angular/router": "~13.2.3",
     "rxjs": "~6.6.7",
-    "smoothscroll-polyfill": "^0.4.4",
+    "seamless-scroll-polyfill": "^2.2.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
   },
@@ -60,7 +60,6 @@
     "@types/jasmine": "~3.10.3",
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^16.11.11",
-    "@types/smoothscroll-polyfill": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "5.37.0",
     "@typescript-eslint/parser": "5.37.0",
     "eslint": "^8.23.1",
