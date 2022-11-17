@@ -184,9 +184,10 @@
       }
     }
   },
-  "defaultProject": "ngx-scrolltop",
   "cli": {
     "analytics": "c81d555a-f337-456b-bf81-8922a4e7c495",
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
