@@ -4,8 +4,8 @@
   "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "peerDependencies": {
-    "@angular/common": ">=12 <15",
-    "@angular/core": ">=12 <15"
+    "@angular/common": ">=14 <16",
+    "@angular/core": ">=14 <16"
   },
   "dependencies": {
     "seamless-scroll-polyfill": "2.2.0"
