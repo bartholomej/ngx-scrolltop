@@ -44,15 +44,8 @@ Or play with it live on [stackblitz.com/edit/ngx-scrolltop](https://stackblitz.c
 > [See our Angular compatibility instructions…](#compatibility)
 
 ```bash
-ng add ngx-scrolltop # for Angular 12+ only! See our compatibility table
+ng add ngx-scrolltop # for latest Angular only! See our compatibility table
 ```
-
-<!--
-```bash
-npm install ngx-translate-cut # For Angular 13+. See compatibility table.
-```
-
-Choose the version corresponding to your Angular version: -->
 
 **Everything's done!** _(module imported and all settings automatically set in your project.)_
 
@@ -63,7 +56,7 @@ _Now just see some [options and examples](#options)._
 Via **yarn** or **npm**
 
 ```bash
-npm install ngx-scrolltop --save # for Angular 12+ only! See our compatibility table
+npm install ngx-scrolltop --save # for lastest Angular only! See our compatibility table
 
 # npm install ngx-scrolltop@2 --save # for Angular 5 – 11
 ```
@@ -95,7 +88,7 @@ If you still need to use it with an older version of Angular, then use version 2
 | Angular version | ngx-scrolltop | Install                       |
 | --------------- | ------------- | ----------------------------- |
 | ng15            | v5.x.x        | `ng add ngx-scrolltop@latest` |
-| ng14            | v5.x.x        | `ng add ngx-scrolltop@latest` |
+| ng14            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng13            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng12            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`      |
@@ -242,13 +235,35 @@ Easy! Use compatibility version of this library `npm install ngx-scrolltop@2 --s
 
 [See our Angular compatibility instructions…](#compatibility)
 
+#### Error
+
+If you are using Angular 14 with latest ngx-scrolltop library, you will see this error on build or start:
+
+```bash
+Error: node_modules/ngx-scrolltop/lib/ngx-scrolltop.component.d.ts:21:18 - error TS2707: Generic type 'ɵɵComponentDeclaration' requires between 7 and 8 type arguments.
+
+21     static ɵcmp: i0.ɵɵComponentDeclaration<NgxScrollTopComponent, "ngx-scrolltop", never, { "backgroundColor": "backgroundColor"; "symbolColor": "symbolColor"; "size": "size"; "symbol": "symbol"; "position": "position"; "theme": "theme"; "mode": "mode"; }, {}, never, ["*"], false, never>;
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Error: node_modules/ngx-scrolltop/lib/ngx-scrolltop.directive.d.ts:17:18 - error TS2707: Generic type 'ɵɵDirectiveDeclaration' requires between 6 and 8 type arguments.
+
+17     static ɵdir: i0.ɵɵDirectiveDeclaration<NgxScrollTopDirective, "[ngxScrollTop]", never, { "mode": "ngxScrollTopMode"; }, {}, never, never, false, never>;
+```
+
+#### Solution
+
+Easy! Use compatibility version of this library `npm install ngx-scrolltop@4 --save`
+
+[See our Angular compatibility instructions…](#compatibility)
+
 ## Donation
 
 If this project have helped you save time please consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
 
 ## License
 
-Copyright &copy; 2022 [Lukas Bartak](http://bartweb.cz)
+Copyright &copy; 2023 [Lukas Bartak](http://bartweb.cz)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
