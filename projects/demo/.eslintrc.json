@@ -34,7 +34,9 @@
         "no-debugger": "error",
         "@typescript-eslint/explicit-member-accessibility": [
           "warn",
-          { "ignoredMethodNames": ["constructor"] }
+          {
+            "ignoredMethodNames": ["constructor"]
+          }
         ],
         "@angular-eslint/no-output-native": "warn",
         "@angular-eslint/no-input-rename": ["warn"],
