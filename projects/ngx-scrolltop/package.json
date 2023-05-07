@@ -4,11 +4,11 @@
   "description": "Lightweight, Material Design inspired button for scroll-to-top of the page. No dependencies. Pure Angular!",
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "peerDependencies": {
-    "@angular/common": ">=15 <16",
-    "@angular/core": ">=15 <16"
+    "@angular/common": ">=15 <17",
+    "@angular/core": ">=15 <17"
   },
   "dependencies": {
-    "seamless-scroll-polyfill": "2.3.0"
+    "seamless-scroll-polyfill": "2.3.4"
   },
   "homepage": "https://github.com/bartholomej/ngx-scrolltop",
   "license": "MIT",
@@ -32,6 +32,8 @@
     "goToTop",
     "go-to-top",
     "angular14",
+    "angular15",
+    "angular16",
     "smooth",
     "esm",
     "sass"
