@@ -13,7 +13,7 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ Angular 15, Ivy and Angular Universal (SSR) compatible
+> ✓ Angular 16, Ivy and Angular Universal (SSR) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -25,7 +25,7 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#options)...
-- Angular 15: Pure IVY support
+- Angular 16: Pure IVY support
 - [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
@@ -87,7 +87,8 @@ If you still need to use it with an older version of Angular, then use version 2
 
 | Angular version | ngx-scrolltop | Install                       |
 | --------------- | ------------- | ----------------------------- |
-| ng15            | v5.x.x        | `ng add ngx-scrolltop@latest` |
+| ng16            | v6.x.x        | `ng add ngx-scrolltop@latest` |
+| ng15            | v6.x.x        | `ng add ngx-scrolltop@latest` |
 | ng14            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng13            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng12            | v4.x.x        | `ng add ngx-scrolltop@4`      |
