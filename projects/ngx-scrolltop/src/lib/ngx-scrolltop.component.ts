@@ -5,13 +5,13 @@ import {
   HostListener,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
   NgxScrollTopPosition,
-  NgxScrollTopTheme
+  NgxScrollTopTheme,
 } from './ngx-scrolltop.interface';
 
 @Component({
@@ -46,15 +46,18 @@ export class NgxScrollTopComponent implements OnChanges {
     // Deprecation warning. It will be removed soon.
     if (changes.symbol) {
       console.error(
-        `NgxScrollTop: You are trying to set \`${changes['symbol'].currentValue}\` as your symbol but Input \`[symbol]="\'↑\'"\` is deprecated now.\n\r`,
+        `NgxScrollTop: You are trying to set \`${changes['symbol'].currentValue}\` as your symbol but Input \`[symbol]="'↑'"\` is deprecated now.\n\r`,
         `Use \`Content projection\` method, like this:\n\r\n\r`,
         `<ngx-scrolltop>${changes['symbol'].currentValue}</ngx-scrolltop>\n\r\n\r`,
-        `More info: https://github.com/bartholomej/ngx-scrolltop#symbol`
+        `More info: https://github.com/bartholomej/ngx-scrolltop#symbol`,
       );
     }
   }
 
-  constructor(private core: NgxScrollTopCoreService, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private core: NgxScrollTopCoreService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   public scrollToTop(): void {
     this.core.scrollToTop();
