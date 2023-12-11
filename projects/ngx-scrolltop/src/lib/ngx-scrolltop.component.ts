@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -18,7 +19,9 @@ import {
   selector: 'ngx-scrolltop',
   templateUrl: './ngx-scrolltop.component.html',
   styleUrls: ['./ngx-scrolltop.component.scss'],
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class NgxScrollTopComponent implements OnChanges {
   @Input() public backgroundColor: string;
@@ -42,6 +45,11 @@ export class NgxScrollTopComponent implements OnChanges {
     }
   }
 
+  constructor(
+    private core: NgxScrollTopCoreService,
+    private cdr: ChangeDetectorRef,
+  ) { }
+
   public ngOnChanges(changes: SimpleChanges): void {
     // Deprecation warning. It will be removed soon.
     if (changes.symbol) {
@@ -53,11 +61,6 @@ export class NgxScrollTopComponent implements OnChanges {
       );
     }
   }
-
-  constructor(
-    private core: NgxScrollTopCoreService,
-    private cdr: ChangeDetectorRef,
-  ) {}
 
   public scrollToTop(): void {
     this.core.scrollToTop();

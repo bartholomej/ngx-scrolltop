@@ -4,6 +4,7 @@ import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Directive({
   selector: '[ngxScrollTop]',
+  standalone: true
 })
 export class NgxScrollTopDirective {
   @Input('ngxScrollTopMode') public mode: NgxScrollTopMode = 'classic';
