@@ -11,7 +11,7 @@ describe('NgxScrollTopComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NgxScrollTopComponent],
+      imports: [NgxScrollTopComponent],
       providers: [NgxScrollTopCoreService]
     }).compileComponents();
   }));
