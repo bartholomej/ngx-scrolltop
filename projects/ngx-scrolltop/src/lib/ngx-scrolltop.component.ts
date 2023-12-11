@@ -12,6 +12,7 @@ import {
   templateUrl: './ngx-scrolltop.component.html',
   styleUrls: ['./ngx-scrolltop.component.scss'],
   imports: [CommonModule],
+  providers: [NgxScrollTopCoreService],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
