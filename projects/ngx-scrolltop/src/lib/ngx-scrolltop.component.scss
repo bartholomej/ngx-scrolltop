@@ -20,7 +20,9 @@ button {
   border: none;
   transition: opacity 0.1s linear;
   z-index: 10000;
-  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+  box-shadow:
+    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
     0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 
   &:hover {
@@ -30,8 +32,11 @@ button {
   .symbol-container {
     span {
       font-size: $font-size;
-    }
 
+      &:empty {
+        display: none;
+      }
+    }
     svg {
       transform: translateY(10%); // Centering no-rectangle symbols
       width: $svg-size;
