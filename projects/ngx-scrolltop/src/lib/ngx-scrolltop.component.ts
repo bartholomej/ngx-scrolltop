@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  HostListener,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input, signal } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
@@ -29,21 +23,17 @@ export class NgxScrollTopComponent {
   @Input() public theme: NgxScrollTopTheme = 'gray';
   @Input() public mode: NgxScrollTopMode = 'classic';
 
-  public show = false;
+  public show = signal(false);
 
-  constructor(
-    private core: NgxScrollTopCoreService,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private core: NgxScrollTopCoreService) {}
 
   @HostListener('window:scroll')
   public onWindowScroll(): void {
     const show = this.core.onWindowScroll(this.mode);
 
     // Performance boost. Only update the state if it has changed.
-    if (this.show !== show) {
-      this.show = show;
-      this.cdr.markForCheck();
+    if (this.show() !== show) {
+      this.show.set(show);
     }
   }
 

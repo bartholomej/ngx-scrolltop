@@ -19,7 +19,7 @@ describe('NgxScrollTopComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NgxScrollTopComponent);
     component = fixture.componentInstance;
-    component.show = true;
+    component.show.set(true);
     fixture.detectChanges();
     element = fixture.nativeElement.querySelector('.scrolltop-button');
     cdRef = fixture.componentRef.injector.get(ChangeDetectorRef);
