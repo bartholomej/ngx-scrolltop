@@ -5,8 +5,6 @@ import {
   Component,
   HostListener,
   Input,
-  OnChanges,
-  SimpleChanges,
 } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
@@ -21,18 +19,22 @@ import {
   styleUrls: ['./ngx-scrolltop.component.scss'],
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true
+  standalone: true,
 })
-export class NgxScrollTopComponent implements OnChanges {
+export class NgxScrollTopComponent {
   @Input() public backgroundColor: string;
   @Input() public symbolColor: string;
   @Input() public size: number;
-  @Input() public symbol: string;
   @Input() public position: NgxScrollTopPosition = 'right';
   @Input() public theme: NgxScrollTopTheme = 'gray';
   @Input() public mode: NgxScrollTopMode = 'classic';
 
   public show = false;
+
+  constructor(
+    private core: NgxScrollTopCoreService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   @HostListener('window:scroll')
   public onWindowScroll(): void {
@@ -42,23 +44,6 @@ export class NgxScrollTopComponent implements OnChanges {
     if (this.show !== show) {
       this.show = show;
       this.cdr.markForCheck();
-    }
-  }
-
-  constructor(
-    private core: NgxScrollTopCoreService,
-    private cdr: ChangeDetectorRef,
-  ) { }
-
-  public ngOnChanges(changes: SimpleChanges): void {
-    // Deprecation warning. It will be removed soon.
-    if (changes.symbol) {
-      console.error(
-        `NgxScrollTop: You are trying to set \`${changes['symbol'].currentValue}\` as your symbol but Input \`[symbol]="'↑'"\` is deprecated now.\n\r`,
-        `Use \`Content projection\` method, like this:\n\r\n\r`,
-        `<ngx-scrolltop>${changes['symbol'].currentValue}</ngx-scrolltop>\n\r\n\r`,
-        `More info: https://github.com/bartholomej/ngx-scrolltop#symbol`,
-      );
     }
   }
 
