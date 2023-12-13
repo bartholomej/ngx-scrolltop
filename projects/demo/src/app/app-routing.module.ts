@@ -4,13 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./component-way/component-way.module').then((m) => m.ComponentWayModule),
+    loadComponent: () => import('./component-way/component-way.component'),
   },
   {
     path: 'directive-way',
-    loadChildren: () =>
-      import('./directive-way/directive-way.module').then((m) => m.DirectiveWayModule),
+    loadComponent: () => import('./directive-way/directive-way.component'),
   },
 ];
 

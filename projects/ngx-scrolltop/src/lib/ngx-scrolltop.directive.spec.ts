@@ -17,7 +17,8 @@ describe('NgxScrollTopDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, NgxScrollTopDirective],
+      declarations: [TestComponent],
+      imports: [NgxScrollTopDirective],
       providers: [NgxScrollTopCoreService]
     });
 

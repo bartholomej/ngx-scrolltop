@@ -18,48 +18,126 @@
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - Lightweight _(~2 kB gzipped)_
-- No dependencies! _(only smooth scroll-behavior polyfill for iOS 14 and lower)_
+- **Angular 17** compatible
+- **Standalone Components** compatible
+- Signals compatible
+- No dependencies! _(only smooth scroll-behavior polyfill for iOS)_
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
 - Component or directive way
 - Smoothly animated
 - a11y ready
-- Highly customizable [options](#options)...
-- Angular 17
+- Highly customizable [options](#%EF%B8%8F-options)...
 - [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
 
-## Demo (example)
+## 🎯 Demo (example)
 
 Watch this [demo page](http://bartholomej.github.io/ngx-scrolltop/)
 
 Or play with it live on [stackblitz.com/edit/ngx-scrolltop](https://stackblitz.com/edit/ngx-scrolltop?file=src/app/app.component.html)
 
-## Install
-
-### Automatically (recommended) 🚀
+## 📦 Install
 
 > You're not using the latest version of Angular?
 > [See our Angular compatibility instructions…](#compatibility)
 
-```bash
-ng add ngx-scrolltop # for latest Angular only! See our compatibility table
-```
-
-**Everything's done!** _(module imported and all settings automatically set in your project.)_
-
-_Now just see some [options and examples](#options)._
-
-### Manually (old-school) 🛠
-
-Via **yarn** or **npm**
+Via **npm** or **yarn**
 
 ```bash
 npm install ngx-scrolltop --save # for lastest Angular only! See our compatibility table
+
+# yarn add ngx-scrolltop
 ```
 
-### Setup (manually)
+### Compatibility
+
+| Angular version | ngx-scrolltop | Install                       |
+| --------------- | ------------- | ----------------------------- |
+| ng17            | v17.x.x       | `ng add ngx-scrolltop@latest` |
+| ng16            | v6.x.x        | `ng add ngx-scrolltop@6`      |
+| ng15            | v6.x.x        | `ng add ngx-scrolltop@6`      |
+| ng14            | v4.x.x        | `ng add ngx-scrolltop@4`      |
+| ng13            | v4.x.x        | `ng add ngx-scrolltop@4`      |
+| ng12            | v4.x.x        | `ng add ngx-scrolltop@4`      |
+| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`      |
+
+## 🗜️ Setup and usage (`Standalone` or `Modules`)
+
+> You have some options how to use this library.
+> As a component or as a directive.
+
+> You can also use it as a Standalone component (new angular way) or as a module (the original angular way).
+
+### Standalone Component
+
+In your root standalone component (e.g. `app.component.ts`) you need to add `NgxScrollTopComponent` into your `imports` array.
+
+```diff
+...
++ import { NgxScrollTopComponet } from 'ngx-scrolltop';
+...
+
+@Component({
+  selector: 'app',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [
++   NgxScrollTopComponent
+  ],
+})
+export class AppComponent { }
+```
+
+And then in `app.component.html` you just need to add your new button. Usually at the end of your file.
+
+```html
+<ngx-scrolltop></ngx-scrolltop>
+```
+
+_See [options](#%EF%B8%8F-options) and [examples](#-examples) for more details..._
+
+### Standalone Directive
+
+In your root standalone component (e.g. `app.component.ts`) you need to add `NgxScrollTopDirective` into your `imports` array.
+
+```diff
+...
++ import { NgxScrollTopDirective } from 'ngx-scrolltop';
+...
+
+@Component({
+  selector: 'app',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [
++   NgxScrollTopDirective
+  ],
+})
+export class AppComponent { }
+```
+
+And then in `app.component.html` you just need to create your new custom element... _(e.g. `<span>`, `<div>`, `<button>`, ...)_
+
+```html
+<span ngxScrollTop class="my-custom-element-with-my-style__no-lib-style-applied-here">
+  ↑ My Custom Element. ↑
+</span>
+```
+
+**Important note**: _No style applied, everything is up to you. Of course I recommend `position: fixed`, ..._
+
+_See more in [examples](#-examples)_
+
+### Modules (the original Angular way)
+
+> This is the original Angular way how to import libraries (via modules).
+> You can use it as a component or as a directive as well.
+
+In your root module (e.g. `app.module.ts`) you need to add `NgxScrollTopModule` into your `imports` array.
 
 ```diff
 ...
@@ -77,45 +155,9 @@ npm install ngx-scrolltop --save # for lastest Angular only! See our compatibili
 export class AppModule { }
 ```
 
-### Compatibility
+_Next steps you can see above in [Standalone Component](#standalone-component) or [Standalone Directive](#standalone-directive)_ or in [examples](#-examples).
 
-| Angular version | ngx-scrolltop | Install                       |
-| --------------- | ------------- | ----------------------------- |
-| ng17            | v7.x.x        | `ng add ngx-scrolltop@latest` |
-| ng16            | v6.x.x        | `ng add ngx-scrolltop@6`      |
-| ng15            | v6.x.x        | `ng add ngx-scrolltop@6`      |
-| ng14            | v4.x.x        | `ng add ngx-scrolltop@4`      |
-| ng13            | v4.x.x        | `ng add ngx-scrolltop@4`      |
-| ng12            | v4.x.x        | `ng add ngx-scrolltop@4`      |
-| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`      |
-
-Note: Since `ngx-scrolltop` `v3`, the library is compiled with IVY and fully supports Angular12+ (you can't use this with older Angular version anymore!)
-
-If you still need to use it with an older version of Angular, then use version 2, which is still available: `ng add ngx-scrolltop@2`
-
-## Usage
-
-### Component way (default)
-
-In **app.component.html** you just need to add your new button. Usually at the end of file.
-
-```html
-<ngx-scrolltop></ngx-scrolltop>
-```
-
-### Directive way
-
-**Your custom element somewhere in you application...**
-
-**Important**: _(no style applied, everything is up to you. Of course I recommend `position: fixed`, ...)_
-
-```html
-<span ngxScrollTop class="my-custom-element-with-my-style__no-lib-style-applied-here">
-  ↑ My Custom Element. ↑
-</span>
-```
-
-## Options
+## ⚙️ Options
 
 ### Component
 
@@ -131,7 +173,7 @@ In **app.component.html** you just need to add your new button. Usually at the e
 
 #### Symbol
 
-Since version v2.0.0 you can use _content projection_ for your own symbol.
+You can use _content projection_ for your own symbol.
 
 ```html
 <ngx-scrolltop> ↑ </ngx-scrolltop>
@@ -151,7 +193,7 @@ Or you can even use your own components or fonts (e.g. fontAwesome)
 | ---------------------- | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **[ngxScrollTopMode]** | `'smart'` \| `'classic'` | `'classic'` | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top.**Classic** mode shows button immediately when you scroll at least one screen down. |
 
-## Examples
+## 🎨 Examples
 
 ### Advanced example (component)
 
@@ -198,28 +240,11 @@ _[@angular/material](https://material.angular.io/components/button/overview) req
 }
 ```
 
-## Dependencies
+## 🔌 Dependencies
 
 Pure Angular! _(with smooth scroll-behaviour polyfill for iOS)_
 
-<!-- ## 🧪 Experiments -->
-
-## Development (notes for contributors)
-
-### Publish Stable
-
-```bash
-yarn release:patch
-# yarn release:minor
-# yarn release:major
-```
-
-### Publish next channel
-
-1. Bump version `-beta.0` in `package.json`
-2. `yarn publish:next`
-
-## FAQ
+## 🙋 FAQ
 
 ### Old version of Angular
 
@@ -257,11 +282,13 @@ Easy! Use compatibility version of this library `npm install ngx-scrolltop@4 --s
 
 [See our Angular compatibility instructions…](#compatibility)
 
-## Donation
+## ⭐️ Show your support
 
-If this project have helped you save time please consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
+Give a ⭐️ if this project helped you!
 
-## License
+Or if you are brave enough consider [making a donation](https://github.com/sponsors/bartholomej) for some 🍺 or 🍵 ;)
+
+## 📝 License
 
 Copyright &copy; 2023 [Lukas Bartak](http://bartweb.cz)
 
