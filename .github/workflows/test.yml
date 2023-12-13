@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   test:
+    environment: develop
     runs-on: ubuntu-latest
 
     steps:
