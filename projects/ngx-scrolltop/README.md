@@ -13,7 +13,7 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ Angular 16, Ivy and Angular Universal (SSR) compatible
+> ✓ **Angular 17**, Angular Universal (**SSR**) a **Standalone Components** compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
@@ -25,7 +25,7 @@ Just hit the button to smoothly scroll back to the top of the page. [Here's the 
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#options)...
-- Angular 16: Pure IVY support
+- Angular 17
 - [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
@@ -40,7 +40,7 @@ Or play with it live on [stackblitz.com/edit/ngx-scrolltop](https://stackblitz.c
 
 ### Automatically (recommended) 🚀
 
-> Not using latest version of Angular?
+> You're not using the latest version of Angular?
 > [See our Angular compatibility instructions…](#compatibility)
 
 ```bash
@@ -57,8 +57,6 @@ Via **yarn** or **npm**
 
 ```bash
 npm install ngx-scrolltop --save # for lastest Angular only! See our compatibility table
-
-# npm install ngx-scrolltop@2 --save # for Angular 5 – 11
 ```
 
 ### Setup (manually)
@@ -81,18 +79,19 @@ export class AppModule { }
 
 ### Compatibility
 
-Since `ngx-scrolltop` `v3`, the library is compiled with IVY and fully supports Angular12+ (you can't use this with older Angular version anymore!)
-
-If you still need to use it with an older version of Angular, then use version 2, which is still available: `ng add ngx-scrolltop@2`
-
 | Angular version | ngx-scrolltop | Install                       |
 | --------------- | ------------- | ----------------------------- |
-| ng16            | v6.x.x        | `ng add ngx-scrolltop@latest` |
-| ng15            | v6.x.x        | `ng add ngx-scrolltop@latest` |
+| ng17            | v7.x.x        | `ng add ngx-scrolltop@latest` |
+| ng16            | v6.x.x        | `ng add ngx-scrolltop@6`      |
+| ng15            | v6.x.x        | `ng add ngx-scrolltop@6`      |
 | ng14            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng13            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng12            | v4.x.x        | `ng add ngx-scrolltop@4`      |
 | ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`      |
+
+Note: Since `ngx-scrolltop` `v3`, the library is compiled with IVY and fully supports Angular12+ (you can't use this with older Angular version anymore!)
+
+If you still need to use it with an older version of Angular, then use version 2, which is still available: `ng add ngx-scrolltop@2`
 
 ## Usage
 
