@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, signal } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, input, signal } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
@@ -8,20 +8,20 @@ import { NgxScrollTopMode } from './ngx-scrolltop.interface';
   providers: [NgxScrollTopCoreService],
 })
 export class NgxScrollTopDirective {
-  @Input('ngxScrollTopMode') public mode: NgxScrollTopMode = 'classic';
+  public mode = input<NgxScrollTopMode>('classic', { alias: 'ngxScrollTopMode' });
 
   private show = signal(false);
 
-  constructor(
-    private el: ElementRef,
-    private core: NgxScrollTopCoreService,
-  ) {
+  private el = inject(ElementRef);
+  private core = inject(NgxScrollTopCoreService);
+
+  constructor() {
     this.hideElement();
   }
 
   @HostListener('window:scroll')
   public onWindowScroll(): void {
-    const show = this.core.onWindowScroll(this.mode);
+    const show = this.core.onWindowScroll(this.mode());
 
     // Performance boost. Only update the DOM when the state changes.
     if (this.show() !== show) {
