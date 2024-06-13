@@ -1,10 +1,11 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NgxScrollTopComponent } from './ngx-scrolltop.component';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
 describe('NgxScrollTopComponent', () => {
   let component: NgxScrollTopComponent;
+  let componentRef: ComponentRef<NgxScrollTopComponent>;
   let fixture: ComponentFixture<NgxScrollTopComponent>;
   let element: HTMLButtonElement;
   let cdRef: ChangeDetectorRef;
@@ -19,6 +20,7 @@ describe('NgxScrollTopComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NgxScrollTopComponent);
     component = fixture.componentInstance;
+    componentRef = fixture.componentRef;
     component.show.set(true);
     fixture.detectChanges();
     element = fixture.nativeElement.querySelector('.scrolltop-button');
@@ -29,23 +31,22 @@ describe('NgxScrollTopComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('should set backgroundColor', () => {
-    component.backgroundColor = '#1b5e20';
+    componentRef.setInput('backgroundColor', '#1b5e20');
     cdRef.detectChanges();
 
     expect(element.style.backgroundColor).toEqual('rgb(27, 94, 32)');
   });
 
   it('should set backgroundColor with alpha', () => {
-    component.backgroundColor = '#212121cc';
+    componentRef.setInput('backgroundColor', '#212121cc');
     cdRef.detectChanges();
 
     expect(element.style.backgroundColor).toEqual('rgba(33, 33, 33, 0.8)');
   });
 
   it('should set symbolColor', () => {
-    component.symbolColor = '#FF6F00';
+    componentRef.setInput('symbolColor', '#FF6F00');
     cdRef.detectChanges();
 
     expect(
@@ -54,7 +55,7 @@ describe('NgxScrollTopComponent', () => {
   });
 
   it('should set size', () => {
-    component.size = 55;
+    componentRef.setInput('size', 55);
     cdRef.detectChanges();
 
     expect(element.style.width).toEqual('55px');
@@ -63,14 +64,14 @@ describe('NgxScrollTopComponent', () => {
   });
 
   it('should set position', () => {
-    component.position = 'left';
+    componentRef.setInput('position', 'left');
     cdRef.detectChanges();
 
     expect(element.style.left).toEqual('20px');
   });
 
   it('should set theme', () => {
-    component.theme = 'deeppurple';
+    componentRef.setInput('theme', 'deeppurple');
     cdRef.detectChanges();
 
     const computedStyle = window.getComputedStyle(element);
