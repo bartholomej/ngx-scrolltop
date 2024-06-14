@@ -13,12 +13,12 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ **Angular 17**, Angular Universal (**SSR**) a **Standalone Components** compatible
+> ✓ **Angular 18**, Angular Universal (**SSR**) a **Standalone Components** compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - Lightweight _(~2 kB gzipped)_
-- **Angular 17** compatible
+- **Angular 18** compatible
 - **Standalone Components** compatible
 - Signals compatible
 - No dependencies! _(only smooth scroll-behavior polyfill for iOS)_
@@ -53,15 +53,16 @@ npm install ngx-scrolltop --save # for lastest Angular only! See our compatibili
 
 ### Compatibility
 
-| Angular version | ngx-scrolltop | Install                       |
-| --------------- | ------------- | ----------------------------- |
-| ng17            | v17.x.x       | `ng add ngx-scrolltop@latest` |
-| ng16            | v6.x.x        | `ng add ngx-scrolltop@6`      |
-| ng15            | v6.x.x        | `ng add ngx-scrolltop@6`      |
-| ng14            | v4.x.x        | `ng add ngx-scrolltop@4`      |
-| ng13            | v4.x.x        | `ng add ngx-scrolltop@4`      |
-| ng12            | v4.x.x        | `ng add ngx-scrolltop@4`      |
-| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`      |
+| Angular version | ngx-scrolltop | Install                            |
+| --------------- | ------------- | ---------------------------------- |
+| ng18            | v18.x.x       | `npm install ngx-scrolltop@latest` |
+| ng17            | v17.x.x       | `npm install ngx-scrolltop@17`     |
+| ng16            | v6.x.x        | `ng add ngx-scrolltop@6`           |
+| ng15            | v6.x.x        | `ng add ngx-scrolltop@6`           |
+| ng14            | v4.x.x        | `ng add ngx-scrolltop@4`           |
+| ng13            | v4.x.x        | `ng add ngx-scrolltop@4`           |
+| ng12            | v4.x.x        | `ng add ngx-scrolltop@4`           |
+| ng5 – ng11      | v2.x.x        | `ng add ngx-scrolltop@2`           |
 
 ## 🗜️ Setup and usage (`Standalone` or `Modules`)
 
