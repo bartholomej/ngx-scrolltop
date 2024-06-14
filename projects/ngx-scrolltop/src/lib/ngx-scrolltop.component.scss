@@ -38,6 +38,7 @@ button {
       }
     }
     svg {
+      display: inline-flex; // Ensure the SVG is centered horizontally and not conflicting with tailwindcss
       transform: translateY(10%); // Centering no-rectangle symbols
       width: $svg-size;
       vertical-align: baseline;
