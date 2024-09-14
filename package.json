@@ -41,7 +41,7 @@
     "@angular/router": "^18.0.3",
     "rxjs": "^7.4.0",
     "seamless-scroll-polyfill": "^2.3.4",
-    "tslib": "^2.6.3",
+    "tslib": "^2.7.0",
     "zone.js": "~0.14.7"
   },
   "devDependencies": {
