@@ -21,7 +21,6 @@ import {
   imports: [NgClass],
   providers: [NgxScrollTopCoreService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class NgxScrollTopComponent {
   public backgroundColor = input<string>();

@@ -4,7 +4,8 @@ import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 
 @Component({
-  template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
+    template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
+    
 })
 class TestComponent {
   constructor() { }
