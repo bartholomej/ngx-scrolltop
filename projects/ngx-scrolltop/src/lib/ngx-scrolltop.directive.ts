@@ -1,4 +1,14 @@
-import { Directive, ElementRef, HostListener, inject, input, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
@@ -12,22 +22,31 @@ export class NgxScrollTopDirective {
 
   private show = signal(false);
 
+  private readonly destroyRef = inject(DestroyRef);
+
   private el = inject(ElementRef);
   private core = inject(NgxScrollTopCoreService);
 
   constructor() {
     this.hideElement();
-  }
 
-  @HostListener('window:scroll')
-  public onWindowScroll(): void {
-    const show = this.core.onWindowScroll(this.mode());
-
-    // Performance boost. Only update the DOM when the state changes.
-    if (this.show() !== show) {
-      show ? this.showElement() : this.hideElement();
-      this.show.set(show);
-    }
+    fromEvent(window, 'scroll', { passive: true })
+      .pipe(
+        debounceTime(50),
+        map(() => typeof window !== 'undefined' && window.scrollY),
+        distinctUntilChanged(),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((pos) => {
+        requestAnimationFrame(() => {
+          const show = this.core.onWindowScroll(this.mode());
+          // Performance boost. Only update the state if it has changed.
+          if (this.show() !== show) {
+            show ? this.showElement() : this.hideElement();
+            this.show.set(show);
+          }
+        });
+      });
   }
 
   @HostListener('click')
