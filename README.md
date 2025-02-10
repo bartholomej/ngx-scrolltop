@@ -13,12 +13,12 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ **Angular 18**, Angular Universal (**SSR**) a **Standalone Components** compatible
+> ✓ **Angular 19**, Angular Universal (**SSR**) a **Standalone Components** compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - Lightweight _(~2 kB gzipped)_
-- **Angular 18** compatible
+- **Angular 19** compatible
 - **Standalone Components** compatible
 - Signals compatible
 - No dependencies! _(only smooth scroll-behavior polyfill for iOS)_
@@ -55,7 +55,8 @@ npm install ngx-scrolltop --save # for lastest Angular only! See our compatibili
 
 | Angular version | ngx-scrolltop | Install                            |
 | --------------- | ------------- | ---------------------------------- |
-| ng18            | v18.x.x       | `npm install ngx-scrolltop@latest` |
+| ng19            | v19.x.x       | `npm install ngx-scrolltop@latest` |
+| ng18            | v18.x.x       | `npm install ngx-scrolltop@18`     |
 | ng17            | v17.x.x       | `npm install ngx-scrolltop@17`     |
 | ng16            | v6.x.x        | `ng add ngx-scrolltop@6`           |
 | ng15            | v6.x.x        | `ng add ngx-scrolltop@6`           |
