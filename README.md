@@ -13,22 +13,21 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ **Angular 19**, Angular Universal (**SSR**) a **Standalone Components** compatible
+> ✓ **Angular 19**, **Signals**, **Standalone Components** and Angular Universal (**SSR**) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
+- No dependencies! _(only smooth scroll-behavior polyfill for old iOS versions)_
 - Lightweight _(~2 kB gzipped)_
 - **Angular 19** compatible
 - **Standalone Components** compatible
-- Signals compatible
-- No dependencies! _(only smooth scroll-behavior polyfill for iOS)_
+- **Signals** compatible
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
 - Component or directive way
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#%EF%B8%8F-options)...
-- [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
 
@@ -292,7 +291,7 @@ Or if you are brave enough consider [making a donation](https://github.com/spons
 
 ## 📝 License
 
-Copyright &copy; 2023 [Lukas Bartak](http://bartweb.cz)
+Copyright &copy; 2025 [Lukas Bartak](http://bartweb.cz)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
