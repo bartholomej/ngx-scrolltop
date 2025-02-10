@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables';
 
 button {
   outline: 0;
@@ -12,10 +12,10 @@ button {
   align-items: center;
   border-radius: 50%;
   padding: 0;
-  width: $size;
-  height: $size;
-  right: $padding;
-  bottom: $padding;
+  width: variables.$size;
+  height: variables.$size;
+  right: variables.$padding;
+  bottom: variables.$padding;
   cursor: pointer;
   border: none;
   transition: opacity 0.1s linear;
@@ -31,7 +31,7 @@ button {
 
   .symbol-container {
     span {
-      font-size: $font-size;
+      font-size: variables.$font-size;
 
       &:empty {
         display: none;
@@ -40,12 +40,12 @@ button {
     svg {
       display: inline-flex; // Ensure the SVG is centered horizontally and not conflicting with tailwindcss
       transform: translateY(10%); // Centering no-rectangle symbols
-      width: $svg-size;
+      width: variables.$svg-size;
       vertical-align: baseline;
     }
   }
 
-  @each $name, $background, $color in $themes {
+  @each $name, $background, $color in variables.$themes {
     &.#{$name} {
       background-color: $background;
       color: $color;
