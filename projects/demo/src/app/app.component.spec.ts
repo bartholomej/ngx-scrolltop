@@ -19,7 +19,7 @@ describe('AppComponent', () => {
       ],
       declarations: [AppComponent],
     }).compileComponents();
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
     router.initialNavigation();
   }));
 

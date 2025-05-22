@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal, DOCUMENT } from '@angular/core';
 import { polyfill as smoothscrollPolyfill } from 'seamless-scroll-polyfill';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
