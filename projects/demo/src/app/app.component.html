@@ -62,7 +62,7 @@
     Dummy text
   </h3>
 
-  @for (i of iterations; track i) {
+  @for (i of iterations; let idx = $index; track idx) {
     <p class="muted">
       {{ lipsum }}
     </p>

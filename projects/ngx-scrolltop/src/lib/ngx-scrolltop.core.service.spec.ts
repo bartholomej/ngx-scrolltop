@@ -1,4 +1,5 @@
 
+import { DOCUMENT } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
