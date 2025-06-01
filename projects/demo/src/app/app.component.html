@@ -6,9 +6,9 @@
     width="40"
     alt="Angular Logo"
     src="https://raw.githubusercontent.com/bartholomej/ngx-scrolltop/HEAD/_assets/ngx-scrolltop_logo.svg?sanitize=true"
-  />
+    />
   <span>Demo page for ngx-scroltop</span>
-    <div class="spacer"></div>
+  <div class="spacer"></div>
   <a aria-label="ngx-scrolltop on github" target="_blank" rel="noopener" href="https://github.com/bartholomej/ngx-scrolltop" title="Github">
 
     <svg id="github-logo" aria-hidden="true" height="24" focusable="false" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -27,7 +27,7 @@
       width="24"
       alt="ngx-scrolltop logo"
       src="https://raw.githubusercontent.com/bartholomej/ngx-scrolltop/HEAD/_assets/ngx-scrolltop_logo.svg?sanitize=true"
-    />
+      />
 
     <span>ngx-scrolltop v{{ version.TAG }}</span>
 
@@ -50,7 +50,7 @@
 
     <a routerLink="directive-way">
       <div class="card card-small" tabindex="0">
-          <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
         <span>Directive</span>
       </div>
     </a>
@@ -62,22 +62,24 @@
     Dummy text
   </h3>
 
-  <p class="muted" *ngFor="let i of iterations">
-    {{ lipsum }}
-  </p>
+  @for (i of iterations; track i) {
+    <p class="muted">
+      {{ lipsum }}
+    </p>
+  }
 
   <!-- Footer -->
   <footer>
-      Love this library?&nbsp;
-      <a href="https://github.com/bartholomej/ngx-scrolltop" target="_blank" rel="noopener"> Give our repo a star.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Star
-        </div>
-      </a>
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
+    Love this library?&nbsp;
+    <a href="https://github.com/bartholomej/ngx-scrolltop" target="_blank" rel="noopener"> Give our repo a star.
+      <div class="github-star-badge">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        Star
+      </div>
+    </a>
+    <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+    </a>
   </footer>
 
   <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
