@@ -13,22 +13,21 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ **Angular 19**, Angular Universal (**SSR**) a **Standalone Components** compatible
+> ✓ **Angular 20**, **Signals**, **Standalone Components** and Angular Universal (**SSR**) compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
+- No dependencies! _(only smooth scroll-behavior polyfill for old iOS versions)_
 - Lightweight _(~2 kB gzipped)_
-- **Angular 19** compatible
+- **Angular 20** compatible
 - **Standalone Components** compatible
-- Signals compatible
-- No dependencies! _(only smooth scroll-behavior polyfill for iOS)_
+- **Signals** compatible
 - Material Design inspired
 - `@angular/material` compatible ([example](#angular-material-example-directive))
 - Component or directive way
 - Smoothly animated
 - a11y ready
 - Highly customizable [options](#%EF%B8%8F-options)...
-- [Angular 5+ compatible](#compatibility)
 
 ![Demo animation](https://github.com/bartholomej/material-scrollTop/blob/master/demo/images/material-scrolltop-animation.gif?raw=true)
 
@@ -55,7 +54,8 @@ npm install ngx-scrolltop --save # for lastest Angular only! See our compatibili
 
 | Angular version | ngx-scrolltop | Install                            |
 | --------------- | ------------- | ---------------------------------- |
-| ng19            | v19.x.x       | `npm install ngx-scrolltop@latest` |
+| ng20            | v20.x.x       | `npm install ngx-scrolltop@latest` |
+| ng19            | v19.x.x       | `npm install ngx-scrolltop@19`     |
 | ng18            | v18.x.x       | `npm install ngx-scrolltop@18`     |
 | ng17            | v17.x.x       | `npm install ngx-scrolltop@17`     |
 | ng16            | v6.x.x        | `ng add ngx-scrolltop@6`           |
@@ -292,7 +292,7 @@ Or if you are brave enough consider [making a donation](https://github.com/spons
 
 ## 📝 License
 
-Copyright &copy; 2023 [Lukas Bartak](http://bartweb.cz)
+Copyright &copy; 2025 [Lukas Bartak](http://bartweb.cz)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
