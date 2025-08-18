@@ -1,7 +1,7 @@
 /**
  * Sync versions between root package.json a npm repository package.json
  */
-import { copyFileSync, writeFileSync } from 'fs-extra';
+import { copyFileSync, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import {
   author,
@@ -19,7 +19,7 @@ import {
 import { PackageJson } from './package.json.interface';
 
 const packagePath = resolve(__dirname, '..', 'projects', 'ngx-scrolltop', 'package.json');
-const pkg: PackageJson = require(packagePath);
+const pkg: PackageJson = JSON.parse(readFileSync(packagePath, 'utf8'));
 
 pkg.name = name;
 pkg.version = version;

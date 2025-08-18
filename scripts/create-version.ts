@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs-extra';
+import { writeFileSync } from 'fs';
 import { relative, resolve } from 'path';
 import { version } from '../package.json';
 
@@ -18,10 +18,10 @@ writeFileSync(
 export const VERSION = ${JSON.stringify(VERSION, null, 4)};
 /* tslint:enable */
 `,
-  { encoding: 'utf-8' }
+  { encoding: 'utf-8' },
 );
 
 console.log(
   '\x1b[34m',
-  `- Wrote version ${version} info to ${relative(resolve(__dirname, '..'), file)}`
+  `- Wrote version ${version} info to ${relative(resolve(__dirname, '..'), file)}`,
 );
