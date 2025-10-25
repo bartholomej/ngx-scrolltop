@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, RouterModule } from '@angular/router';
 import { NgxScrollTopModule } from 'projects/ngx-scrolltop/src/public-api';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +11,12 @@ describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes(routes),
+        RouterModule.forRoot(routes),
         ComponentWayModule,
         DirectiveWayModule,
         NgxScrollTopModule,
       ],
+      providers: [],
       declarations: [AppComponent],
     }).compileComponents();
     router = TestBed.inject(Router);
