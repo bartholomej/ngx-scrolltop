@@ -50,17 +50,22 @@ describe('AppComponent', () => {
 
     initScroll(fixture);
 
-    scrollTo(window.innerHeight * 2 - 100, finishIt);
+    // First scroll down past the threshold to activate smart mode
+    scrollTo(window.innerHeight * 2 + 100, () => {
+      fixture.detectChanges();
+      // Then scroll back up to trigger the button visibility
+      scrollTo(window.innerHeight * 2 - 100, finishIt);
+    });
 
     function finishIt() {
+      fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
 
       const ngxScrollTopElementWithDirective = compiled.querySelector(
         '.my-custom-scrolltop-element'
       );
-      expect(ngxScrollTopElementWithDirective.style.display).not.toEqual(
-        'none'
-      );
+
+      expect(ngxScrollTopElementWithDirective.style.display).not.toEqual('none');
       done();
     }
   });
