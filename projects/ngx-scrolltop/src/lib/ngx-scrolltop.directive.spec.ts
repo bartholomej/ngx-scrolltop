@@ -4,13 +4,12 @@ import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 
 @Component({
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxScrollTopDirective],
   template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
 })
-class TestComponent {
-  constructor() { }
-}
+class TestComponent {}
 
 describe('NgxScrollTopDirective', () => {
   let component: TestComponent;
@@ -19,8 +18,7 @@ describe('NgxScrollTopDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent],
-      imports: [NgxScrollTopDirective],
+      imports: [TestComponent, NgxScrollTopDirective],
       providers: [NgxScrollTopCoreService]
     });
 

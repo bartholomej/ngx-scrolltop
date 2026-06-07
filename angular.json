@@ -42,7 +42,8 @@
             "lintFilePatterns": [
               "projects/ngx-scrolltop/**/*.ts",
               "projects/ngx-scrolltop/**/*.html"
-            ]
+            ],
+            "eslintConfig": "projects/ngx-scrolltop/eslint.config.mjs"
           }
         }
       }
@@ -178,7 +179,8 @@
             "lintFilePatterns": [
               "projects/demo/**/*.ts",
               "projects/demo/**/*.html"
-            ]
+            ],
+            "eslintConfig": "projects/demo/eslint.config.js"
           }
         }
       }

@@ -25,7 +25,11 @@ export class NgxScrollTopDirective {
 
     // Performance boost. Only update the DOM when the state changes.
     if (this.show() !== show) {
-      show ? this.showElement() : this.hideElement();
+      if (show) {
+        this.showElement();
+      } else {
+        this.hideElement();
+      }
       this.show.set(show);
     }
   }
