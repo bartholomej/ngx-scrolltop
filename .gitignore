@@ -47,3 +47,4 @@ testem.log
 Thumbs.db
 package-lock.json
 version.ts
+.yarn/install-state.gz
