@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "esModuleInterop": true,
@@ -13,13 +12,12 @@
     "target": "ES2022",
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "ngx-scrolltop": ["dist/ngx-scrolltop"],
-      "ngx-scrolltop/*": ["dist/ngx-scrolltop/*"]
+      "ngx-scrolltop": ["./dist/ngx-scrolltop"],
+      "ngx-scrolltop/*": ["./dist/ngx-scrolltop/*"]
     },
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
     "strictTemplates": true,
     "strictInputAccessModifiers": true,
     "strictInjectionParameters": true

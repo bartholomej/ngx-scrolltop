@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router, RouterModule } from '@angular/router';
-import { NgxScrollTopModule } from 'projects/ngx-scrolltop/src/public-api';
+import { NgxScrollTopModule } from './../../../../projects/ngx-scrolltop/src/public-api';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentWayModule } from './component-way/component-way.module';
