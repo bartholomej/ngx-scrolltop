@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, RouterModule } from '@angular/router';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { NgxScrollTopModule } from './../../../../projects/ngx-scrolltop/src/public-api';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,8 +9,8 @@ import { DirectiveWayModule } from './directive-way/directive-way.module';
 
 describe('AppComponent', () => {
     let router: Router;
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
             imports: [
                 RouterModule.forRoot(routes),
                 ComponentWayModule,
@@ -21,7 +22,7 @@ describe('AppComponent', () => {
         }).compileComponents();
         router = TestBed.inject(Router);
         router.initialNavigation();
-    }));
+    });
 
     it('should create the app', () => {
         const fixture = TestBed.createComponent(AppComponent);

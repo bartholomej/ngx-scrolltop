@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 

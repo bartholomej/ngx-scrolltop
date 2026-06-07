@@ -6,6 +6,10 @@ import 'zone.js';
 import 'zone.js/testing';
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(BrowserTestingModule, platformBrowserTesting(), {
-  teardown: { destroyAfterEach: false },
-});
+try {
+  getTestBed().initTestEnvironment(BrowserTestingModule, platformBrowserTesting(), {
+    teardown: { destroyAfterEach: false },
+  });
+} catch {
+  // Already initialized
+}

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, ComponentRef } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { NgxScrollTopComponent } from './ngx-scrolltop.component';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
@@ -10,12 +11,12 @@ describe('NgxScrollTopComponent', () => {
   let element: HTMLButtonElement;
   let cdRef: ChangeDetectorRef;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [NgxScrollTopComponent],
       providers: [NgxScrollTopCoreService]
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NgxScrollTopComponent);

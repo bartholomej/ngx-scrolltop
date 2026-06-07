@@ -2,12 +2,13 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": ["jasmine", "node"]
+    "types": ["node"],
+    "target": "ESNext",
+    "module": "ESNext"
   },
   "files": ["src/test.ts", "src/polyfills.ts"],
-  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "angularCompilerOptions": {
-    "enableIvy": true,
     "extendedDiagnostics": {
       "checks": {
         "nullishCoalescingNotNullable": "suppress",
