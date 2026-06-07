@@ -7,112 +7,108 @@ import { ComponentWayModule } from './component-way/component-way.module';
 import { DirectiveWayModule } from './directive-way/directive-way.module';
 
 describe('AppComponent', () => {
-  let router: Router;
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterModule.forRoot(routes),
-        ComponentWayModule,
-        DirectiveWayModule,
-        NgxScrollTopModule,
-      ],
-      providers: [],
-      declarations: [AppComponent],
-    }).compileComponents();
-    router = TestBed.inject(Router);
-    router.initialNavigation();
-  }));
+    let router: Router;
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                RouterModule.forRoot(routes),
+                ComponentWayModule,
+                DirectiveWayModule,
+                NgxScrollTopModule,
+            ],
+            providers: [],
+            declarations: [AppComponent],
+        }).compileComponents();
+        router = TestBed.inject(Router);
+        router.initialNavigation();
+    }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('NgxScrollTop demo | Angular go to top button');
-  });
-
-  it('should render main component', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain(
-      'ngx-scrolltop'
-    );
-  });
-
-  it('Scroll: Directive', done => {
-    router.navigateByUrl('/directive-way');
-    const fixture = TestBed.createComponent(AppComponent);
-
-    initScroll(fixture);
-
-    // First scroll down past the threshold to activate smart mode
-    scrollTo(window.innerHeight * 2 + 100, () => {
-      fixture.detectChanges();
-      // Then scroll back up to trigger the button visibility
-      scrollTo(window.innerHeight * 2 - 100, finishIt);
+    it('should create the app', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        expect(app).toBeTruthy();
     });
 
-    function finishIt() {
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
+    it(`should have title`, () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        expect(app.title).toEqual('NgxScrollTop demo | Angular go to top button');
+    });
 
-      const ngxScrollTopElementWithDirective = compiled.querySelector(
-        '.my-custom-scrolltop-element'
-      );
+    it('should render main component', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('.content span').textContent).toContain('ngx-scrolltop');
+    });
 
-      expect(ngxScrollTopElementWithDirective.style.display).not.toEqual('none');
-      done();
-    }
-  });
+    it('Scroll: Directive', async () => {
+        router.navigateByUrl('/directive-way');
+        const fixture = TestBed.createComponent(AppComponent);
 
-  // it('Scroll: Component', done => {
-  //   router.navigateByUrl('/');
-  //   const fixture = TestBed.createComponent(AppComponent);
+        initScroll(fixture);
 
-  //   initScroll(fixture);
+        // First scroll down past the threshold to activate smart mode
+        scrollTo(window.innerHeight * 2 + 100, () => {
+            fixture.detectChanges();
+            // Then scroll back up to trigger the button visibility
+            scrollTo(window.innerHeight * 2 - 100, finishIt);
+        });
 
-  //   scrollTo(window.innerHeight * 2 - 100, finishIt);
+        function finishIt() {
+            fixture.detectChanges();
+            const compiled = fixture.debugElement.nativeElement;
 
-  //   function finishIt() {
-  //     const compiled = fixture.debugElement.nativeElement;
+            const ngxScrollTopElementWithDirective = compiled.querySelector('.my-custom-scrolltop-element');
 
-  //     const ngxScrollTopElement = compiled.querySelector('.scrolltop-button');
-  //     expect(ngxScrollTopElement).toBeTruthy();
-  //     done();
-  //   }
-  // });
+            expect(ngxScrollTopElementWithDirective.style.display).not.toEqual('none');
+            ;
+        }
+    });
+
+    // it('Scroll: Component', done => {
+    //   router.navigateByUrl('/');
+    //   const fixture = TestBed.createComponent(AppComponent);
+
+    //   initScroll(fixture);
+
+    //   scrollTo(window.innerHeight * 2 - 100, finishIt);
+
+    //   function finishIt() {
+    //     const compiled = fixture.debugElement.nativeElement;
+
+    //     const ngxScrollTopElement = compiled.querySelector('.scrolltop-button');
+    //     expect(ngxScrollTopElement).toBeTruthy();
+    //     done();
+    //   }
+    // });
 });
 
 function initScroll(fixture: ComponentFixture<AppComponent>): void {
-  const scrollEvent = document.createEvent('CustomEvent');
-  scrollEvent.initCustomEvent('scroll', false, false, null);
+    const scrollEvent = document.createEvent('CustomEvent');
+    scrollEvent.initCustomEvent('scroll', false, false, null);
 
-  window.dispatchEvent(scrollEvent);
+    window.dispatchEvent(scrollEvent);
 
-  window.scrollTo(0, document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
 
-  fixture.detectChanges();
+    fixture.detectChanges();
 }
 
 function scrollTo(offset: number, callback: () => void): void {
-  offset = Math.round(offset);
-  const onScroll = () => {
-    const scrollTop = window.scrollY;
+    offset = Math.round(offset);
+    const onScroll = () => {
+        const scrollTop = window.scrollY;
 
-    if (scrollTop === offset) {
-      window.removeEventListener('scroll', onScroll);
-      callback();
-    }
-  };
-  window.addEventListener('scroll', onScroll);
-  onScroll();
-  window.scrollTo({
-    top: offset,
-    behavior: 'smooth',
-  });
+        if (scrollTop === offset) {
+            window.removeEventListener('scroll', onScroll);
+            callback();
+        }
+    };
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    window.scrollTo({
+        top: offset,
+        behavior: 'smooth',
+    });
 }
