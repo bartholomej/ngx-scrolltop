@@ -59,8 +59,8 @@ describe('NgxScrollTopService', () => {
     expect(srvc.onWindowScroll('smart')).toBe(false);
   });
 
-  it('Scroll to top', () => {
-    srvc.scrollToTop();
+  it('Scroll to top', async () => {
+    await srvc.scrollToTop();
     expect(document.documentElement.scrollTop).toBe(0);
   });
 });

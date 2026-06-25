@@ -1,16 +1,7 @@
-import { isPlatformBrowser } from '@angular/common';
-import {
-  DestroyRef,
-  Directive,
-  ElementRef,
-  NgZone,
-  PLATFORM_ID,
-  inject,
-  input,
-  signal,
-} from '@angular/core';
+import { Directive, ElementRef, inject, input, signal } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
+import { listenToWindowScroll } from './ngx-scrolltop.scroll-listener';
 
 @Directive({
   selector: '[ngxScrollTop]',
@@ -30,28 +21,7 @@ export class NgxScrollTopDirective {
   constructor() {
     this.hideElement();
 
-    const zone = inject(NgZone);
-    const destroyRef = inject(DestroyRef);
-
-    if (isPlatformBrowser(inject(PLATFORM_ID))) {
-      // Listen outside Angular so scroll events don't trigger change detection.
-      zone.runOutsideAngular(() => {
-        let ticking = false;
-        const handler = (): void => {
-          if (ticking) {
-            return;
-          }
-          ticking = true;
-          requestAnimationFrame(() => {
-            this.onWindowScroll();
-            ticking = false;
-          });
-        };
-
-        window.addEventListener('scroll', handler, { passive: true });
-        destroyRef.onDestroy(() => window.removeEventListener('scroll', handler));
-      });
-    }
+    listenToWindowScroll(() => this.onWindowScroll());
   }
 
   public onClick(): void {
@@ -61,7 +31,7 @@ export class NgxScrollTopDirective {
   private onWindowScroll(): void {
     const show = this.core.onWindowScroll(this.mode());
 
-    // Performance boost. Only update DOM when state changes.
+    // Performance boost. Only touch the DOM when state changes.
     if (this.show() !== show) {
       if (show) {
         this.showElement();
