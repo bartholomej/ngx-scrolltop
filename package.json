@@ -5,9 +5,10 @@
   "author": "Lukas Bartak <bart@bartweb.cz> (https://github.com/bartholomej)",
   "scripts": {
     "ng": "ng",
-    "start": "ng build ngx-scrolltop --watch",
-    "start:demo": "ng serve",
-    "start:open": "yarn ng serve --host 0.0.0.0 --disable-host-check",
+    "start": "yarn dev",
+    "dev": "ng build ngx-scrolltop --watch",
+    "dev:demo": "ng serve",
+    "dev:open": "yarn ng serve --host 0.0.0.0 --disable-host-check",
     "build": "ng build ngx-scrolltop --configuration production",
     "build:demo": "ng build demo --configuration production",
     "build:schematics": "yarn clean:schematics && tsc -p projects/schematics/tsconfig.json && yarn copy:schematics",
