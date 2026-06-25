@@ -13,13 +13,13 @@
 > No dependencies.
 > **Pure Angular!**
 
-> ✓ **Angular 21**, **Signals**, **Standalone Components** and Angular Universal (**SSR**) compatible
+> ✓ **Angular 2**, **Signals**, **Standalone Components** and **SSR** compatible
 
 Just hit the button to smoothly scroll back to the top of the page. [Here's the demo.](http://bartholomej.github.io/ngx-scrolltop/)
 
 - No dependencies! _(only smooth scroll-behavior polyfill for old iOS versions)_
 - Lightweight _(~2 kB gzipped)_
-- **Angular 21** compatible
+- **Angular 22** compatible
 - **Standalone Components** compatible
 - **Signals** compatible
 - Material Design inspired
@@ -54,7 +54,8 @@ npm install ngx-scrolltop --save # for lastest Angular only! See our compatibili
 
 | Angular version | ngx-scrolltop | Install                            |
 | --------------- | ------------- | ---------------------------------- |
-| ng21            | v21.x.x       | `npm install ngx-scrolltop@latest` |
+| ng22            | v22.x.x       | `npm install ngx-scrolltop@latest` |
+| ng21            | v21.x.x       | `npm install ngx-scrolltop@21`     |
 | ng20            | v20.x.x       | `npm install ngx-scrolltop@20`     |
 | ng19            | v19.x.x       | `npm install ngx-scrolltop@19`     |
 | ng18            | v18.x.x       | `npm install ngx-scrolltop@18`     |
@@ -293,7 +294,7 @@ Or if you are brave enough consider [making a donation](https://github.com/spons
 
 ## 📝 License
 
-Copyright &copy; 2025 [Lukas Bartak](http://bartweb.cz)
+Copyright &copy; 2026 [Lukas Bartak](http://bartweb.cz)
 
 Proudly powered by nature 🗻, wind 💨, tea 🍵 and beer 🍺 ;)
 
