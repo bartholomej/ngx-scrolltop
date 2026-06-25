@@ -21,7 +21,6 @@ export type NgxScrollTopTheme =
   | 'lightgreen'
   | 'lime'
   | 'amber'
-  | 'grey'
   | 'bluegrey';
 
 export type NgxScrollTopMode = 'classic' | 'smart';

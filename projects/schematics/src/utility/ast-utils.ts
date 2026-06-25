@@ -22,31 +22,28 @@ export function insertImport(
   fileToEdit: string,
   symbolName: string,
   fileName: string,
-  isDefault = false
+  isDefault = false,
 ): Change {
   const rootNode = source;
   const allImports = findNodes(rootNode, ts.SyntaxKind.ImportDeclaration);
 
   // get nodes that map to import statements from the file fileName
-  const relevantImports = allImports.filter(node => {
+  const relevantImports = allImports.filter((node) => {
     // StringLiteral of the ImportDeclaration is the import file (fileName in this case).
     const importFiles = node
       .getChildren()
-      .filter(child => child.kind === ts.SyntaxKind.StringLiteral)
-      .map(n => (n as ts.StringLiteral).text);
+      .filter((child) => child.kind === ts.SyntaxKind.StringLiteral)
+      .map((n) => (n as ts.StringLiteral).text);
 
-    return importFiles.filter(file => file === fileName).length === 1;
+    return importFiles.filter((file) => file === fileName).length === 1;
   });
 
   if (relevantImports.length > 0) {
     let importsAsterisk = false;
     // imports from import file
     const imports: ts.Node[] = [];
-    relevantImports.forEach(n => {
-      Array.prototype.push.apply(
-        imports,
-        findNodes(n, ts.SyntaxKind.Identifier)
-      );
+    relevantImports.forEach((n) => {
+      Array.prototype.push.apply(imports, findNodes(n, ts.SyntaxKind.Identifier));
       if (findNodes(n, ts.SyntaxKind.AsteriskToken).length > 0) {
         importsAsterisk = true;
       }
@@ -57,25 +54,15 @@ export function insertImport(
       return new NoopChange();
     }
 
-    const importTextNodes = imports.filter(
-      n => (n as ts.Identifier).text === symbolName
-    );
+    const importTextNodes = imports.filter((n) => (n as ts.Identifier).text === symbolName);
 
     // insert import if it's not there
     if (importTextNodes.length === 0) {
       const fallbackPos =
-        findNodes(
-          relevantImports[0],
-          ts.SyntaxKind.CloseBraceToken
-        )[0].getStart() ||
+        findNodes(relevantImports[0], ts.SyntaxKind.CloseBraceToken)[0].getStart() ||
         findNodes(relevantImports[0], ts.SyntaxKind.FromKeyword)[0].getStart();
 
-      return insertAfterLastOccurrence(
-        imports,
-        `, ${symbolName}`,
-        fileToEdit,
-        fallbackPos
-      );
+      return insertAfterLastOccurrence(imports, `, ${symbolName}`, fileToEdit, fallbackPos);
     }
 
     return new NoopChange();
@@ -83,7 +70,7 @@ export function insertImport(
 
   // no such import declaration exists
   const useStrict = findNodes(rootNode, ts.SyntaxKind.StringLiteral).filter(
-    (n: ts.StringLiteral) => n.text === 'use strict'
+    (n: ts.Node) => (n as ts.StringLiteral).text === 'use strict',
   );
   let fallbackPos = 0;
   if (useStrict.length > 0) {
@@ -103,7 +90,7 @@ export function insertImport(
     toInsert,
     fileToEdit,
     fallbackPos,
-    ts.SyntaxKind.StringLiteral
+    ts.SyntaxKind.StringLiteral,
   );
 }
 
@@ -120,7 +107,7 @@ export function findNodes(
   node: ts.Node,
   kind: ts.SyntaxKind,
   max = Infinity,
-  recursive = false
+  recursive = false,
 ): ts.Node[] {
   if (!node || max == 0) {
     return [];
@@ -133,7 +120,7 @@ export function findNodes(
   }
   if (max > 0 && (recursive || node.kind !== kind)) {
     for (const child of node.getChildren()) {
-      findNodes(child, kind, max).forEach(node => {
+      findNodes(child, kind, max).forEach((node) => {
         if (max > 0) {
           arr.push(node);
         }
@@ -172,18 +159,14 @@ export function getSourceNodes(sourceFile: ts.SourceFile): ts.Node[] {
   return result;
 }
 
-export function findNode(
-  node: ts.Node,
-  kind: ts.SyntaxKind,
-  text: string
-): ts.Node | null {
+export function findNode(node: ts.Node, kind: ts.SyntaxKind, text: string): ts.Node | null {
   if (node.kind === kind && node.getText() === text) {
     // throw new Error(node.getText());
     return node;
   }
 
   let foundNode: ts.Node | null = null;
-  ts.forEachChild(node, childNode => {
+  ts.forEachChild(node, (childNode) => {
     foundNode = foundNode || findNode(childNode, kind, text);
   });
 
@@ -216,7 +199,7 @@ export function insertAfterLastOccurrence(
   toInsert: string,
   file: string,
   fallbackPos: number,
-  syntaxKind?: ts.SyntaxKind
+  syntaxKind?: ts.SyntaxKind,
 ): Change {
   let lastItem: ts.Node | undefined;
   for (const node of nodes) {
@@ -225,24 +208,17 @@ export function insertAfterLastOccurrence(
     }
   }
   if (syntaxKind && lastItem) {
-    lastItem = findNodes(lastItem, syntaxKind)
-      .sort(nodesByPosition)
-      .pop();
+    lastItem = findNodes(lastItem, syntaxKind).sort(nodesByPosition).pop();
   }
   if (!lastItem && fallbackPos == undefined) {
-    throw new Error(
-      `tried to insert ${toInsert} as first occurence with no fallback position`
-    );
+    throw new Error(`tried to insert ${toInsert} as first occurence with no fallback position`);
   }
   const lastItemPosition: number = lastItem ? lastItem.getEnd() : fallbackPos;
 
   return new InsertChange(file, lastItemPosition, toInsert);
 }
 
-export function getContentOfKeyLiteral(
-  _source: ts.SourceFile,
-  node: ts.Node
-): string | null {
+export function getContentOfKeyLiteral(_source: ts.SourceFile, node: ts.Node): string | null {
   if (node.kind == ts.SyntaxKind.Identifier) {
     return (node as ts.Identifier).text;
   } else if (node.kind == ts.SyntaxKind.StringLiteral) {
@@ -252,10 +228,7 @@ export function getContentOfKeyLiteral(
   }
 }
 
-function _angularImportsFromNode(
-  node: ts.ImportDeclaration,
-  _sourceFile: ts.SourceFile
-): { [name: string]: string } {
+function _angularImportsFromNode(node: ts.ImportDeclaration): Record<string, string> {
   const ms = node.moduleSpecifier;
   let modulePath: string;
   switch (ms.kind) {
@@ -286,10 +259,8 @@ function _angularImportsFromNode(
         const namedImports = nb as ts.NamedImports;
 
         return namedImports.elements
-          .map((is: ts.ImportSpecifier) =>
-            is.propertyName ? is.propertyName.text : is.name.text
-          )
-          .reduce((acc: { [name: string]: string }, curr: string) => {
+          .map((is: ts.ImportSpecifier) => (is.propertyName ? is.propertyName.text : is.name.text))
+          .reduce((acc: Record<string, string>, curr: string) => {
             acc[curr] = modulePath;
 
             return acc;
@@ -307,43 +278,32 @@ function _angularImportsFromNode(
 export function getDecoratorMetadata(
   source: ts.SourceFile,
   identifier: string,
-  module: string
+  module: string,
 ): ts.Node[] {
-  const angularImports: { [name: string]: string } = findNodes(
-    source,
-    ts.SyntaxKind.ImportDeclaration
-  )
-    .map((node: ts.ImportDeclaration) => _angularImportsFromNode(node, source))
-    .reduce(
-      (
-        acc: { [name: string]: string },
-        current: { [name: string]: string }
-      ) => {
-        for (const key of Object.keys(current)) {
-          acc[key] = current[key];
-        }
+  const angularImports: Record<string, string> = findNodes(source, ts.SyntaxKind.ImportDeclaration)
+    .map((node: ts.Node) => _angularImportsFromNode(node as ts.ImportDeclaration))
+    .reduce((acc: Record<string, string>, current: Record<string, string>) => {
+      for (const key of Object.keys(current)) {
+        acc[key] = current[key];
+      }
 
-        return acc;
-      },
-      {}
-    );
+      return acc;
+    }, {});
 
   return getSourceNodes(source)
-    .filter(node => {
+    .filter((node) => {
       return (
         node.kind == ts.SyntaxKind.Decorator &&
         (node as ts.Decorator).expression.kind == ts.SyntaxKind.CallExpression
       );
     })
-    .map(node => (node as ts.Decorator).expression as ts.CallExpression)
-    .filter(expr => {
+    .map((node) => (node as ts.Decorator).expression as ts.CallExpression)
+    .filter((expr) => {
       if (expr.expression.kind == ts.SyntaxKind.Identifier) {
         const id = expr.expression as ts.Identifier;
 
         return id.text == identifier && angularImports[id.text] === module;
-      } else if (
-        expr.expression.kind == ts.SyntaxKind.PropertyAccessExpression
-      ) {
+      } else if (expr.expression.kind == ts.SyntaxKind.PropertyAccessExpression) {
         // This covers foo.NgModule when importing * as foo.
         const paExpr = expr.expression as ts.PropertyAccessExpression;
         // If the left expression is not an identifier, just give up at that point.
@@ -360,16 +320,13 @@ export function getDecoratorMetadata(
       return false;
     })
     .filter(
-      expr =>
-        expr.arguments[0] &&
-        expr.arguments[0].kind == ts.SyntaxKind.ObjectLiteralExpression
+      (expr) =>
+        expr.arguments[0] && expr.arguments[0].kind == ts.SyntaxKind.ObjectLiteralExpression,
     )
-    .map(expr => expr.arguments[0] as ts.ObjectLiteralExpression);
+    .map((expr) => expr.arguments[0] as ts.ObjectLiteralExpression);
 }
 
-function findClassDeclarationParent(
-  node: ts.Node
-): ts.ClassDeclaration | undefined {
+function findClassDeclarationParent(node: ts.Node): ts.ClassDeclaration | undefined {
   if (ts.isClassDeclaration(node)) {
     return node;
   }
@@ -383,15 +340,9 @@ function findClassDeclarationParent(
  * @param source source file containing one or more @NgModule
  * @returns the name of the first @NgModule, or `undefined` if none is found
  */
-export function getFirstNgModuleName(
-  source: ts.SourceFile
-): string | undefined {
+export function getFirstNgModuleName(source: ts.SourceFile): string | undefined {
   // First, find the @NgModule decorators.
-  const ngModulesMetadata = getDecoratorMetadata(
-    source,
-    'NgModule',
-    '@angular/core'
-  );
+  const ngModulesMetadata = getDecoratorMetadata(source, 'NgModule', '@angular/core');
   if (ngModulesMetadata.length === 0) {
     return undefined;
   }
@@ -409,17 +360,16 @@ export function getFirstNgModuleName(
 
 export function getMetadataField(
   node: ts.ObjectLiteralExpression,
-  metadataField: string
+  metadataField: string,
 ): ts.ObjectLiteralElement[] {
   return (
     node.properties
-      .filter(prop => ts.isPropertyAssignment(prop))
+      .filter((prop) => ts.isPropertyAssignment(prop))
       // Filter out every fields that's not "metadataField". Also handles string literals
       // (but not expressions).
       .filter(({ name }: ts.PropertyAssignment) => {
         return (
-          (ts.isIdentifier(name) || ts.isStringLiteral(name)) &&
-          name.getText() === metadataField
+          (ts.isIdentifier(name) || ts.isStringLiteral(name)) && name.getText() === metadataField
         );
       })
   );
@@ -430,21 +380,18 @@ export function addSymbolToNgModuleMetadata(
   ngModulePath: string,
   metadataField: string,
   symbolName: string,
-  importPath: string | null = null
+  importPath: string | null = null,
 ): Change[] {
   const nodes = getDecoratorMetadata(source, 'NgModule', '@angular/core');
-  let node: any = nodes[0]; // tslint:disable-line:no-any
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let node: any = nodes[0];
   // Find the decorator declaration.
   if (!node) {
     return [];
   }
 
   // Get all the children property assignment of object literals.
-  const matchingProperties = getMetadataField(
-    node as ts.ObjectLiteralExpression,
-    metadataField
-  );
+  const matchingProperties = getMetadataField(node as ts.ObjectLiteralExpression, metadataField);
 
   // Get the last node of the array literal.
   if (!matchingProperties) {
@@ -473,12 +420,7 @@ export function addSymbolToNgModuleMetadata(
     if (importPath !== null) {
       return [
         new InsertChange(ngModulePath, position, toInsert),
-        insertImport(
-          source,
-          ngModulePath,
-          symbolName.replace(/\..*$/, ''),
-          importPath
-        ),
+        insertImport(source, ngModulePath, symbolName.replace(/\..*$/, ''), importPath),
       ];
     } else {
       return [new InsertChange(ngModulePath, position, toInsert)];
@@ -500,17 +442,14 @@ export function addSymbolToNgModuleMetadata(
   }
 
   if (!node) {
-    // tslint:disable-next-line: no-console
-    console.error(
-      'No app module found. Please add your new class to your component.'
-    );
+    console.error('No app module found. Please add your new class to your component.');
 
     return [];
   }
 
   if (Array.isArray(node)) {
-    const nodeArray = (node as {}) as Array<ts.Node>;
-    const symbolsArray = nodeArray.map(node => node.getText());
+    const nodeArray = node as ts.Node[];
+    const symbolsArray = nodeArray.map((node) => node.getText());
     if (symbolsArray.includes(symbolName)) {
       return [];
     }
@@ -552,12 +491,7 @@ export function addSymbolToNgModuleMetadata(
   if (importPath !== null) {
     return [
       new InsertChange(ngModulePath, position, toInsert),
-      insertImport(
-        source,
-        ngModulePath,
-        symbolName.replace(/\..*$/, ''),
-        importPath
-      ),
+      insertImport(source, ngModulePath, symbolName.replace(/\..*$/, ''), importPath),
     ];
   }
 
@@ -572,14 +506,14 @@ export function addDeclarationToModule(
   source: ts.SourceFile,
   modulePath: string,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): Change[] {
   return addSymbolToNgModuleMetadata(
     source,
     modulePath,
     'declarations',
     classifiedName,
-    importPath
+    importPath,
   );
 }
 
@@ -590,15 +524,9 @@ export function addImportToModule(
   source: ts.SourceFile,
   modulePath: string,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): Change[] {
-  return addSymbolToNgModuleMetadata(
-    source,
-    modulePath,
-    'imports',
-    classifiedName,
-    importPath
-  );
+  return addSymbolToNgModuleMetadata(source, modulePath, 'imports', classifiedName, importPath);
 }
 
 /**
@@ -608,15 +536,9 @@ export function addProviderToModule(
   source: ts.SourceFile,
   modulePath: string,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): Change[] {
-  return addSymbolToNgModuleMetadata(
-    source,
-    modulePath,
-    'providers',
-    classifiedName,
-    importPath
-  );
+  return addSymbolToNgModuleMetadata(source, modulePath, 'providers', classifiedName, importPath);
 }
 
 /**
@@ -626,15 +548,9 @@ export function addExportToModule(
   source: ts.SourceFile,
   modulePath: string,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): Change[] {
-  return addSymbolToNgModuleMetadata(
-    source,
-    modulePath,
-    'exports',
-    classifiedName,
-    importPath
-  );
+  return addSymbolToNgModuleMetadata(source, modulePath, 'exports', classifiedName, importPath);
 }
 
 /**
@@ -644,15 +560,9 @@ export function addBootstrapToModule(
   source: ts.SourceFile,
   modulePath: string,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): Change[] {
-  return addSymbolToNgModuleMetadata(
-    source,
-    modulePath,
-    'bootstrap',
-    classifiedName,
-    importPath
-  );
+  return addSymbolToNgModuleMetadata(source, modulePath, 'bootstrap', classifiedName, importPath);
 }
 
 /**
@@ -662,14 +572,14 @@ export function addEntryComponentToModule(
   source: ts.SourceFile,
   modulePath: string,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): Change[] {
   return addSymbolToNgModuleMetadata(
     source,
     modulePath,
     'entryComponents',
     classifiedName,
-    importPath
+    importPath,
   );
 }
 
@@ -679,26 +589,28 @@ export function addEntryComponentToModule(
 export function isImported(
   source: ts.SourceFile,
   classifiedName: string,
-  importPath: string
+  importPath: string,
 ): boolean {
   const allNodes = getSourceNodes(source);
   const matchingNodes = allNodes
-    .filter(node => node.kind === ts.SyntaxKind.ImportDeclaration)
+    .filter((node) => node.kind === ts.SyntaxKind.ImportDeclaration)
     .filter(
-      (imp: ts.ImportDeclaration) =>
-        imp.moduleSpecifier.kind === ts.SyntaxKind.StringLiteral
+      (node: ts.Node) =>
+        (node as ts.ImportDeclaration).moduleSpecifier.kind === ts.SyntaxKind.StringLiteral,
     )
-    .filter((imp: ts.ImportDeclaration) => {
-      return (imp.moduleSpecifier as ts.StringLiteral).text === importPath;
+    .filter((node: ts.Node) => {
+      return (
+        ((node as ts.ImportDeclaration).moduleSpecifier as ts.StringLiteral).text === importPath
+      );
     })
-    .filter((imp: ts.ImportDeclaration) => {
+    .filter((node: ts.Node) => {
+      const imp = node as ts.ImportDeclaration;
       if (!imp.importClause) {
         return false;
       }
-      const nodes = findNodes(
-        imp.importClause,
-        ts.SyntaxKind.ImportSpecifier
-      ).filter(n => n.getText() === classifiedName);
+      const nodes = findNodes(imp.importClause, ts.SyntaxKind.ImportSpecifier).filter(
+        (n) => n.getText() === classifiedName,
+      );
 
       return nodes.length > 0;
     });
@@ -709,14 +621,8 @@ export function isImported(
 /**
  * Returns the RouterModule declaration from NgModule metadata, if any.
  */
-export function getRouterModuleDeclaration(
-  source: ts.SourceFile
-): ts.Expression | undefined {
-  const result = getDecoratorMetadata(
-    source,
-    'NgModule',
-    '@angular/core'
-  ) as ts.Node[];
+export function getRouterModuleDeclaration(source: ts.SourceFile): ts.Expression | undefined {
+  const result = getDecoratorMetadata(source, 'NgModule', '@angular/core') as ts.Node[];
   const node = result[0] as ts.ObjectLiteralExpression;
   const matchingProperties = getMetadataField(node, 'imports');
 
@@ -733,8 +639,8 @@ export function getRouterModuleDeclaration(
   const arrLiteral = assignment.initializer as ts.ArrayLiteralExpression;
 
   return arrLiteral.elements
-    .filter(el => el.kind === ts.SyntaxKind.CallExpression)
-    .find(el => (el as ts.Identifier).getText().startsWith('RouterModule'));
+    .filter((el) => el.kind === ts.SyntaxKind.CallExpression)
+    .find((el) => (el as ts.Identifier).getText().startsWith('RouterModule'));
 }
 
 /**
@@ -743,21 +649,17 @@ export function getRouterModuleDeclaration(
 export function addRouteDeclarationToModule(
   source: ts.SourceFile,
   fileToAdd: string,
-  routeLiteral: string
+  routeLiteral: string,
 ): Change {
   const routerModuleExpr = getRouterModuleDeclaration(source);
   if (!routerModuleExpr) {
     throw new Error(`Couldn't find a route declaration in ${fileToAdd}.`);
   }
-  const scopeConfigMethodArgs = (routerModuleExpr as ts.CallExpression)
-    .arguments;
+  const scopeConfigMethodArgs = (routerModuleExpr as ts.CallExpression).arguments;
   if (!scopeConfigMethodArgs.length) {
-    const { line } = source.getLineAndCharacterOfPosition(
-      routerModuleExpr.getStart()
-    );
+    const { line } = source.getLineAndCharacterOfPosition(routerModuleExpr.getStart());
     throw new Error(
-      `The router module method doesn't have arguments ` +
-        `at line ${line} in ${fileToAdd}`
+      `The router module method doesn't have arguments ` + `at line ${line} in ${fileToAdd}`,
     );
   }
 
@@ -774,27 +676,26 @@ export function addRouteDeclarationToModule(
     if (routesArg.kind === ts.SyntaxKind.Identifier) {
       routesVar = source.statements
         .filter((s: ts.Statement) => s.kind === ts.SyntaxKind.VariableStatement)
-        .find((v: ts.VariableStatement) => {
+        .find((v: ts.Statement) => {
           return (
-            v.declarationList.declarations[0].name.getText() === routesVarName
+            (v as ts.VariableStatement).declarationList.declarations[0].name.getText() ===
+            routesVarName
           );
         }) as ts.VariableStatement | undefined;
     }
 
     if (!routesVar) {
-      const { line } = source.getLineAndCharacterOfPosition(
-        routesArg.getStart()
-      );
+      const { line } = source.getLineAndCharacterOfPosition(routesArg.getStart());
       throw new Error(
         `No route declaration array was found that corresponds ` +
-          `to router module at line ${line} in ${fileToAdd}`
+          `to router module at line ${line} in ${fileToAdd}`,
       );
     }
 
     routesArr = findNodes(
       routesVar,
       ts.SyntaxKind.ArrayLiteralExpression,
-      1
+      1,
     )[0] as ts.ArrayLiteralExpression;
   }
 
@@ -808,10 +709,10 @@ export function addRouteDeclarationToModule(
   }
 
   return insertAfterLastOccurrence(
-    (routesArr.elements as unknown) as ts.Node[],
+    routesArr.elements as unknown as ts.Node[],
     route,
     fileToAdd,
     routesArr.elements.pos,
-    ts.SyntaxKind.ObjectLiteralExpression
+    ts.SyntaxKind.ObjectLiteralExpression,
   );
 }

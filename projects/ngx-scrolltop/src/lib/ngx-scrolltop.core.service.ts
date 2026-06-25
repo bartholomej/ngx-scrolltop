@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, DOCUMENT } from '@angular/core';
+import { DOCUMENT, inject, Injectable, signal } from '@angular/core';
 import { polyfill as smoothscrollPolyfill } from 'seamless-scroll-polyfill';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
@@ -12,7 +12,7 @@ export class NgxScrollTopCoreService {
   private document = inject(DOCUMENT);
 
   public onWindowScroll(mode: NgxScrollTopMode): boolean {
-    const position: number =
+    const position: number | undefined =
       this.document.documentElement?.scrollTop || this.document.scrollingElement?.scrollTop;
     switch (mode) {
       case 'classic':
@@ -22,15 +22,15 @@ export class NgxScrollTopCoreService {
     }
   }
 
-  private classicMode(position: number): boolean {
-    if (this.isBrowser && position > window.innerHeight) {
+  private classicMode(position: number | undefined): boolean {
+    if (this.isBrowser && position && position > window.innerHeight) {
       return true;
     } else {
       return false;
     }
   }
 
-  private smartMode(position: number): boolean {
+  private smartMode(position: number | undefined): boolean {
     let show = false;
 
     if (position === 0) {
@@ -38,11 +38,11 @@ export class NgxScrollTopCoreService {
       this.scrolledFromTop.set(false);
     }
 
-    if (this.scrolledFromTop() && this.scrollOffset() > position) {
+    if (this.scrolledFromTop() && position && this.scrollOffset() > position) {
       show = true;
     }
 
-    if (this.isBrowser && position > window.innerHeight * 2) {
+    if (this.isBrowser && position && position > window.innerHeight * 2) {
       this.scrolledFromTop.set(true);
       this.scrollOffset.set(position);
     }

@@ -1,27 +1,19 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Router, RouterModule } from '@angular/router';
-import { NgxScrollTopModule } from 'projects/ngx-scrolltop/src/public-api';
-import { routes } from './app-routing.module';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter, Router } from '@angular/router';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { AppComponent } from './app.component';
-import { ComponentWayModule } from './component-way/component-way.module';
-import { DirectiveWayModule } from './directive-way/directive-way.module';
+import { routes } from './app.routes';
 
 describe('AppComponent', () => {
   let router: Router;
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterModule.forRoot(routes),
-        ComponentWayModule,
-        DirectiveWayModule,
-        NgxScrollTopModule,
-      ],
-      providers: [],
-      declarations: [AppComponent],
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+      providers: [provideRouter(routes)],
     }).compileComponents();
     router = TestBed.inject(Router);
     router.initialNavigation();
-  }));
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -39,12 +31,10 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain(
-      'ngx-scrolltop'
-    );
+    expect(compiled.querySelector('.content span').textContent).toContain('ngx-scrolltop');
   });
 
-  it('Scroll: Directive', done => {
+  it('Scroll: Directive', async () => {
     router.navigateByUrl('/directive-way');
     const fixture = TestBed.createComponent(AppComponent);
 
@@ -61,31 +51,11 @@ describe('AppComponent', () => {
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
 
-      const ngxScrollTopElementWithDirective = compiled.querySelector(
-        '.my-custom-scrolltop-element'
-      );
+      const ngxScrollTopElementWithDirective = compiled.querySelector('.my-custom-scrolltop-element');
 
       expect(ngxScrollTopElementWithDirective.style.display).not.toEqual('none');
-      done();
     }
   });
-
-  // it('Scroll: Component', done => {
-  //   router.navigateByUrl('/');
-  //   const fixture = TestBed.createComponent(AppComponent);
-
-  //   initScroll(fixture);
-
-  //   scrollTo(window.innerHeight * 2 - 100, finishIt);
-
-  //   function finishIt() {
-  //     const compiled = fixture.debugElement.nativeElement;
-
-  //     const ngxScrollTopElement = compiled.querySelector('.scrolltop-button');
-  //     expect(ngxScrollTopElement).toBeTruthy();
-  //     done();
-  //   }
-  // });
 });
 
 function initScroll(fixture: ComponentFixture<AppComponent>): void {

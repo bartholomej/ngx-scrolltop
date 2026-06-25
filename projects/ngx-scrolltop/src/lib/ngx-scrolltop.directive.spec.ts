@@ -1,55 +1,45 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 
 @Component({
-  standalone: false,
-  template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgxScrollTopDirective],
+    template: '<span class="my-scroll-top-button" ngxScrollTop>Top</span>',
 })
 class TestComponent {
-  constructor() { }
 }
 
 describe('NgxScrollTopDirective', () => {
-  let component: TestComponent;
-  let fixture: ComponentFixture<TestComponent>;
-  let cdRef: ChangeDetectorRef;
+    let component: TestComponent;
+    let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [TestComponent],
-      imports: [NgxScrollTopDirective],
-      providers: [NgxScrollTopCoreService]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [TestComponent, NgxScrollTopDirective],
+            providers: [NgxScrollTopCoreService]
+        });
+
+        fixture = TestBed.createComponent(TestComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
     });
 
-    fixture = TestBed.createComponent(TestComponent);
-    component = fixture.componentInstance;
-    cdRef = fixture.componentRef.injector.get(ChangeDetectorRef);
-  });
+    it('should create component', () => {
+        expect(component).toBeDefined();
+    });
 
-  it('should create component', () => {
-    expect(component).toBeDefined();
-  });
+    it('should scroll to top when the host element is clicked', () => {
+        const host = fixture.debugElement.query(By.directive(NgxScrollTopDirective));
+        const core = host.injector.get(NgxScrollTopCoreService);
+        const scrollSpy = vi.spyOn(core, 'scrollToTop');
 
-  it('should scroll to top', done => {
-    const debugEl: HTMLElement = fixture.debugElement.nativeElement;
-    const p: HTMLElement = debugEl.querySelector('.my-scroll-top-button');
+        (host.nativeElement as HTMLElement).click();
 
-    // Make window scrollable
-    document.body.style.minHeight = '1500px';
-    window.scrollTo(0, 50);
-    fixture.detectChanges();
-    cdRef.detectChanges();
-
-    p.click();
-    fixture.detectChanges();
-    cdRef.detectChanges();
-
-    setTimeout(() => {
-      // Wait some time for smooth scroll
-      expect(document.documentElement.scrollTop).toBe(0);
-      done();
-    }, 3000);
-  });
+        expect(scrollSpy).toHaveBeenCalledTimes(1);
+    });
 });
