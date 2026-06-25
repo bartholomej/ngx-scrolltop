@@ -5,8 +5,7 @@ import { NgxScrollTopComponent } from './../../../../../projects/ngx-scrolltop/s
   selector: 'app-component-way',
   templateUrl: './component-way.component.html',
   styleUrls: ['./component-way.component.scss'],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgxScrollTopComponent],
 })
 export default class ComponentWayComponent {}

@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -11,9 +10,3 @@ export const routes: Routes = [
     loadComponent: () => import('./directive-way/directive-way.component'),
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes, {})],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

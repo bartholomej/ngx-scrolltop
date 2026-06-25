@@ -19,8 +19,6 @@
     "gpr:setup": "yarn tsx scripts/gpr-setup",
     "test": "ng test --watch=false",
     "lint": "ng lint",
-    "tslint-fix": "tslint --fix -p tsconfig.json",
-    "e2e": "ng e2e",
     "create:version": "yarn tsx scripts/create-version",
     "postinstall": "yarn create:version",
     "syncprojects": "yarn tsx scripts/sync-projects",
@@ -37,12 +35,10 @@
     "@angular/core": "^22.0.0",
     "@angular/forms": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
-    "@angular/platform-browser-dynamic": "^22.0.0",
     "@angular/router": "^22.0.0",
     "rxjs": "^7.8.2",
     "seamless-scroll-polyfill": "^2.3.4",
-    "tslib": "^2.8.1",
-    "zone.js": "~0.16.0"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^22.0.0",
@@ -63,8 +59,6 @@
     "lint-staged": "^17.0.7",
     "ng-packagr": "^22.0.0",
     "prettier": "^3.8.3",
-    "protractor": "~7.0.0",
-    "tslint-config-prettier": "^1.18.0",
     "tsx": "^4.22.4",
     "typescript": "6.0.3",
     "typescript-eslint": "8.60.1",

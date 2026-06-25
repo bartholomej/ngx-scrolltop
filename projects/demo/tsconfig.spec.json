@@ -6,7 +6,7 @@
     "target": "ESNext",
     "module": "ESNext"
   },
-  "files": ["src/test.ts", "src/polyfills.ts"],
+  "files": ["src/test.ts"],
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "angularCompilerOptions": {
     "extendedDiagnostics": {

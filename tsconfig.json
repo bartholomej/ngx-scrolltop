@@ -2,10 +2,17 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "declaration": false,
-    "experimentalDecorators": true,
     "module": "ES2022",
     "moduleResolution": "bundler",
     "importHelpers": true,
@@ -14,8 +21,7 @@
     "paths": {
       "ngx-scrolltop": ["./dist/ngx-scrolltop"],
       "ngx-scrolltop/*": ["./dist/ngx-scrolltop/*"]
-    },
-    "useDefineForClassFields": false
+    }
   },
   "angularCompilerOptions": {
     "strictTemplates": true,

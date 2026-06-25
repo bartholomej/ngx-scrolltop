@@ -5,8 +5,7 @@ import { NgxScrollTopDirective } from './../../../../../projects/ngx-scrolltop/s
   selector: 'app-directive-way',
   templateUrl: './directive-way.component.html',
   styleUrls: ['./directive-way.component.scss'],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgxScrollTopDirective],
 })
 export default class DirectiveWayComponent {}
