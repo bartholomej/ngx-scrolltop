@@ -42,7 +42,7 @@ jobs:
         run: yarn build:demo --base-href https://bartholomej.github.io/ngx-scrolltop/
 
       - name: Run tests
-        run: yarn test --configuration=ci
+        run: yarn test
 
       # - name: Publish NPM
       #   run: cd dist/ngx-scrolltop && npm publish

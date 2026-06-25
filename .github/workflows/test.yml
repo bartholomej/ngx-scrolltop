@@ -35,4 +35,4 @@ jobs:
         run: yarn build:demo
 
       - name: Run tests # Build Schematics and move
-        run: yarn test --configuration=ci
+        run: yarn test
