@@ -1,5 +1,4 @@
 import { DOCUMENT, inject, Injectable, signal } from '@angular/core';
-import { polyfill as smoothscrollPolyfill } from 'seamless-scroll-polyfill';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Injectable()
@@ -50,15 +49,18 @@ export class NgxScrollTopCoreService {
     return show;
   }
 
-  public scrollToTop(): void {
-    if (this.isBrowser) {
-      // Kick off the polyfill for iOS Safari
-      if (!this.alreadyActivated()) {
-        smoothscrollPolyfill();
-        this.alreadyActivated.set(true);
-      }
-      // Scroll to the top
-      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  public async scrollToTop(): Promise<void> {
+    if (!this.isBrowser) {
+      return;
     }
+    // Lazy-load the smooth-scroll polyfill (iOS Safari) only on first use, so it
+    // stays out of the initial bundle. It's a no-op on browsers with native support.
+    if (!this.alreadyActivated()) {
+      this.alreadyActivated.set(true);
+      const { polyfill } = await import('seamless-scroll-polyfill');
+      polyfill();
+    }
+    // Scroll to the top
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 }
