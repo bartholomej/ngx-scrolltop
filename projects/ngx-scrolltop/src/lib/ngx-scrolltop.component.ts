@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  NgZone,
+  PLATFORM_ID,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
@@ -12,9 +22,6 @@ import {
   styleUrl: './ngx-scrolltop.component.scss',
   providers: [NgxScrollTopCoreService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '(window:scroll)': 'onWindowScroll()',
-  },
 })
 export class NgxScrollTopComponent {
   public backgroundColor = input<string>();
@@ -28,12 +35,32 @@ export class NgxScrollTopComponent {
 
   private readonly core = inject(NgxScrollTopCoreService);
 
-  public onWindowScroll(): void {
-    const show = this.core.onWindowScroll(this.mode());
+  constructor() {
+    const zone = inject(NgZone);
+    const destroyRef = inject(DestroyRef);
 
-    // Performance boost. Only update DOM when state changes.
-    if (this.show() !== show) {
-      this.show.set(show);
+    if (isPlatformBrowser(inject(PLATFORM_ID))) {
+      // Listen outside Angular so scroll events don't trigger change detection.
+      // The signal only notifies when the visibility actually changes.
+      zone.runOutsideAngular(() => {
+        let ticking = false;
+        const handler = (): void => {
+          if (ticking) {
+            return;
+          }
+          ticking = true;
+          requestAnimationFrame(() => {
+            const show = this.core.onWindowScroll(this.mode());
+            if (this.show() !== show) {
+              this.show.set(show);
+            }
+            ticking = false;
+          });
+        };
+
+        window.addEventListener('scroll', handler, { passive: true });
+        destroyRef.onDestroy(() => window.removeEventListener('scroll', handler));
+      });
     }
   }
 
