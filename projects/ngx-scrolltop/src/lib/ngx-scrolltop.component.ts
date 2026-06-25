@@ -1,12 +1,4 @@
-import { NgClass } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  inject,
-  input,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
@@ -17,11 +9,12 @@ import {
 @Component({
   selector: 'ngx-scrolltop',
   templateUrl: './ngx-scrolltop.component.html',
-  styleUrls: ['./ngx-scrolltop.component.scss'],
-  imports: [NgClass],
+  styleUrl: './ngx-scrolltop.component.scss',
   providers: [NgxScrollTopCoreService],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
+  host: {
+    '(window:scroll)': 'onWindowScroll()',
+  },
 })
 export class NgxScrollTopComponent {
   public backgroundColor = input<string>();
@@ -35,11 +28,10 @@ export class NgxScrollTopComponent {
 
   private readonly core = inject(NgxScrollTopCoreService);
 
-  @HostListener('window:scroll')
   public onWindowScroll(): void {
     const show = this.core.onWindowScroll(this.mode());
 
-    // Performance boost. Only update the state if it has changed.
+    // Performance boost. Only update DOM when state changes.
     if (this.show() !== show) {
       this.show.set(show);
     }

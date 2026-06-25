@@ -1,11 +1,14 @@
-import { Directive, ElementRef, HostListener, inject, input, signal } from '@angular/core';
+import { Directive, ElementRef, inject, input, signal } from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopMode } from './ngx-scrolltop.interface';
 
 @Directive({
   selector: '[ngxScrollTop]',
-  standalone: true,
   providers: [NgxScrollTopCoreService],
+  host: {
+    '(window:scroll)': 'onWindowScroll()',
+    '(click)': 'onClick()',
+  },
 })
 export class NgxScrollTopDirective {
   public mode = input<NgxScrollTopMode>('classic', { alias: 'ngxScrollTopMode' });
@@ -19,11 +22,10 @@ export class NgxScrollTopDirective {
     this.hideElement();
   }
 
-  @HostListener('window:scroll')
   public onWindowScroll(): void {
     const show = this.core.onWindowScroll(this.mode());
 
-    // Performance boost. Only update the DOM when the state changes.
+    // Performance boost. Only update DOM when state changes.
     if (this.show() !== show) {
       if (show) {
         this.showElement();
@@ -34,7 +36,6 @@ export class NgxScrollTopDirective {
     }
   }
 
-  @HostListener('click')
   public onClick(): void {
     this.scrollToTop();
   }
