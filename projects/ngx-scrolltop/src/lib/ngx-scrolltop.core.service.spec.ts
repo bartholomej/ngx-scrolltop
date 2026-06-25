@@ -11,6 +11,9 @@ describe('NgxScrollTopService', () => {
   };
 
   beforeEach(() => {
+    // Reset to a "scrolled down" position so each test starts from a known state.
+    mockDocument.documentElement.scrollTop = window.innerHeight * 2 + 1;
+
     TestBed.configureTestingModule({
       providers: [{ provide: DOCUMENT, useValue: mockDocument }, NgxScrollTopCoreService],
     });
@@ -37,6 +40,23 @@ describe('NgxScrollTopService', () => {
     (srvc as any).scrollOffset.set(window.innerHeight * 2 + 2);
 
     expect(srvc.onWindowScroll(mode)).toBe(true);
+  });
+
+  it('Classic mode: Hide button near the top', () => {
+    mockDocument.documentElement.scrollTop = window.innerHeight - 1;
+
+    expect(srvc.onWindowScroll('classic')).toBe(false);
+  });
+
+  it('Smart mode: Hide button at the very top', () => {
+    mockDocument.documentElement.scrollTop = 0;
+
+    expect(srvc.onWindowScroll('smart')).toBe(false);
+  });
+
+  it('Smart mode: Hide button while still scrolling down', () => {
+    // Past the threshold but never scrolled back up yet -> still hidden.
+    expect(srvc.onWindowScroll('smart')).toBe(false);
   });
 
   it('Scroll to top', () => {

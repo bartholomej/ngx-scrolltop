@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { By } from '@angular/platform-browser';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import { NgxScrollTopDirective } from './ngx-scrolltop.directive';
 
@@ -16,7 +17,6 @@ class TestComponent {
 describe('NgxScrollTopDirective', () => {
     let component: TestComponent;
     let fixture: ComponentFixture<TestComponent>;
-    let cdRef: ChangeDetectorRef;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -26,31 +26,20 @@ describe('NgxScrollTopDirective', () => {
 
         fixture = TestBed.createComponent(TestComponent);
         component = fixture.componentInstance;
-        cdRef = fixture.componentRef.injector.get(ChangeDetectorRef);
+        fixture.detectChanges();
     });
 
     it('should create component', () => {
         expect(component).toBeDefined();
     });
 
-    it('should scroll to top', async () => {
-        const debugEl: HTMLElement = fixture.debugElement.nativeElement;
-        const p: HTMLElement | null = debugEl.querySelector('.my-scroll-top-button');
+    it('should scroll to top when the host element is clicked', () => {
+        const host = fixture.debugElement.query(By.directive(NgxScrollTopDirective));
+        const core = host.injector.get(NgxScrollTopCoreService);
+        const scrollSpy = vi.spyOn(core, 'scrollToTop');
 
-        // Make window scrollable
-        document.body.style.minHeight = '1500px';
-        window.scrollTo(0, 50);
-        fixture.detectChanges();
-        cdRef.detectChanges();
+        (host.nativeElement as HTMLElement).click();
 
-        p?.click();
-        fixture.detectChanges();
-        cdRef.detectChanges();
-
-        setTimeout(() => {
-            // Wait some time for smooth scroll
-            expect(document.documentElement.scrollTop).toBe(0);
-            ;
-        }, 3000);
+        expect(scrollSpy).toHaveBeenCalledTimes(1);
     });
 });

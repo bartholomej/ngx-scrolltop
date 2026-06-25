@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { NgxScrollTopComponent } from './ngx-scrolltop.component';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 
@@ -30,6 +30,22 @@ describe('NgxScrollTopComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should scroll to top when the button is clicked', () => {
+    const core = fixture.debugElement.injector.get(NgxScrollTopCoreService);
+    const scrollSpy = vi.spyOn(core, 'scrollToTop');
+
+    element.click();
+
+    expect(scrollSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not render the button while hidden', () => {
+    component.show.set(false);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.scrolltop-button')).toBeNull();
   });
 
   it('should set backgroundColor', () => {
