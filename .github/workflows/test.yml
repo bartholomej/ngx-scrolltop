@@ -9,25 +9,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js
-        uses: actions/setup-node@master
+
+      - name: 🔧 Use Node.js
+        uses: actions/setup-node@v6
         with:
           node-version: 24
-
-      - name: Cache node modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          cache: 'yarn'
 
       - name: Install dependencies # Install all deps
-        run: yarn
+        run: yarn install --immutable
 
       - name: Sync versions # Sync versions
         run: yarn syncprojects

@@ -16,62 +16,33 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-      - name: Use Node.js
+
+      - name: 🔧 Use Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          registry-url: 'https://registry.npmjs.org'
+          cache: 'yarn'
 
-      - name: Cache node modules
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+      - name: Install dependencies
+        run: yarn install --immutable
 
-      - name: Install dependencies # Install all deps
-        run: yarn
-
-      - name: Sync versions # Sync versions
+      - name: Sync versions
         run: yarn syncprojects
 
-      - name: Build ngx-scrolltop # Build
+      - name: Build ngx-scrolltop
         run: yarn build
 
-      - name: Build Schematics # Build Schematics and move
+      - name: Build Schematics
         run: yarn build:schematics
 
-      - name: Build demo app # Build Schematics and move
+      - name: Build demo app
         run: yarn build:demo --base-href https://bartholomej.github.io/ngx-scrolltop/
 
-      - name: Run tests # Build Schematics and move
+      - name: Run tests
         run: yarn test --configuration=ci
 
       # - name: Publish NPM
       #   run: cd dist/ngx-scrolltop && npm publish
-
-      # Publish to GitHub Package Registry
-      # - name: Set up package for GPR
-      #   run: yarn gpr:setup
-
-      # - name: Use GPR
-      #   uses: actions/setup-node@master
-      #   with:
-      #     node-version: 22
-      #     registry-url: https://npm.pkg.github.com/
-      #     scope: '@bartholomej'
-
-      # - name: Publish to GitHub Package Registry
-      #   run: |
-      #     cd dist/ngx-scrolltop
-      #     npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{github.token}}
 
       - name: Deploy Github Pages
         uses: peaceiris/actions-gh-pages@v4

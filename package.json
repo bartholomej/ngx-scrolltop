@@ -17,7 +17,7 @@
     "publish:npmjs": "npm run syncprojects && npm run build && npm publish --folder dist/ngx-scrolltop",
     "publish:next": "yarn && yarn syncprojects && yarn build && yarn build:schematics && yarn test --configuration=ci && cd dist/ngx-scrolltop && npm publish --tag next",
     "gpr:setup": "yarn tsx scripts/gpr-setup",
-    "test": "ng test",
+    "test": "ng test --watch=false",
     "lint": "ng lint",
     "tslint-fix": "tslint --fix -p tsconfig.json",
     "e2e": "ng e2e",
@@ -101,6 +101,8 @@
     "angular18",
     "angular19",
     "angular20",
+    "angular21",
+    "angular22",
     "standalone",
     "signals",
     "smooth",
@@ -111,10 +113,10 @@
     "dist"
   ],
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=24"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "packageManager": "yarn@4.16.0"
+  "packageManager": "yarn@4.17.0"
 }
