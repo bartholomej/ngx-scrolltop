@@ -174,6 +174,7 @@ _Next steps you can see above in [Standalone Component](#standalone-component) o
 | ~~**symbol**~~      | ~~string~~                                                                     |             | ~~You can use utf8 chars for customizing symbol. For example: `↑`~~ Removed in v2.0.0. Use _content projection_. See example [here](#symbol)                                                             |
 | **position**        | `'left'` \| `'right'`                                                          | `'right'`   | Left or right, that is the question...                                                                                                                                                                   |
 | **theme**           | [NgxScrollTopTheme](projects/ngx-scrolltop/src/lib/ngx-scrolltop.interface.ts) | `'gray'`    | Choose from [official Material color themes](https://material.io/resources/color)                                                                                                                        |
+| **target**          | `HTMLElement` \| `ElementRef`                                                  | _window_    | Track a nested scrollable element instead of the window. See [Custom scroll container](#custom-scroll-container).                                                                                        |
 
 #### Symbol
 
@@ -193,9 +194,10 @@ Or you can even use your own components or fonts (e.g. fontAwesome)
 
 ### Directive
 
-| Option                 | Type                     | Default     | Description                                                                                                                                                                                             |
-| ---------------------- | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[ngxScrollTopMode]** | `'smart'` \| `'classic'` | `'classic'` | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top.**Classic** mode shows button immediately when you scroll at least one screen down. |
+| Option                   | Type                          | Default     | Description                                                                                                                                                                                             |
+| ------------------------ | ----------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[ngxScrollTopMode]**   | `'smart'` \| `'classic'`      | `'classic'` | **Smart** mode shows button only when you scroll more than two screens down and then you will try to go back to top.**Classic** mode shows button immediately when you scroll at least one screen down. |
+| **[ngxScrollTopTarget]** | `HTMLElement` \| `ElementRef` | _window_    | Track a nested scrollable element instead of the window. See [Custom scroll container](#custom-scroll-container).                                                                                       |
 
 ## 🎨 Examples
 
@@ -243,6 +245,32 @@ _[@angular/material](https://material.angular.io/components/button/overview) req
   bottom: 20px;
 }
 ```
+
+### Custom scroll container
+
+By default the button tracks the **window** scroll. If your content scrolls inside a
+nested element (e.g. a chat list with `max-height` and `overflow-y: auto`), pass that
+element via `target` so the button reacts to _its_ scroll position and scrolls _it_
+back to the top. Just pass a template reference variable:
+
+**app.component.html**
+
+```html
+<div #messages style="max-height: 200px; overflow-y: auto;">
+  <!-- a lot of scrollable content -->
+</div>
+
+<ngx-scrolltop [target]="messages"></ngx-scrolltop>
+```
+
+The same works with the directive via `ngxScrollTopTarget`:
+
+```html
+<button ngxScrollTop [ngxScrollTopTarget]="messages">top</button>
+```
+
+> One instance tracks one scroll source. For multiple independent containers, use
+> multiple instances. When `target` is omitted, the window scroll is used as before.
 
 ## 🔌 Dependencies
 

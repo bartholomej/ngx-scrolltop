@@ -10,26 +10,30 @@ export class NgxScrollTopCoreService {
 
   private document = inject(DOCUMENT);
 
-  public onWindowScroll(mode: NgxScrollTopMode): boolean {
-    const position: number | undefined =
-      this.document.documentElement?.scrollTop || this.document.scrollingElement?.scrollTop;
+  public onWindowScroll(mode: NgxScrollTopMode, target?: HTMLElement): boolean {
+    const position: number | undefined = target
+      ? target.scrollTop
+      : this.document.documentElement?.scrollTop || this.document.scrollingElement?.scrollTop;
+    // The threshold is the visible height of the scroll source: the target's own
+    // height when scrolling a nested element, otherwise the viewport height.
+    const viewport: number = target ? target.clientHeight : window.innerHeight;
     switch (mode) {
       case 'classic':
-        return this.classicMode(position);
+        return this.classicMode(position, viewport);
       case 'smart':
-        return this.smartMode(position);
+        return this.smartMode(position, viewport);
     }
   }
 
-  private classicMode(position: number | undefined): boolean {
-    if (this.isBrowser && position && position > window.innerHeight) {
+  private classicMode(position: number | undefined, viewport: number): boolean {
+    if (this.isBrowser && position && position > viewport) {
       return true;
     } else {
       return false;
     }
   }
 
-  private smartMode(position: number | undefined): boolean {
+  private smartMode(position: number | undefined, viewport: number): boolean {
     let show = false;
 
     if (position === 0) {
@@ -41,7 +45,7 @@ export class NgxScrollTopCoreService {
       show = true;
     }
 
-    if (this.isBrowser && position && position > window.innerHeight * 2) {
+    if (this.isBrowser && position && position > viewport * 2) {
       this.scrolledFromTop.set(true);
       this.scrollOffset.set(position);
     }
@@ -49,7 +53,7 @@ export class NgxScrollTopCoreService {
     return show;
   }
 
-  public async scrollToTop(): Promise<void> {
+  public async scrollToTop(target?: HTMLElement): Promise<void> {
     if (!this.isBrowser) {
       return;
     }
@@ -60,7 +64,7 @@ export class NgxScrollTopCoreService {
       const { polyfill } = await import('seamless-scroll-polyfill');
       polyfill();
     }
-    // Scroll to the top
-    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    // Scroll to the top of the target element, or the window when none is given.
+    (target ?? window).scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 }

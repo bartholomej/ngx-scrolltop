@@ -9,4 +9,8 @@ export const routes: Routes = [
     path: 'directive-way',
     loadComponent: () => import('./directive-way/directive-way.component'),
   },
+  {
+    path: 'target-way',
+    loadComponent: () => import('./target-way/target-way.component'),
+  },
 ];

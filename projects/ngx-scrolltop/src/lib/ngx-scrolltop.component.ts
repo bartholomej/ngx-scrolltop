@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { NgxScrollTopCoreService } from './ngx-scrolltop.core.service';
 import {
   NgxScrollTopMode,
   NgxScrollTopPosition,
   NgxScrollTopTheme,
 } from './ngx-scrolltop.interface';
-import { listenToWindowScroll } from './ngx-scrolltop.scroll-listener';
+import { listenToScroll } from './ngx-scrolltop.scroll-listener';
 
 @Component({
   selector: 'ngx-scrolltop',
@@ -22,16 +30,31 @@ export class NgxScrollTopComponent {
   public theme = input<NgxScrollTopTheme>('gray');
   public mode = input<NgxScrollTopMode>('classic');
 
+  /**
+   * Optional nested scroll container to track instead of the window. Accepts a
+   * template reference (`#myDiv`), an `HTMLElement`, or an `ElementRef`. When
+   * omitted, the component falls back to the window scroll.
+   */
+  public target = input<HTMLElement | ElementRef<HTMLElement>>();
+
   public show = signal(false);
 
   private readonly core = inject(NgxScrollTopCoreService);
 
+  private readonly targetElement = computed<HTMLElement | undefined>(() => {
+    const target = this.target();
+    return target instanceof ElementRef ? target.nativeElement : target;
+  });
+
   constructor() {
     // The signal only notifies when the visibility actually changes.
-    listenToWindowScroll(() => this.show.set(this.core.onWindowScroll(this.mode())));
+    listenToScroll(
+      () => this.targetElement(),
+      () => this.show.set(this.core.onWindowScroll(this.mode(), this.targetElement())),
+    );
   }
 
   public scrollToTop(): void {
-    this.core.scrollToTop();
+    this.core.scrollToTop(this.targetElement());
   }
 }
