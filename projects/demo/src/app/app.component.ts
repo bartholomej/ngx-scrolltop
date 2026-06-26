@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { filter, map, startWith } from 'rxjs';
 import { VERSION } from '../environments/version';
 
 @Component({
@@ -13,6 +15,22 @@ export class AppComponent {
   public title = 'NgxScrollTop demo | Angular go to top button';
   public version = VERSION;
   public iterations = new Array(60);
+
+  private readonly router = inject(Router);
+
+  // Current route url, kept as a signal so the OnPush template reacts to it.
+  private readonly url = toSignal(
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map((event) => event.urlAfterRedirects),
+      startWith(this.router.url),
+    ),
+    { initialValue: this.router.url },
+  );
+
+  // The "Custom target" demo scrolls inside a nested container, so the page-level
+  // dummy text would only get in the way there.
+  protected readonly showDummyText = computed(() => !this.url().includes('target-way'));
 
   public lipsum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
