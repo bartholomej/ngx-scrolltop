@@ -63,4 +63,29 @@ describe('NgxScrollTopService', () => {
     await srvc.scrollToTop();
     expect(document.documentElement.scrollTop).toBe(0);
   });
+
+  describe('with a custom target element', () => {
+    it('Classic mode: Show button when the target is scrolled past its own height', () => {
+      const target = { scrollTop: 201, clientHeight: 200 } as HTMLElement;
+
+      expect(srvc.onWindowScroll('classic', target)).toBe(true);
+    });
+
+    it('Classic mode: Hide button when the target is near its top', () => {
+      const target = { scrollTop: 199, clientHeight: 200 } as HTMLElement;
+
+      expect(srvc.onWindowScroll('classic', target)).toBe(false);
+    });
+
+    it('Scroll to top scrolls the target instead of the window', async () => {
+      let scrolledTo: ScrollToOptions | undefined;
+      const target = {
+        scroll: (options: ScrollToOptions) => (scrolledTo = options),
+      } as unknown as HTMLElement;
+
+      await srvc.scrollToTop(target);
+
+      expect(scrolledTo).toEqual({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  });
 });

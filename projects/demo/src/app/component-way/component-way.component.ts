@@ -8,4 +8,6 @@ import { NgxScrollTopComponent } from './../../../../../projects/ngx-scrolltop/s
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgxScrollTopComponent],
 })
-export default class ComponentWayComponent {}
+export default class ComponentWayComponent {
+  protected readonly items = Array.from({ length: 50 }, (_, i) => i + 1);
+}
